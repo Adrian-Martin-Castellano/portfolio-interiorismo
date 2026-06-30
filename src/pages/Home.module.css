@@ -1,0 +1,153 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #fcfbfa;
+}
+
+.heroSection {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+}
+
+.heroCard {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 4rem 5rem;
+  border-radius: 4px; 
+  text-align: center;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.12);
+}
+
+.heroCard h1 {
+  color: #c5a880; 
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  margin: 0 0 1rem 0;
+  font-weight: 400;
+  letter-spacing: 6px;
+}
+
+.subtitle {
+  color: #6e6a64;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 3rem 0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: #c5a880;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  padding: 1rem 2.5rem;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #bfa37a;
+  transform: translateY(-1px);
+}
+
+.summarySection {
+  background-color: #f7f5f0; 
+  padding: 120px 2rem;
+  color: #333230;
+  display: flex;
+  justify-content: center;
+}
+
+.summaryContent {
+  max-width: 750px;
+  text-align: center;
+}
+
+.summaryContent h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #333230;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.summaryContent p {
+  font-family: 'Montserrat', sans-serif;
+  color: #6e6a64;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+
+.linksGrid {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.secondaryLink {
+  color: #c5a880;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  color: #333230;
+}
+
+@media (max-width: 768px) {
+  .heroCard {
+    padding: 3rem 1.5rem;
+  }
+
+  .heroCard h1 {
+    font-size: 2.8rem;
+    letter-spacing: 4px;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .summarySection {
+    padding: 80px 1.5rem;
+  }
+
+  .summaryContent h2 {
+    font-size: 1.9rem;
+  }
+
+  .linksGrid {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+}

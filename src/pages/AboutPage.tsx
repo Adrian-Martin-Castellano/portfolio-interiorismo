@@ -1,0 +1,10 @@
+function AboutPage() {
+  return (
+    <div style={{ padding: '120px 2rem', color: '#fff', minHeight: '100vh', backgroundColor: '#121212' }}>
+      <h1>Sobre Mí</h1>
+      <p>Página en construcción. Aquí irá mi trayectoria académica y mis habilidades.</p>
+    </div>
+  );
+}
+
+export default AboutPage;
