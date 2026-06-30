@@ -4,7 +4,11 @@
   width: 100vw;
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #fcfbfa;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15)), url('../assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .heroSection {
@@ -14,19 +18,16 @@
   justify-content: center;
   align-items: center;
   padding: 0 2rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
+  background: transparent;
 }
 
 .heroCard {
-  background-color: rgba(255, 255, 255, 0.82);
+  background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   padding: 4rem 5rem;
-  border-radius: 4px; 
+  border-radius: 4px;
   text-align: center;
   max-width: 750px;
   width: 100%;
@@ -34,7 +35,7 @@
 }
 
 .heroCard h1 {
-  color: #c5a880; 
+  color: #c5a880;
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin: 0 0 1rem 0;
@@ -72,16 +73,95 @@
   transform: translateY(-1px);
 }
 
-.summarySection {
-  background-color: #f7f5f0; 
-  padding: 120px 2rem;
+.videoSection {
+  max-width: 900px; 
+  width: 90%;
+  margin: 80px auto; 
+  
+  background-color: rgba(252, 251, 250, 0.85); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  padding: 4rem 2rem;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.videoHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.videoHeader span {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: #c5a880;
+  margin-bottom: 0.6rem;
+}
+
+.videoHeader h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
   color: #333230;
+  font-weight: 400;
+  margin: 0;
+}
+
+.videoContainer {
+  max-width: 650px; 
+  width: 100%;
+  position: relative;
+  background-color: #fcfbfa; 
+  padding: 1rem; 
+  border-radius: 2px;
+  border: 1px solid rgba(197, 168, 128, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9; 
+  background-color: #f7f5f0; 
+}
+
+.mainVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.summarySection {
+  max-width: 900px;
+  width: 90%;
+  margin: 80px auto 120px auto;
+  background-color: rgba(252, 251, 250, 0.85); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 5rem 2rem;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.1);
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .summaryContent {
-  max-width: 750px;
+  max-width: 700px;
   text-align: center;
 }
 
@@ -132,13 +212,10 @@
     letter-spacing: 4px;
   }
 
-  .subtitle {
-    font-size: 0.85rem;
-    margin-bottom: 2rem;
-  }
-
-  .summarySection {
-    padding: 80px 1.5rem;
+  .videoSection, .summarySection {
+    width: 95%;
+    margin: 40px auto;
+    padding: 2.5rem 1rem;
   }
 
   .summaryContent h2 {
