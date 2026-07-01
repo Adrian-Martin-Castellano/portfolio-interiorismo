@@ -77,16 +77,13 @@
   max-width: 900px; 
   width: 90%;
   margin: 80px auto; 
-  
   background-color: rgba(252, 251, 250, 0.85); 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  
   padding: 4rem 2rem;
   border-radius: 4px;
   border: 1px solid rgba(197, 168, 128, 0.15);
   box-shadow: 0 30px 60px rgba(142, 134, 122, 0.1);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -202,33 +199,6 @@
   color: #333230;
 }
 
-@media (max-width: 768px) {
-  .heroCard {
-    padding: 3rem 1.5rem;
-  }
-
-  .heroCard h1 {
-    font-size: 2.8rem;
-    letter-spacing: 4px;
-  }
-
-  .videoSection, .summarySection {
-    width: 95%;
-    margin: 40px auto;
-    padding: 2.5rem 1rem;
-  }
-
-  .summaryContent h2 {
-    font-size: 1.9rem;
-  }
-
-  .linksGrid {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-}
-
 .stylesSectionWrapper {
   width: 100%;
   max-width: 1200px;
@@ -240,34 +210,68 @@
 
 .stylesIntroHeader {
   text-align: center;
-  margin-bottom: 5rem;
-  background-color: rgba(252, 251, 250, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 2rem;
-  border-radius: 4px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid rgba(197, 168, 128, 0.15);
+  position: relative;
+  max-width: 650px; 
+  width: 85%;
+  margin: 0 auto 7rem auto; 
+  background-color: rgba(252, 251, 250, 0.92); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3.5rem 2.5rem;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border: 1px solid rgba(197, 168, 128, 0.18);
+  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.05);
+}
+
+.stylesIntroHeader::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border-left: 1px solid rgba(197, 168, 128, 0.25);
+  border-right: 1px solid rgba(197, 168, 128, 0.25);
+  pointer-events: none;
 }
 
 .stylesIntroHeader span {
+  position: relative;
+  z-index: 2;
   display: block;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   font-size: 0.7rem;
-  letter-spacing: 3px;
+  letter-spacing: 5px; 
   color: #c5a880;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .stylesIntroHeader h2 {
+  position: relative;
+  z-index: 2;
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #333230;
   font-weight: 400;
-  margin: 0;
+  margin: 0 auto;
+  display: inline-block;
+  padding-bottom: 0.8rem;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.stylesIntroHeader h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 1px;
+  background-color: #c5a880;
+  opacity: 0.4;
 }
 
 .styleFloatingCard {
@@ -364,45 +368,12 @@
   opacity: 1;
 }
 
-.arrowLine {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 200;
-  font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-  transition: transform 0.3s ease;
-}
-
 .prevBtn {
   left: 20px;
 }
 
 .nextBtn {
   right: 20px;
-}
-
-.prevBtn:hover .arrowLine { transform: translateX(-5px); }
-.nextBtn:hover .arrowLine { transform: translateX(5px); }
-
-.carouselCounter {
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
-  background-color: rgba(252, 251, 250, 0.85);
-  backdrop-filter: blur(4px);
-  padding: 5px 12px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 2px;
-  color: #8e8a82;
-  text-transform: uppercase;
-  pointer-events: none;
-  border-radius: 1px;
-}
-
-.carouselCounter span {
-  color: #c5a880;
-  font-weight: 500;
 }
 
 .styleInfo {
@@ -450,6 +421,40 @@
 
 @media (max-width: 1024px) {
   .alignLeft, .alignRight { margin-left: 1rem; margin-right: 1rem; }
+}
+
+@media (max-width: 768px) {
+  .heroCard {
+    padding: 3rem 1.5rem;
+  }
+  .heroCard h1 {
+    font-size: 2.8rem;
+    letter-spacing: 4px;
+  }
+  .videoSection, .summarySection {
+    width: 95%;
+    margin: 40px auto;
+    padding: 2.5rem 1rem;
+  }
+  .summaryContent h2 {
+    font-size: 1.9rem;
+  }
+  .linksGrid {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .stylesIntroHeader {
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 4rem;
+    width: 90%;
+  }
+  .stylesIntroHeader h2 {
+    font-size: 1.8rem;
+  }
+  .stylesIntroHeader::before {
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+  }
 }
 
 @media (max-width: 900px) {
