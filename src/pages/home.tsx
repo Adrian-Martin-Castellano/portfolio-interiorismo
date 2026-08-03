@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 
 interface StyleCardProps {
+  index: number;
   images: string[];
   category: string;
   title: string;
@@ -11,7 +12,7 @@ interface StyleCardProps {
   alignment: 'left' | 'right';
 }
 
-function StyleCard({ images, category, title, quote, description, alignment }: StyleCardProps) {
+function StyleCard({ index, images, category, title, quote, description, alignment }: StyleCardProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const nextSlide = () => {
@@ -22,38 +23,60 @@ function StyleCard({ images, category, title, quote, description, alignment }: S
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // Determinamos la clase de alineación (izquierda o derecha)
   const alignmentClass = alignment === 'right' ? styles.alignRight : styles.alignLeft;
+  // Formatear número a "01", "02", etc.
+  const formattedNumber = String(index + 1).padStart(2, '0');
 
   return (
     <div className={`${styles.styleFloatingCard} ${alignmentClass}`}>
       <div className={styles.styleCardContent}>
-        
-        {/* CARRUSEL CONTROLES */}
         <div className={styles.carouselContainer}>
           <div 
             className={styles.carouselTrack} 
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {images.map((img, index) => (
+            {images.map((img, imgIdx) => (
               <img 
-                key={index} 
+                key={imgIdx} 
                 src={img} 
-                alt={`${title} ${index + 1}`} 
+                alt={`${title} ${imgIdx + 1}`} 
                 className={styles.carouselImage} 
               />
             ))}
           </div>
+
           {images.length > 1 && (
             <>
-              <button className={`${styles.navButton} ${styles.prevBtn}`} onClick={prevSlide}>‹</button>
-              <button className={`${styles.navButton} ${styles.nextBtn}`} onClick={nextSlide}>›</button>
+              <button 
+                className={`${styles.navButton} ${styles.prevBtn}`} 
+                onClick={prevSlide}
+                aria-label="Anterior"
+              >
+                ‹
+              </button>
+              <button 
+                className={`${styles.navButton} ${styles.nextBtn}`} 
+                onClick={nextSlide}
+                aria-label="Siguiente"
+              >
+                ›
+              </button>
+              <div className={styles.carouselDots}>
+                {images.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    className={`${styles.dot} ${dotIdx === currentIndex ? styles.activeDot : ''}`}
+                    onClick={() => setCurrentIndex(dotIdx)}
+                    aria-label={`Ir a imagen ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
             </>
           )}
         </div>
 
-        {/* TEXTOS */}
         <div className={styles.styleInfo}>
+          <span className={styles.watermarkNumber}>{formattedNumber}</span>
           <span className={styles.projectCategory}>{category}</span>
           <h3>{title}</h3>
           <p className={styles.editorialQuote}>{quote}</p>
@@ -113,7 +136,9 @@ function Home() {
           <span>Nuestra Identidad</span>
           <h2>Líneas de Diseño de Autor</h2>
         </div>
-          <StyleCard 
+
+        <StyleCard 
+          index={0}
           alignment="left"
           category="Colección Natura"
           title="Esencia Balinesa"
@@ -122,8 +147,8 @@ function Home() {
           images={['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png']}
         />
 
-        {/* CARRUSEL 2: MINIMALISTA */}
         <StyleCard 
+          index={1}
           alignment="right"
           category="Colección Pureza"
           title="Minimalismo Cálido"
@@ -132,8 +157,8 @@ function Home() {
           images={['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png']}
         />
 
-        {/* CARRUSEL 3: INDUSTRIAL */}
         <StyleCard 
+          index={2}
           alignment="left"
           category="Colección Urbana"
           title="Industrial Orgánico"
@@ -142,8 +167,8 @@ function Home() {
           images={['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png']}
         />
 
-        {/* CARRUSEL 4: CONTEMPORÁNEO */}
         <StyleCard 
+          index={3}
           alignment="right"
           category="Colección Vanguardia"
           title="Línea Contemporánea"
@@ -152,7 +177,6 @@ function Home() {
           images={['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']}
         />
 
-        {/* CARD FINAL EXTRA */}
         <div className={`${styles.styleFloatingCard} ${styles.othersCard}`}>
           <div className={styles.othersContent}>
             <h3>Explorando horizontes</h3>
