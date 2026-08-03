@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import styles from './Navbar.module.css';
 
 import logoImg from '../assets/logo.png'; 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -24,27 +27,35 @@ function Navbar() {
         </Link>
       </div>
       
+      {/* Enlaces del menú */}
       <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
         <NavLink to="/" style={linkStyle} onClick={() => setIsOpen(false)}>
-          Inicio
+          {language === 'es' ? 'Inicio' : 'Home'}
         </NavLink>
         
         <NavLink to="/sobre-mi" style={linkStyle} onClick={() => setIsOpen(false)}>
-          Sobre Mí
+          {language === 'es' ? 'Sobre Mí' : 'About Me'}
         </NavLink>
         
         <NavLink to="/proyectos" style={linkStyle} onClick={() => setIsOpen(false)}>
-          Proyectos
+          {language === 'es' ? 'Proyectos' : 'Projects'}
         </NavLink>
         
         <NavLink to="/contacto" style={linkStyle} onClick={() => setIsOpen(false)}>
-          Contacto
+          {language === 'es' ? 'Contacto' : 'Contact'}
         </NavLink>
       </div>
 
-      <button className={styles.menuIcon} onClick={toggleMenu} aria-label="Toggle menu">
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </button>
+      <div className={styles.navActions}>
+        <button onClick={toggleLanguage} className={styles.langToggleBtn} aria-label="Cambiar idioma">
+          <span className={styles.langText}>{language.toUpperCase()}</span>
+          <span className={styles.langDot}></span>
+        </button>
+
+        <button className={styles.menuIcon} onClick={toggleMenu} aria-label="Toggle menu">
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
     </nav>
   );
 }

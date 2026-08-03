@@ -16,6 +16,29 @@
   border-bottom: 1px solid rgba(197, 168, 128, 0.15);
 }
 
+.logoContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logoContainer a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logoImage {
+  height: 45px; 
+  width: auto; 
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logoImage:hover {
+  transform: scale(1.02); 
+}
+
 .logo a {
   color: #333230;
   text-decoration: none;
@@ -51,6 +74,31 @@
   color: #c5a880 !important; 
 }
 
+@media (min-width: 769px) {
+  .navLinks a {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 0; 
+  }
+  
+  .navLinks a:global(.active)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background-color: #c5a880;
+  }
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1001;
+}
+
 .menuIcon {
   display: none;
   background: none;
@@ -60,13 +108,72 @@
   cursor: pointer;
 }
 
+.langToggleBtn {
+  background: rgba(252, 251, 250, 0.6);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 5px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  margin-left: 0;
+}
+
+.langToggleBtn:hover {
+  border-color: #c5a880;
+  background: rgba(197, 168, 128, 0.08);
+  transform: translateY(-1px);
+}
+
+.langText {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #333230;
+  text-transform: uppercase;
+}
+
+.langDot {
+  width: 4px;
+  height: 4px;
+  background-color: #c5a880;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.langToggleBtn:hover .langDot {
+  transform: scale(1.4);
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 0 2rem;
   }
 
+  .logoImage {
+    height: 35px; 
+  }
+
   .menuIcon {
     display: block;
+  }
+
+  .navActions {
+    gap: 0.75rem;
+  }
+
+  .langToggleBtn {
+    padding: 4px 10px;
+    margin-top: 0;
+  }
+
+  .langText {
+    font-size: 0.65rem;
   }
 
   .navLinks {
@@ -87,27 +194,7 @@
   .navLinks.active {
     max-height: 320px; 
   }
-}
 
-@media (min-width: 769px) {
-  .navLinks a {
-    position: relative;
-    display: inline-block;
-    padding: 0.5rem 0; 
-  }
-  
-  .navLinks a:global(.active)::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 15%;
-    width: 70%;
-    height: 1px;
-    background-color: #c5a880;
-  }
-}
-
-@media (max-width: 768px) {
   .navLinks a {
     display: block;
     width: 100%;
@@ -131,35 +218,5 @@
     width: 3px;
     height: 40%;
     background-color: #c5a880;
-  }
-}
-
-
-.logoContainer {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.logoContainer a {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.logoImage {
-  height: 45px; 
-  width: auto; 
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.logoImage:hover {
-  transform: scale(1.02); 
-}
-
-@media (max-width: 768px) {
-  .logoImage {
-    height: 35px; 
   }
 }
