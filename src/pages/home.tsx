@@ -2,17 +2,70 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 
+interface StyleCardProps {
+  images: string[];
+  category: string;
+  title: string;
+  quote: string;
+  description: string;
+  alignment: 'left' | 'right';
+}
+
+function StyleCard({ images, category, title, quote, description, alignment }: StyleCardProps) {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  // Determinamos la clase de alineación (izquierda o derecha)
+  const alignmentClass = alignment === 'right' ? styles.alignRight : styles.alignLeft;
+
+  return (
+    <div className={`${styles.styleFloatingCard} ${alignmentClass}`}>
+      <div className={styles.styleCardContent}>
+        
+        {/* CARRUSEL CONTROLES */}
+        <div className={styles.carouselContainer}>
+          <div 
+            className={styles.carouselTrack} 
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((img, index) => (
+              <img 
+                key={index} 
+                src={img} 
+                alt={`${title} ${index + 1}`} 
+                className={styles.carouselImage} 
+              />
+            ))}
+          </div>
+          {images.length > 1 && (
+            <>
+              <button className={`${styles.navButton} ${styles.prevBtn}`} onClick={prevSlide}>‹</button>
+              <button className={`${styles.navButton} ${styles.nextBtn}`} onClick={nextSlide}>›</button>
+            </>
+          )}
+        </div>
+
+        {/* TEXTOS */}
+        <div className={styles.styleInfo}>
+          <span className={styles.projectCategory}>{category}</span>
+          <h3>{title}</h3>
+          <p className={styles.editorialQuote}>{quote}</p>
+          <p className={styles.mainDescription}>{description}</p>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
 function Home() {
-  const [currentBalines, setCurrentBalines] = useState(0);
-  const totalBalinesImages = 3; 
-
-  const nextBalines = () => {
-    setCurrentBalines((prev) => (prev + 1) % totalBalinesImages);
-  };
-
-  const prevBalines = () => {
-    setCurrentBalines((prev) => (prev - 1 + totalBalinesImages) % totalBalinesImages);
-  };
   return (
     <div className={styles.homeContainer}>
       <section className={styles.heroSection}>
@@ -60,104 +113,50 @@ function Home() {
           <span>Nuestra Identidad</span>
           <h2>Líneas de Diseño de Autor</h2>
         </div>
-          <div className={`${styles.styleFloatingCard} ${styles.alignLeft} ${styles.editorialLayout}`}>
-            <div className={styles.styleCardContent}>
-              
-              <div className={styles.carouselContainer}>
-                <div 
-                  className={styles.carouselTrack} 
-                  style={{ transform: `translateX(-${currentBalines * 100}%)` }}
-                >
-                  <img src="/assets/balines-1.png" alt="Interior Balinés BLIC 1" className={styles.carouselImage} />
-                  <img src="/assets/balines-2.png" alt="Interior Balinés BLIC 2" className={styles.carouselImage} />
-                  <img src="/assets/balines-3.png" alt="Interior Balinés BLIC 3" className={styles.carouselImage} />
-                </div>
+          <StyleCard 
+          alignment="left"
+          category="Colección Natura"
+          title="Esencia Balinesa"
+          quote="“Una oda a la desconexión tropical, donde la arquitectura se rinde ante la textura pura de la piedra y la teca.”"
+          description="Uso profundo de maderas exóticas certificadas, fibras naturales trenzadas a mano (ratán, mimbre) y presencia de piedra volcánica escultórica. Una fusión orgánica constante entre el espacio interior y la naturaleza exótica."
+          images={['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png']}
+        />
 
-                <button className={`${styles.navButton} ${styles.prevBtn}`} onClick={prevBalines}>‹</button>
-            <button className={`${styles.navButton} ${styles.nextBtn}`} onClick={nextBalines}>›</button>
-              </div>
+        {/* CARRUSEL 2: MINIMALISTA */}
+        <StyleCard 
+          alignment="right"
+          category="Colección Pureza"
+          title="Minimalismo Cálido"
+          quote="“Reducir a lo esencial para hallar la calma absoluta, esculpiendo el espacio a través de la luz y los materiales crudos.”"
+          description="Ausencia de ornamentos innecesarios en favor de geometrías puras. El diseño se enriquece con texturas rugosas de morteros de cal, paletas tonales en gamas suaves de beige, arena y hueso, junto a una iluminación indirecta que aporta serenidad."
+          images={['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png']}
+        />
 
-              <div className={styles.styleInfo}>
-                <span className={styles.projectCategory}>Colección Natura</span>
-                <h3>Esencia Balinesa</h3>
-                
-                <p className={styles.editorialQuote}>
-                  “Una oda a la desconexión tropical, donde la arquitectura se rinde ante la textura pura de la piedra y la teca.”
-                </p>
+        {/* CARRUSEL 3: INDUSTRIAL */}
+        <StyleCard 
+          alignment="left"
+          category="Colección Urbana"
+          title="Industrial Orgánico"
+          quote="“El carácter de la estructura vista y el metal, suavizado por la calidez texturizada de la madera recuperada.”"
+          description="Elementos estructurales honestos como el hormigón o el hierro forjado, contrastados estratégicamente con grandes plantas de hoja verde, textiles naturales pesados y maderas nobles que transforman la rudeza en sofisticación."
+          images={['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png']}
+        />
 
-                <p className={styles.mainDescription}>
-                  Uso profundo de maderas exóticas certificadas, fibras naturales trenzadas a mano (ratán, mimbre) y presencia 
-                  de piedra volcánica escultórica. Una fusión orgánica constante entre el espacio interior y la naturaleza exótica.
-                </p>
-              </div>
+        {/* CARRUSEL 4: CONTEMPORÁNEO */}
+        <StyleCard 
+          alignment="right"
+          category="Colección Vanguardia"
+          title="Línea Contemporánea"
+          quote="“El reflejo del diseño actual. Espacios sofisticados donde conviven piezas icónicas de arte con molduras clásicas.”"
+          description="Espacios donde conviven acabados modernos, mármoles de vetas muy marcadas y una paleta cromática audaz pero sumamente equilibrada. Una narrativa ecléctica pensada para perdurar en el tiempo."
+          images={['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']}
+        />
 
-            </div>
-          </div>
-
-        <div className={`${styles.styleFloatingCard} ${styles.alignRight}`}>
-          <div className={styles.styleCardContent}>
-            <div className={styles.carouselContainer}>
-              <div className={styles.carouselTrack}>
-                <img src="/assets/minimal-1.jpg" alt="Estilo Minimalista 1" className={styles.carouselImage} />
-                <img src="/assets/minimal-2.jpg" alt="Estilo Minimalista 2" className={styles.carouselImage} />
-              </div>
-              <div className={styles.carouselHint}>Desliza →</div>
-            </div>
-            <div className={styles.styleInfo}>
-              <h3>Minimalismo Cálido</h3>
-              <p>
-                Reducción a lo esencial sin perder la hospitalidad. Líneas puras combinadas con texturas rugosas, 
-                paletas tonales en gamas de beige y arena, y una iluminación indirecta que esculpe serenidad absoluta.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.styleFloatingCard} ${styles.alignLeft}`}>
-          <div className={styles.styleCardContent}>
-            <div className={styles.carouselContainer}>
-              <div className={styles.carouselTrack}>
-                <img src="/assets/industrial-1.jpg" alt="Estilo Industrial 1" className={styles.carouselImage} />
-                <img src="/assets/industrial-2.jpg" alt="Estilo Industrial 2" className={styles.carouselImage} />
-              </div>
-              <div className={styles.carouselHint}>Desliza →</div>
-            </div>
-            <div className={styles.styleInfo}>
-              <h3>Industrial Orgánico</h3>
-              <p>
-                El carácter urbano suavizado por la naturaleza. Elementos estructurales vistos como el hormigón o el hierro forjado, 
-                contrastados con grandes plantas de hoja verde, maderas recuperadas y textiles que aportan calidez al espacio texturizado.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.styleFloatingCard} ${styles.alignRight}`}>
-          <div className={styles.styleCardContent}>
-            <div className={styles.carouselContainer}>
-              <div className={styles.carouselTrack}>
-                <img src="/assets/contemporaneo-1.jpg" alt="Estilo Contemporáneo 1" className={styles.carouselImage} />
-                <img src="/assets/contemporaneo-2.jpg" alt="Estilo Contemporáneo 2" className={styles.carouselImage} />
-              </div>
-              <div className={styles.carouselHint}>Desliza →</div>
-            </div>
-            <div className={styles.styleInfo}>
-              <h3>Línea Contemporánea</h3>
-              <p>
-                El reflejo del diseño actual. Espacios sofisticados donde conviven piezas de arte icónicas, molduras clásicas 
-                con acabados modernos, mármoles con vetas marcadas y una paleta cromática audaz pero sumamente equilibrada.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        {/* CARD FINAL EXTRA */}
         <div className={`${styles.styleFloatingCard} ${styles.othersCard}`}>
           <div className={styles.othersContent}>
             <h3>Explorando horizontes</h3>
-            <p>
-              Cada espacio posee sus propias reglas. Aunque estas cuatro líneas definen nuestra esencia, en BLIC desarrollamos 
-              proyectos eclécticos, clásicos renovados o de corte rústico moderno. Nos adaptamos a la narrativa arquitectónica de tu espacio.
-            </p>
+            <p>Cada espacio posee sus propias reglas. Aunque estas cuatro líneas definen nuestra esencia, en BLIC desarrollamos proyectos eclécticos, clásicos renovados o de corte rústico moderno.</p>
             <Link to="/proyectos" className={styles.secondaryLink}>Ver galería completa de proyectos →</Link>
           </div>
         </div>
