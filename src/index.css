@@ -1,12 +1,35 @@
+/* Variables de color globales */
+:root {
+  --bg-color: #fdfcfa;
+  --bg-navbar: rgba(253, 252, 250, 0.85);
+  --bg-card: #fcfbfa;
+  --text-color: #333230;
+  --text-color-secondary: #8e867a;
+  --border-color: rgba(197, 168, 128, 0.15);
+  --accent-color: #c5a880;
+}
+
+[data-theme='dark'] {
+  --bg-color: #141312;
+  --bg-navbar: rgba(20, 19, 18, 0.85);
+  --bg-card: #1c1a18;
+  --text-color: #f3f0ec;
+  --text-color-secondary: #a39c93;
+  --border-color: rgba(197, 168, 128, 0.25);
+  --accent-color: #d4b890;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: hidden;
-  background-color: #fcfbfa; 
-}
-
-* {
-  box-sizing: border-box;
+  background-color: var(--bg-color) !important; 
+  color: var(--text-color) !important;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }

@@ -9,11 +9,11 @@
   align-items: center;
   padding: 0 4rem;
   box-sizing: border-box;
-  background-color: rgba(253, 252, 250, 0.85); 
+  background-color: var(--bg-navbar);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 9999; 
-  border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .logoContainer {
@@ -218,5 +218,48 @@
     width: 3px;
     height: 40%;
     background-color: #c5a880;
+  }
+}
+
+/* Botón Selector de Tema (Sol/Luna) */
+.themeToggleBtn {
+  background: rgba(252, 251, 250, 0.6);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-color, #333230);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.themeToggleBtn:hover {
+  border-color: #c5a880;
+  background: rgba(197, 168, 128, 0.08);
+  transform: translateY(-1px);
+  color: #c5a880;
+}
+
+.themeIcon {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.themeToggleBtn:hover .themeIcon {
+  transform: rotate(15deg);
+}
+
+@media (max-width: 768px) {
+  .themeToggleBtn {
+    width: 28px;
+    height: 28px;
+  }
+  .themeIcon {
+    font-size: 0.75rem;
   }
 }

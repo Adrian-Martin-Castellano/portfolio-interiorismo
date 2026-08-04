@@ -4,7 +4,11 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.15)), url('../assets/hero-bg.jpg');
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2), 
+      rgba(0, 0, 0, 0.3)
+    ), 
+    url('../assets/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,23 +27,22 @@
 }
 
 .heroCard {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  outline: 1px solid rgba(197, 168, 128, 0.15);
+  border: 1px solid var(--border-color);
   padding: 4rem 5rem;
   border-radius: 4px;
   text-align: center;
   max-width: 750px;
   width: 100%;
-  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   animation: fadeIn 1.2s ease-out;
 }
 
 .heroCard h1 {
-  color: #c5a880;
+  color: var(--accent-color);
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin: 0 0 1rem 0;
@@ -48,7 +51,7 @@
 }
 
 .subtitle {
-  color: #6e6a64;
+  color: var(--text-color-secondary);
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   margin: 0 0 3rem 0;
@@ -59,7 +62,7 @@
 
 .ctaButton {
   display: inline-block;
-  background-color: #c5a880;
+  background-color: var(--accent-color);
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -73,7 +76,7 @@
 }
 
 .ctaButton:hover {
-  background-color: #bfa37a;
+  opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(197, 168, 128, 0.25);
 }
@@ -82,14 +85,13 @@
   max-width: 900px;
   width: 90%;
   margin: 80px auto;
-  background-color: rgba(252, 251, 250, 0.85);
+  background-color: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 4rem 2rem;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  outline: 1px solid rgba(197, 168, 128, 0.12);
-  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.08);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,14 +110,14 @@
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 3px;
-  color: #c5a880;
+  color: var(--accent-color);
   margin-bottom: 0.6rem;
 }
 
 .videoHeader h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
-  color: #333230;
+  color: var(--text-color);
   font-weight: 400;
   margin: 0;
 }
@@ -124,11 +126,11 @@
   max-width: 650px;
   width: 100%;
   position: relative;
-  background-color: #fcfbfa;
+  background-color: var(--bg-color);
   padding: 1rem;
   border-radius: 2px;
-  border: 1px solid rgba(197, 168, 128, 0.1);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 
@@ -138,7 +140,7 @@
   border-radius: 2px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  background-color: #f7f5f0;
+  background-color: var(--bg-color);
 }
 
 .mainVideo {
@@ -152,14 +154,13 @@
   max-width: 900px;
   width: 90%;
   margin: 80px auto 120px auto;
-  background-color: rgba(252, 251, 250, 0.85);
+  background-color: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 5rem 2rem;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  outline: 1px solid rgba(197, 168, 128, 0.12);
-  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.08);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -173,14 +174,14 @@
 .summaryContent h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #333230;
+  color: var(--text-color);
   margin-bottom: 2rem;
   font-weight: 400;
 }
 
 .summaryContent p {
   font-family: 'Montserrat', sans-serif;
-  color: #6e6a64;
+  color: var(--text-color-secondary);
   font-size: 1.05rem;
   line-height: 1.9;
   font-weight: 300;
@@ -194,7 +195,7 @@
 }
 
 .secondaryLink {
-  color: #c5a880;
+  color: var(--accent-color);
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-size: 0.9rem;
@@ -204,7 +205,7 @@
 }
 
 .secondaryLink:hover {
-  color: #333230;
+  color: var(--text-color);
 }
 
 .stylesSectionWrapper {
@@ -223,15 +224,14 @@
   max-width: 650px;
   width: 100%;
   margin: 0 auto 5rem auto;
-  background-color: rgba(252, 251, 250, 0.92);
+  background-color: var(--bg-card);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 3.5rem 2.5rem;
   border-radius: 2px;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  outline: 1px solid rgba(197, 168, 128, 0.15);
-  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.05);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 }
 
 .stylesIntroHeader::before {
@@ -241,8 +241,8 @@
   left: 12px;
   right: 12px;
   bottom: 12px;
-  border-left: 1px solid rgba(197, 168, 128, 0.25);
-  border-right: 1px solid rgba(197, 168, 128, 0.25);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   pointer-events: none;
 }
 
@@ -254,7 +254,7 @@
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 5px;
-  color: #c5a880;
+  color: var(--accent-color);
   margin-bottom: 1rem;
   font-weight: 400;
 }
@@ -264,7 +264,7 @@
   z-index: 2;
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #333230;
+  color: var(--text-color);
   font-weight: 400;
   margin: 0 auto;
   display: inline-block;
@@ -280,23 +280,20 @@
   left: 30%;
   width: 40%;
   height: 1px;
-  background-color: #c5a880;
+  background-color: var(--accent-color);
   opacity: 0.4;
 }
 
 .styleFloatingCard {
   width: 100%;
   max-width: 1100px;
-  background-color: rgba(252, 251, 250, 0.92);
+  background-color: var(--bg-card);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   padding: 3.5rem;
   border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  outline: 1px solid rgba(197, 168, 128, 0.12);
-  box-shadow: 
-    0 10px 30px -10px rgba(142, 134, 122, 0.05),
-    0 30px 60px -15px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
   margin-bottom: 5rem;
   box-sizing: border-box;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
@@ -304,9 +301,7 @@
 
 .styleFloatingCard:hover {
   transform: translateY(-6px);
-  box-shadow: 
-    0 20px 40px -10px rgba(142, 134, 122, 0.08),
-    0 40px 80px -15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.18);
 }
 
 .alignLeft {
@@ -337,8 +332,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 2px;
-  background-color: #f7f5f0;
-  border: 1px solid rgba(197, 168, 128, 0.12);
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
 }
 
 .carouselTrack {
@@ -364,11 +359,11 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(252, 251, 250, 0.85);
+  background-color: var(--bg-card);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(197, 168, 128, 0.2);
-  color: #333230;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
   font-family: serif;
   font-size: 1.6rem;
   width: 42px;
@@ -385,9 +380,9 @@
 }
 
 .navButton:hover {
-  background-color: #c5a880;
+  background-color: var(--accent-color);
   color: #ffffff;
-  border-color: #c5a880;
+  border-color: var(--accent-color);
   box-shadow: 0 8px 20px rgba(197, 168, 128, 0.25);
   transform: translateY(-50%) scale(1.08);
 }
@@ -427,7 +422,7 @@
 
 .activeDot {
   width: 32px;
-  background-color: #c5a880;
+  background-color: var(--accent-color);
 }
 
 .styleInfo {
@@ -443,7 +438,7 @@
   right: 0;
   font-family: 'Playfair Display', serif;
   font-size: 7rem;
-  color: rgba(197, 168, 128, 0.08);
+  color: var(--border-color);
   font-weight: 700;
   pointer-events: none;
   line-height: 1;
@@ -456,7 +451,7 @@
   text-transform: uppercase;
   font-size: 0.65rem;
   letter-spacing: 3px;
-  color: #c5a880;
+  color: var(--accent-color);
   margin-bottom: 0.8rem;
   position: relative;
   z-index: 2;
@@ -465,7 +460,7 @@
 .styleInfo h3 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
-  color: #333230;
+  color: var(--text-color);
   margin: 0 0 1.25rem 0;
   font-weight: 400;
   line-height: 1.25;
@@ -476,19 +471,19 @@
 .editorialQuote {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  color: #6e6a64;
+  color: var(--text-color-secondary);
   font-size: 1.05rem;
   line-height: 1.8;
   margin: 0 0 1.75rem 0;
   position: relative;
   padding-left: 1.25rem;
-  border-left: 2px solid rgba(197, 168, 128, 0.4);
+  border-left: 2px solid var(--accent-color);
   z-index: 2;
 }
 
 .mainDescription {
   font-family: 'Montserrat', sans-serif;
-  color: #8e8a82;
+  color: var(--text-color-secondary);
   font-size: 0.9rem;
   line-height: 1.8;
   font-weight: 300;
@@ -507,14 +502,14 @@
 .othersContent h3 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #333230;
+  color: var(--text-color);
   font-weight: 400;
   margin: 0 0 1rem 0;
 }
 
 .othersContent p {
   font-family: 'Montserrat', sans-serif;
-  color: #6e6a64;
+  color: var(--text-color-secondary);
   font-size: 0.95rem;
   line-height: 1.8;
   font-weight: 300;
@@ -616,7 +611,7 @@
     position: static;
     display: inline-block;
     font-size: 1.8rem;
-    color: #c5a880;
+    color: var(--accent-color);
     opacity: 0.5;
     font-weight: 400;
     margin-left: 8px;
