@@ -208,19 +208,43 @@ function Home() {
         </div>
       </section>
 
-      {/* 2. VIDEO PRESENTACIÓN */}
+      {/* 2. VIDEO PRESENTACIÓN Y NARRATIVA */}
       <section className={styles.videoSection}>
-        <div className={styles.videoHeader}>
-          <span>{t.videoLabel}</span>
-          <h2>{t.videoTitle}</h2>
-        </div>
-        <div className={styles.videoContainer}>
-          <div className={styles.videoWrapper}>
-            <video autoPlay muted loop playsInline className={styles.mainVideo}>
-              <source src="/video-presentacion.mp4" type="video/mp4" />
-              Tu navegador no soporta videos.
-            </video>
-            <div className={styles.videoOverlay}></div>
+        <div className={styles.videoGrid}>
+          
+          <div className={styles.videoContainer}>
+            <div className={styles.videoWrapper}>
+              <video autoPlay muted loop playsInline className={styles.mainVideo}>
+                <source src="/video-presentacion.mp4" type="video/mp4" />
+                Tu navegador no soporta videos.
+              </video>
+            </div>
+          </div>
+
+          <div className={styles.videoContent}>
+            <span className={styles.videoTag}>01 / Filosofía Blic</span>
+            <h2>Arquitectura del Alma</h2>
+            
+            <p className={styles.videoQuote}>
+              “Creamos espacios donde el tiempo parece detenerse y la materia cobra vida.”
+            </p>
+
+            <p className={styles.videoDescription}>
+              Nuestros proyectos no solo se diseñan: se habitan desde la emoción. 
+              A través de la luz natural, los materiales nobles y una cuidada selección 
+              textural, transformamos cualquier estructura en un refugio de diseño atemporal.
+            </p>
+
+            <div className={styles.videoFooterDetails}>
+              <div className={styles.detailItem}>
+                <span className={styles.detailLabel}>Estudio</span>
+                <span className={styles.detailValue}>Interiorismo Boutique</span>
+              </div>
+              <div className={styles.detailItem}>
+                <span className={styles.detailLabel}>Enfoque</span>
+                <span className={styles.detailValue}>Proyectos A Medida</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
