@@ -19,11 +19,15 @@ const translations = {
     heroSubtitle: 'Diseño que habla, ideas que inspiran',
     heroCta: 'Ver Proyectos',
     
-    // Video
-    videoLabel: 'Explora nuestro universo',
-    videoTitle: 'Esencia en movimiento',
+    videoTag: 'Filosofía Blic',
+    videoTitle: 'Arquitectura del Alma',
+    videoQuote: '“Creamos espacios donde el tiempo parece detenerse y la materia cobra vida.”',
+    videoDescription: 'Nuestros proyectos no solo se diseñan: se habitan desde la emoción. A través de la luz natural, los materiales nobles y una cuidada selección textural, transformamos cualquier estructura en un refugio de diseño atemporal.',
+    videoLabelStudio: 'Estudio',
+    videoValueStudio: 'Interiorismo Boutique',
+    videoLabelApproach: 'Enfoque',
+    videoValueApproach: 'Proyectos A Medida',
 
-    // Estilos
     stylesLabel: 'Nuestra Identidad',
     stylesTitle: 'Líneas de Diseño de Autor',
     cards: [
@@ -53,13 +57,32 @@ const translations = {
       }
     ],
 
-    // Más Estilos / Portfolio Callout
+    featuredLabel: 'Selección de Obra',
+    featuredTitle: 'Proyectos Destacados',
+    featuredSubtitle: 'Una muestra de nuestras intervenciones más recientes y espacios de autor.',
+    featuredProjects: [
+      {
+        category: 'Residencial · Madrid',
+        title: 'Villa Casa Blanca',
+        subtitle: 'Rehabilitación Integral & Interiorismo'
+      },
+      {
+        category: 'Ático Boutique · Salamanca',
+        title: 'Penthouse Recoletos',
+        subtitle: 'Minimalismo Cálido & Mobiliario A Medida'
+      },
+      {
+        category: 'Comercial · Barcelona',
+        title: 'Atelier Concept Store',
+        subtitle: 'Arquitectura Comercial & Iluminación'
+      }
+    ],
+
     moreStylesLabel: 'Versatilidad sin límites',
     moreStylesTitle: 'Cada espacio exige una identidad única',
     moreStylesText: 'Estas cuatro líneas son solo el punto de partida. Nos adaptamos a la personalidad de cada cliente y a las exigencias arquitectónicas de cada espacio para crear proyectos totalmente a medida.',
     moreStylesCta: 'Explorar Todos los Proyectos →',
 
-    // Bar / Sticky CTA
     stickyCtaText: '¿Tienes un espacio que quieras transformar?',
     stickyCtaBtn: 'Hablemos'
   },
@@ -68,8 +91,14 @@ const translations = {
     heroSubtitle: 'Design that speaks, ideas that inspire',
     heroCta: 'View Projects',
     
-    videoLabel: 'Explore our universe',
-    videoTitle: 'Essence in motion',
+    videoTag: 'Blic Philosophy',
+    videoTitle: 'Architecture of the Soul',
+    videoQuote: '“We create spaces where time seems to stand still and materials come alive.”',
+    videoDescription: 'Our projects are not merely designed; they are lived through emotion. Through natural light, noble materials, and curated textures, we transform any structure into a sanctuary of timeless design.',
+    videoLabelStudio: 'Studio',
+    videoValueStudio: 'Boutique Interior Design',
+    videoLabelApproach: 'Approach',
+    videoValueApproach: 'Bespoke Projects',
 
     stylesLabel: 'Our Identity',
     stylesTitle: 'Signature Design Lines',
@@ -97,6 +126,27 @@ const translations = {
         title: 'Contemporary Line',
         quote: '“The reflection of current design. Sophisticated spaces where iconic art pieces meet classic moldings.”',
         description: 'Spaces where modern finishes, bold marble veining, and a balanced color palette coexist seamlessly.'
+      }
+    ],
+
+    featuredLabel: 'Curated Works',
+    featuredTitle: 'Featured Projects',
+    featuredSubtitle: 'A selection of our most recent interventions and signature spaces.',
+    featuredProjects: [
+      {
+        category: 'Residential · Madrid',
+        title: 'Villa Casa Blanca',
+        subtitle: 'Comprehensive Renovation & Interior Design'
+      },
+      {
+        category: 'Boutique Penthouse · Salamanca',
+        title: 'Penthouse Recoletos',
+        subtitle: 'Warm Minimalism & Bespoke Furniture'
+      },
+      {
+        category: 'Commercial · Barcelona',
+        title: 'Atelier Concept Store',
+        subtitle: 'Commercial Architecture & Lighting'
       }
     ],
 
@@ -195,6 +245,12 @@ function Home() {
     ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']
   ];
 
+  const featuredImageAssets = [
+    '/assets/balines-1.png',
+    '/assets/minimal-1.png',
+    '/assets/contemporaneo-1.png'
+  ];
+
   return (
     <div className={styles.homeContainer}>
       {/* 1. HERO SECTION */}
@@ -211,7 +267,6 @@ function Home() {
       {/* 2. VIDEO PRESENTACIÓN Y NARRATIVA */}
       <section className={styles.videoSection}>
         <div className={styles.videoGrid}>
-          
           <div className={styles.videoContainer}>
             <div className={styles.videoWrapper}>
               <video autoPlay muted loop playsInline className={styles.mainVideo}>
@@ -222,27 +277,20 @@ function Home() {
           </div>
 
           <div className={styles.videoContent}>
-            <span className={styles.videoTag}>01 / Filosofía Blic</span>
-            <h2>Arquitectura del Alma</h2>
+            <span className={styles.videoTag}>{t.videoTag}</span>
+            <h2>{t.videoTitle}</h2>
             
-            <p className={styles.videoQuote}>
-              “Creamos espacios donde el tiempo parece detenerse y la materia cobra vida.”
-            </p>
-
-            <p className={styles.videoDescription}>
-              Nuestros proyectos no solo se diseñan: se habitan desde la emoción. 
-              A través de la luz natural, los materiales nobles y una cuidada selección 
-              textural, transformamos cualquier estructura en un refugio de diseño atemporal.
-            </p>
+            <p className={styles.videoQuote}>{t.videoQuote}</p>
+            <p className={styles.videoDescription}>{t.videoDescription}</p>
 
             <div className={styles.videoFooterDetails}>
               <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Estudio</span>
-                <span className={styles.detailValue}>Interiorismo Boutique</span>
+                <span className={styles.detailLabel}>{t.videoLabelStudio}</span>
+                <span className={styles.detailValue}>{t.videoValueStudio}</span>
               </div>
               <div className={styles.detailItem}>
-                <span className={styles.detailLabel}>Enfoque</span>
-                <span className={styles.detailValue}>Proyectos A Medida</span>
+                <span className={styles.detailLabel}>{t.videoLabelApproach}</span>
+                <span className={styles.detailValue}>{t.videoValueApproach}</span>
               </div>
             </div>
           </div>
@@ -270,7 +318,37 @@ function Home() {
         ))}
       </section>
 
-      {/* 4. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
+      {/* 4. PROYECTOS DESTACADOS (PLANTILLA BILINGÜE) */}
+      <section className={styles.featuredProjectsSection}>
+        <div className={styles.featuredHeader}>
+          <span>{t.featuredLabel}</span>
+          <h2>{t.featuredTitle}</h2>
+          <p>{t.featuredSubtitle}</p>
+        </div>
+
+        <div className={styles.projectsGrid}>
+          {t.featuredProjects.map((project, idx) => (
+            <div key={idx} className={styles.projectCard}>
+              <div className={styles.projectImageWrapper}>
+                <img 
+                  src={featuredImageAssets[idx]} 
+                  alt={project.title} 
+                  className={styles.projectImage} 
+                />
+                <div className={styles.projectOverlay}>
+                  <div className={styles.projectOverlayContent}>
+                    <span className={styles.projectCategory}>{project.category}</span>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    <p className={styles.projectLocation}>{project.subtitle}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
       <section className={styles.moreStylesSection}>
         <div className={styles.moreStylesContent}>
           <span className={styles.moreStylesTag}>{t.moreStylesLabel}</span>
@@ -282,7 +360,7 @@ function Home() {
         </div>
       </section>
 
-      {/* 5. BARRA FLOTANTE DE CONTACTO ("HABLEMOS") */}
+      {/* 6. BARRA FLOTANTE DE CONTACTO ("HABLEMOS") */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
