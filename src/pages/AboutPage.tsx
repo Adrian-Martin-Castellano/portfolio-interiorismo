@@ -1,6 +1,8 @@
 import styles from './AboutPage.module.css';
 import { useLanguage } from '../context/LanguageContext'; 
 
+import profileImg from '../assets/perfil.jpeg'; 
+
 function AboutPage() {
   const { language } = useLanguage(); 
 
@@ -68,7 +70,7 @@ function AboutPage() {
       greeting: "Hello, I'm",
       name: '[Your Name]',
       title: '[Your Degree / Main Profession]',
-      bio: 'biogrphy desrciption',
+      bio: 'biography description',
       contactBtn: 'Contact Me',
       cvBtn: 'Download CV',
       
@@ -130,7 +132,7 @@ function AboutPage() {
         <div className={styles.heroCard}>
           <div className={styles.profileImageWrapper}>
             <img 
-              src="https://via.placeholder.com/300x300?text=Tu+Foto" 
+              src={profileImg} 
               alt={t.name} 
               className={styles.profileImage} 
             />
