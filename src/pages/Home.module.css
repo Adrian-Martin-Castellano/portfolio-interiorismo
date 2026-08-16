@@ -807,12 +807,27 @@
 }
 
 @media (max-width: 768px) {
-  .stylesSectionWrapper {
-    padding: 0 0.8rem;
+  .heroSection {
+    min-height: auto;
+    padding: 5rem 1rem 1rem 1rem; 
   }
 
   .heroCard {
-    padding: 2.5rem 1.25rem;
+    max-width: 380px; 
+    width: 88%;
+    gap: 1.2rem;
+  }
+
+  .heroImage {
+    width: 100%;
+  }
+
+  .videoSection {
+    margin: 2rem auto 3rem auto;
+  }
+
+  .stylesSectionWrapper {
+    padding: 0 0.8rem;
   }
 
   .heroCard h1 {
@@ -929,6 +944,15 @@
 }
 
 @media (max-width: 480px) {
+  .heroSection {
+    padding-top: 7rem; 
+    padding-bottom: 0.5rem;
+  }
+
+  .heroCard {
+    width: 90%; 
+  }
+
   .heroCard h1 {
     font-size: 2.2rem;
     letter-spacing: 2px;
