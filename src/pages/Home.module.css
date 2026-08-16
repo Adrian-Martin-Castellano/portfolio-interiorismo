@@ -1,3 +1,7 @@
+/* ==========================================
+   1. ESTRUCTURA GLOBAL Y CONTENEDORES
+   ========================================== */
+
 .homeContainer {
   display: flex;
   flex-direction: column;
@@ -15,14 +19,18 @@
   background-attachment: fixed;
 }
 
+/* ==========================================
+   2. HERO / PORTADA (PANTALLA INICIAL)
+   ========================================== */
+
 .heroSection {
   min-height: 100vh;
-  min-height: 100dvh; /* Para navegadores móviles modernos */
+  min-height: 100dvh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5rem 1rem 2rem 1rem; /* Genera el espacio suficiente para bajar ligeramente el logo sin tapar el navbar */
+  padding: 2rem 1rem;
   position: relative;
   box-sizing: border-box;
 }
@@ -102,18 +110,6 @@
   border-color: var(--accent-color);
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
-
 .ctaButton {
   display: inline-block;
   width: 100%;
@@ -137,6 +133,10 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(197, 168, 128, 0.25);
 }
+
+/* ==========================================
+   3. SECCIÓN VÍDEO Y PRESENTACIÓN
+   ========================================== */
 
 .videoSection {
   max-width: 1100px;
@@ -240,13 +240,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.detailValue {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text-color); 
-  font-weight: 300;
-}
-
 .detailItem {
   display: flex;
   flex-direction: column;
@@ -261,6 +254,17 @@
   color: var(--accent-color); 
 }
 
+.detailValue {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-color); 
+  font-weight: 300;
+}
+
+/* ==========================================
+   4. LÍNEAS DE DISEÑO / TARJETAS DE ESTILO
+   ========================================== */
+
 .stylesSectionWrapper {
   width: 100%;
   max-width: 1200px;
@@ -273,68 +277,20 @@
 
 .stylesIntroHeader {
   text-align: center;
-  position: relative;
   max-width: 650px;
   width: 100%;
   margin: 0 auto 5rem auto;
-  background-color: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 3.5rem 2.5rem;
-  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 }
 
-.stylesIntroHeader::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  border-left: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-  pointer-events: none;
-}
-
-.stylesIntroHeader span {
-  position: relative;
-  z-index: 2;
+.introHeaderImage {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
   display: block;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 5px;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-  font-weight: 400;
-}
-
-.stylesIntroHeader h2 {
-  position: relative;
-  z-index: 2;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  color: var(--text-color);
-  font-weight: 400;
-  margin: 0 auto;
-  display: inline-block;
-  padding-bottom: 0.8rem;
-  letter-spacing: 1px;
-  line-height: 1.3;
-}
-
-.stylesIntroHeader h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 30%;
-  width: 40%;
-  height: 1px;
-  background-color: var(--accent-color);
-  opacity: 0.4;
 }
 
 .styleFloatingCard {
@@ -533,6 +489,10 @@
   z-index: 2;
 }
 
+/* ==========================================
+   5. SECCIÓN MÁS ESTILOS
+   ========================================== */
+
 .moreStylesSection {
   max-width: 900px;
   width: 90%;
@@ -603,6 +563,10 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(197, 168, 128, 0.25);
 }
+
+/* ==========================================
+   6. SECCIÓN PROYECTOS DESTACADOS
+   ========================================== */
 
 .featuredProjectsSection {
   width: 100%;
@@ -748,6 +712,10 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
+/* ==========================================
+   7. BARRA FLOTANTE DE CONTACTO
+   ========================================== */
+
 .stickyContactBar {
   position: fixed;
   bottom: 2rem;
@@ -795,6 +763,10 @@
   box-shadow: 0 8px 18px rgba(197, 168, 128, 0.3);
 }
 
+/* ==========================================
+   8. ANIMACIONES KEYFRAMES
+   ========================================== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -816,6 +788,22 @@
     opacity: 1;
   }
 }
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* ==========================================
+   9. RESPONSIVE / MEDIA QUERIES
+   ========================================== */
 
 @media (max-width: 968px) {
   .videoGrid {
@@ -848,22 +836,13 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-top: 6rem; /* Mantiene la imagen bajada un pelín más en móvil */
+    align-items: flex-start; 
+    padding-top: 5rem; 
   }
 
   .heroCard {
     max-width: 340px; 
     width: 82%;
-  }
-
-  .videoSection {
-    margin: 4rem auto 3rem auto;
-  }
-
-  .stylesSectionWrapper {
-    padding: 0 0.8rem;
   }
 
   .heroCard h1 {
@@ -874,6 +853,19 @@
   .subtitle {
     font-size: 0.8rem;
     margin-bottom: 2rem;
+  }
+
+  .videoSection {
+    margin: 4rem auto 3rem auto;
+  }
+
+  .stylesSectionWrapper {
+    padding: 0 0.8rem;
+  }
+
+  .stylesIntroHeader {
+    padding: 0;
+    margin-bottom: 2.5rem;
   }
 
   .moreStylesSection {
@@ -942,15 +934,6 @@
     line-height: 1.7;
   }
 
-  .stylesIntroHeader {
-    padding: 2rem 1.25rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .stylesIntroHeader h2 {
-    font-size: 1.6rem;
-  }
-
   .stickyContactBar span {
     display: none; 
   }
@@ -981,20 +964,20 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    padding-top: 5.5rem;
+    padding-top: 7rem; 
   }
 
   .heroCard {
     width: 85%;
   }
 
-  .scrollArrow {
-    bottom: 1.5rem;
-  }
-
   .heroCard h1 {
     font-size: 2.2rem;
     letter-spacing: 2px;
+  }
+
+  .scrollArrow {
+    bottom: 1.5rem;
   }
 
   .ctaButton,

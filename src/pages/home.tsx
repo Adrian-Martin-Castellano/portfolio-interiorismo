@@ -310,8 +310,11 @@ function Home() {
       {/* 3. LÍNEAS DE DISEÑO (ESTILOS) */}
       <section className={styles.stylesSectionWrapper}>
         <div className={styles.stylesIntroHeader}>
-          <span>{t.stylesLabel}</span>
-          <h2>{t.stylesTitle}</h2>
+          <img 
+            src="/marco.png" 
+            alt="Líneas de Diseño de Autor" 
+            className={styles.introHeaderImage}
+          />
         </div>
 
         {t.cards.map((card, idx) => (
