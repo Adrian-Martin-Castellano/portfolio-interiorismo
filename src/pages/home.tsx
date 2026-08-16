@@ -253,7 +253,7 @@ function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <img 
-            src="/logo_portada5.jpeg" 
+            src="/logo_portada.png" 
             alt="Blic Logo" 
             className={styles.heroImage} 
           />
