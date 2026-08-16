@@ -257,14 +257,25 @@ function Home() {
             alt="Blic Logo" 
             className={styles.heroImage} 
           />
-          <Link to="/proyectos" className={styles.ctaButton}>
-          {t.heroCta}
-          </Link>
         </div>
+        <a href="#videoSection" className={styles.scrollArrow} aria-label="Bajar a contenido">
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="1.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M7 13l5 5 5-5M12 6v12"/>
+          </svg>
+        </a>
       </section>
 
       {/* 2. VIDEO PRESENTACIÓN Y NARRATIVA */}
-      <section className={styles.videoSection}>
+      <section id="videoSection" className={styles.videoSection}>
         <div className={styles.videoGrid}>
           <div className={styles.videoContainer}>
             <div className={styles.videoWrapper}>
