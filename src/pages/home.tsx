@@ -15,8 +15,6 @@ interface StyleCardProps {
 
 const translations = {
   es: {
-    heroTitle: 'BLIC',
-    heroSubtitle: 'Diseño que habla, ideas que inspiran',
     heroCta: 'Ver Proyectos',
     
     videoTag: 'Filosofía Blic',
@@ -87,8 +85,6 @@ const translations = {
     stickyCtaBtn: 'Hablemos'
   },
   en: {
-    heroTitle: 'BLIC',
-    heroSubtitle: 'Design that speaks, ideas that inspire',
     heroCta: 'View Projects',
     
     videoTag: 'Blic Philosophy',
@@ -256,10 +252,13 @@ function Home() {
       {/* 1. HERO SECTION */}
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
-          <h1>{t.heroTitle}</h1>
-          <p className={styles.subtitle}>{t.heroSubtitle}</p>
+          <img 
+            src="/logo_portada5.jpeg" 
+            alt="Blic Logo" 
+            className={styles.heroImage} 
+          />
           <Link to="/proyectos" className={styles.ctaButton}>
-            {t.heroCta}
+          {t.heroCta}
           </Link>
         </div>
       </section>
@@ -318,7 +317,7 @@ function Home() {
         ))}
       </section>
 
-      {/* 4. PROYECTOS DESTACADOS (PLANTILLA BILINGÜE) */}
+      {/* 4. PROYECTOS DESTACADOS */}
       <section className={styles.featuredProjectsSection}>
         <div className={styles.featuredHeader}>
           <span>{t.featuredLabel}</span>
