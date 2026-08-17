@@ -29,34 +29,26 @@ function Navbar() {
         </Link>
       </div>
       
-      {/* Enlaces del menú */}
       <div className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
         <NavLink to="/" style={linkStyle} onClick={() => setIsOpen(false)}>
           {language === 'es' ? 'Inicio' : 'Home'}
+        </NavLink>
+
+        <NavLink to="/proyectos" style={linkStyle} onClick={() => setIsOpen(false)}>
+          {language === 'es' ? 'Proyectos' : 'Projects'}
         </NavLink>
         
         <NavLink to="/sobre-mi" style={linkStyle} onClick={() => setIsOpen(false)}>
           {language === 'es' ? 'Sobre Mí' : 'About Me'}
         </NavLink>
-        
-        <NavLink to="/proyectos" style={linkStyle} onClick={() => setIsOpen(false)}>
-          {language === 'es' ? 'Proyectos' : 'Projects'}
-        </NavLink>
-        
-        <NavLink to="/contacto" style={linkStyle} onClick={() => setIsOpen(false)}>
-          {language === 'es' ? 'Contacto' : 'Contact'}
-        </NavLink>
       </div>
 
-      {/* ACCIONES (Idioma + Tema + Hamburguesa) SIEMPRE ARRIBA */}
       <div className={styles.navActions}>
-        {/* Botón Cambiar Idioma */}
         <button onClick={toggleLanguage} className={styles.langToggleBtn} aria-label="Cambiar idioma">
           <span className={styles.langText}>{language.toUpperCase()}</span>
           <span className={styles.langDot}></span>
         </button>
 
-        {/* Botón Cambiar Tema (Sol / Luna) */}
         <button onClick={toggleTheme} className={styles.themeToggleBtn} aria-label="Cambiar tema">
           {theme === 'light' ? <FaMoon className={styles.themeIcon} /> : <FaSun className={styles.themeIcon} />}
         </button>
