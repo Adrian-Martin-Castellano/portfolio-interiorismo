@@ -316,7 +316,7 @@ function Home() {
       <section className={styles.stylesSectionWrapper}>
         <div className={styles.stylesIntroHeader}>
           <img 
-            src="/marco.png" 
+            src={isDark ? '/marco_nuestra_identidad_oscuro.png' : '/marco_nuestra_identidad_claro.png'}
             alt="Líneas de Diseño de Autor" 
             className={styles.introHeaderImage}
           />
@@ -340,7 +340,7 @@ function Home() {
       <section className={styles.featuredProjectsSection}>
         <div className={styles.stylesIntroHeaderScd}>
           <img 
-            src="/marco2.png" 
+            src={isDark ? '/marco_proyectos_destacados_oscuro.png' : '/marco_proyectos_destacados_claro.png'}
             alt={t.featuredTitle} 
             className={styles.introHeaderImage}
           />
