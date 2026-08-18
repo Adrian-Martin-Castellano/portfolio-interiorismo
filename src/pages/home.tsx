@@ -338,10 +338,12 @@ function Home() {
 
       {/* 4. PROYECTOS DESTACADOS */}
       <section className={styles.featuredProjectsSection}>
-        <div className={styles.featuredHeader}>
-          <span>{t.featuredLabel}</span>
-          <h2>{t.featuredTitle}</h2>
-          <p>{t.featuredSubtitle}</p>
+        <div className={styles.stylesIntroHeaderScd}>
+          <img 
+            src="/marco2.png" 
+            alt={t.featuredTitle} 
+            className={styles.introHeaderImage}
+          />
         </div>
 
         <div className={styles.projectsGrid}>
