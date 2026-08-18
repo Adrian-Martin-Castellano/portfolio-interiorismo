@@ -84,7 +84,7 @@ const translations = {
     moreStylesCta: 'Explorar Todos los Proyectos →',
 
     stickyCtaText: '¿Tienes un espacio que quieras transformar?',
-    stickyCtaBtn: 'Hablemos'
+    stickyCtaBtn: 'Contacta'
   },
   en: {
     heroCta: 'View Projects',
