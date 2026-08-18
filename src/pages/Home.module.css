@@ -835,7 +835,66 @@
   }
 }
 
+/* ==========================================
+   9. RESPONSIVE / MEDIA QUERIES (A PARTIR DE 768px)
+   ========================================== */
+
 @media (max-width: 768px) {
+
+  .videoSection,
+  .stylesSectionWrapper,
+  .moreStylesSection,
+  .featuredProjectsSection {
+    width: 90% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .styleFloatingCard,
+  .featuredHeader,
+  .videoContent {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .videoSection,
+  .stylesSectionWrapper,
+  .moreStylesSection,
+  .featuredProjectsSection {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .stylesIntroHeader {
+    margin-bottom: 1.2rem !important;
+    padding: 0;
+  }
+
+  .styleFloatingCard {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .videoContent,
+  .styleFloatingCard,
+  .moreStylesSection,
+  .featuredHeader {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .videoGrid,
+  .styleCardContent,
+  .projectsGrid {
+    gap: 1rem !important;
+  }
+
+  .videoSection {
+    scroll-margin-top: 90px;
+  }
+
   .heroSection {
     align-items: center; 
     padding-top: 90px; 
@@ -861,33 +920,8 @@
     margin-bottom: 2rem;
   }
 
-  .videoSection {
-    margin: 4rem auto 3rem auto;
-  }
-
-  .stylesSectionWrapper {
-    padding: 0 0.8rem;
-  }
-
-  .stylesIntroHeader {
-    padding: 0;
-    margin-bottom: 2.5rem;
-  }
-
-  .moreStylesSection {
-    width: 95%;
-    margin: 30px auto 80px auto;
-    padding: 2.5rem 1.25rem;
-  }
-
   .moreStylesContent h2 {
     font-size: 1.7rem;
-  }
-
-  .styleFloatingCard {
-    padding: 1.5rem 1.25rem;
-    margin-bottom: 2.5rem;
-    border-radius: 2px;
   }
 
   .styleFloatingCard:hover {
