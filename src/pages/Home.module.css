@@ -22,15 +22,15 @@
 /* ==========================================
    2. HERO / PORTADA (PANTALLA INICIAL)
    ========================================== */
-
 .heroSection {
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column; 
+  justify-content: center; 
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 105px 1rem 3rem 1rem; 
   position: relative;
   box-sizing: border-box;
 }
@@ -42,8 +42,8 @@
   -webkit-backdrop-filter: none;
   box-shadow: none;
   padding: 0;
-  max-width: 420px; 
-  width: 85%;
+  max-width: 550px; 
+  width: 90%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,8 +54,8 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); 
+  border-radius: 6px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); 
   display: block;
 }
 
@@ -83,19 +83,20 @@
 }
 
 .scrollArrow {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  margin-top: 1.5rem; /* Separación con la tarjeta */
   color: var(--accent-color);
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(197, 168, 128, 0.4);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(197, 168, 128, 0.5);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s ease;
@@ -791,13 +792,13 @@
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   40% {
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateY(-8px);
   }
   60% {
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateY(-4px);
   }
 }
 
@@ -836,13 +837,18 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    align-items: flex-start; 
-    padding-top: 5rem; 
+    align-items: center; 
+    padding-top: 90px; 
+    padding-bottom: 2rem;
   }
 
   .heroCard {
-    max-width: 340px; 
-    width: 82%;
+    max-width: 100%; 
+    width: 92%; 
+  }
+
+  .scrollArrow {
+    margin-top: 1.2rem;
   }
 
   .heroCard h1 {
@@ -964,11 +970,11 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    padding-top: 7rem; 
+    padding-top: 100px; 
   }
 
   .heroCard {
-    width: 85%;
+    width: 94%; 
   }
 
   .heroCard h1 {
@@ -976,8 +982,10 @@
     letter-spacing: 2px;
   }
 
-  .scrollArrow {
-    bottom: 1.5rem;
+ .scrollArrow {
+    margin-top: 1rem;
+    width: 36px;
+    height: 36px;
   }
 
   .ctaButton,
