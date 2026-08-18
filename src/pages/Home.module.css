@@ -1,4 +1,16 @@
 /* ==========================================
+    global variables
+   ==========================================*/
+   
+[data-theme='dark'] {
+  --hero-bg-image: url('../assets/hero-bg-dark.png');
+}
+
+[data-theme='light'] {
+  --hero-bg-image: url('../assets/hero-bg-light.jpg');
+}
+
+/* ==========================================
    1. ESTRUCTURA GLOBAL Y CONTENEDORES
    ========================================== */
 
@@ -8,15 +20,17 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.2), 
-      rgba(0, 0, 0, 0.3)
-    ), 
-    url('../assets/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2), 
+      rgba(0, 0, 0, 0.3)
+    ), 
+    var(--hero-bg-image);
+  transition: background-image 0.3s ease; 
 }
 
 /* ==========================================
