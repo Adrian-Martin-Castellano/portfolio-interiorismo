@@ -13,9 +13,16 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 9999; 
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid transparent; 
+  transition: border-color 0.3s ease;
 }
 
+:global([data-theme="dark"]) .navbar,
+:global(.dark-mode) .navbar {
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+ 
 .logoContainer {
   display: flex;
   align-items: center;
@@ -181,7 +188,7 @@
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: rgba(253, 252, 250, 0.98);
+    background-color: var(--bg-navbar, rgba(253, 252, 250, 0.98)); 
     border-bottom: 1px solid rgba(197, 168, 128, 0.15);
     flex-direction: column;
     gap: 0;
@@ -189,6 +196,10 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out; 
+  }
+
+  :global([data-theme="dark"]) .navLinks {
+    border-bottom: 1px solid transparent;
   }
 
   .navLinks.active {

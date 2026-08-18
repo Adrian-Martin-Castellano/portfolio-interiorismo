@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
+
 
 interface StyleCardProps {
   index: number;
@@ -233,6 +235,8 @@ function StyleCard({ index, images, category, title, quote, description, alignme
 function Home() {
   const { language } = useLanguage();
   const t = translations[language] || translations.es;
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const imagesList = [
     ['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png'],
@@ -253,15 +257,16 @@ function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <img 
-            src="/logo_portada_claro.jpeg" 
-            alt="Blic Logo" 
+            src={isDark ? '/logo_portada_oscuro.jpeg' : '/logo_portada_claro.jpeg'} 
+            alt="Logo BLIC" 
             className={styles.heroImage} 
           />
         </div>
+
         <a href="#videoSection" className={styles.scrollArrow} aria-label="Bajar a contenido">
           <svg 
-            width="24" 
-            height="24" 
+            width="20" 
+            height="20" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
