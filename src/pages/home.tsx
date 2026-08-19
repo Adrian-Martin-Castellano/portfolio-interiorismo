@@ -235,7 +235,12 @@ function Home() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  // Control de visibilidad del botón de subir
+  const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
+    const mode = isDark ? 'oscuro' : 'claro';
+    const lang = language === 'en' ? '_en' : '';
+    return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
+  };
+
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -277,7 +282,7 @@ function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <img 
-            src={isDark ? '/logo_portada_oscuro.jpeg' : '/logo_portada_claro.jpeg'} 
+            src={getDynamicAsset('logos', 'logo_portada', 'jpeg')}
             alt="Logo BLIC" 
             className={styles.heroImage} 
           />
@@ -299,7 +304,7 @@ function Home() {
           <div className={styles.videoContent}>
             <span className={styles.videoTag}>{t.videoTag}</span>
             <h2>{t.videoTitle}</h2>
-            
+
             <p className={styles.videoQuote}>{t.videoQuote}</p>
             <p className={styles.videoDescription}>{t.videoDescription}</p>
 
@@ -321,7 +326,7 @@ function Home() {
       <section className={styles.stylesSectionWrapper}>
         <div className={styles.stylesIntroHeader}>
           <img 
-            src={isDark ? '/marco_nuestra_identidad_oscuro.png' : '/marco_nuestra_identidad_claro.png'}
+            src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
             alt="Líneas de Diseño de Autor" 
             className={styles.introHeaderImage}
           />
@@ -345,7 +350,7 @@ function Home() {
       <section className={styles.featuredProjectsSection}>
         <div className={styles.stylesIntroHeaderScd}>
           <img 
-            src={isDark ? '/marco_proyectos_destacados_oscuro.png' : '/marco_proyectos_destacados_claro.png'}
+            src={getDynamicAsset('marcos', 'marco_proyectos_destacados')}
             alt={t.featuredTitle} 
             className={styles.introHeaderImage}
           />
