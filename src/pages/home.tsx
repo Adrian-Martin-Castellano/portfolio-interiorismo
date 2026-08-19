@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
-
 
 interface StyleCardProps {
   index: number;
@@ -18,7 +17,6 @@ interface StyleCardProps {
 const translations = {
   es: {
     heroCta: 'Ver Proyectos',
-    
     videoTag: 'Filosofía Blic',
     videoTitle: 'Arquitectura del Alma',
     videoQuote: '“Creamos espacios donde el tiempo parece detenerse y la materia cobra vida.”',
@@ -88,7 +86,6 @@ const translations = {
   },
   en: {
     heroCta: 'View Projects',
-    
     videoTag: 'Blic Philosophy',
     videoTitle: 'Architecture of the Soul',
     videoQuote: '“We create spaces where time seems to stand still and materials come alive.”',
@@ -238,6 +235,29 @@ function Home() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
+  // Control de visibilidad del botón de subir
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const imagesList = [
     ['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png'],
     ['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png'],
@@ -262,21 +282,6 @@ function Home() {
             className={styles.heroImage} 
           />
         </div>
-
-        <a href="#videoSection" className={styles.scrollArrow} aria-label="Bajar a contenido">
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.5" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <path d="M7 13l5 5 5-5M12 6v12"/>
-          </svg>
-        </a>
       </section>
 
       {/* 2. VIDEO PRESENTACIÓN Y NARRATIVA */}
@@ -380,12 +385,33 @@ function Home() {
         </div>
       </section>
 
-      {/* 6. BARRA FLOTANTE DE CONTACTO ("HABLEMOS") */}
+      {/* 6. BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR AL LOGO */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
           {t.stickyCtaBtn}
         </Link>
+
+        {showScrollTop && (
+          <button 
+            onClick={scrollToTop} 
+            className={styles.scrollTopBtn} 
+            aria-label="Volver arriba al inicio"
+          >
+            <svg 
+              width="18" 
+              height="18" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </button>
+        )}
       </div>
     </div>
   );
