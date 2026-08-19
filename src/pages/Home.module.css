@@ -3,7 +3,7 @@
    ==========================================*/
    
 [data-theme='dark'] {
-  --hero-bg-image: url('../assets/hero-bg-dark.png');
+  --hero-bg-image: url('../assets/hero-bg-dark1.png');
 }
 
 [data-theme='light'] {
