@@ -525,6 +525,14 @@
   z-index: 2;
 }
 
+.toggleStylesWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 20px;
+  width: 100%;
+}
+
 /* ==========================================
    5. SECCIÓN MÁS ESTILOS
    ========================================== */
@@ -1062,6 +1070,15 @@
 
   .talkButton {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .toggleStylesWrapper {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 0rem !important;
+    margin-bottom: 1rem !important;
+    padding: 0 !important;
   }
 }
 

@@ -28,6 +28,8 @@ const translations = {
 
     stylesLabel: 'Nuestra Identidad',
     stylesTitle: 'Líneas de Diseño de Autor',
+    showMoreStylesBtn: 'Ver más estilos',
+    showLessStylesBtn: 'Ver menos estilos',
     cards: [
       {
         category: 'Colección Natura',
@@ -52,6 +54,12 @@ const translations = {
         title: 'Línea Contemporánea',
         quote: '“El reflejo del diseño actual. Espacios sofisticados donde conviven piezas icónicas de arte con molduras clásicas.”',
         description: 'Espacios donde conviven acabados modernos, mármoles de vetas muy marcadas y una paleta cromática audaz y equilibrada.'
+      },
+      {
+        category: 'Colección Modelo (Editar)',
+        title: 'Nuevo Estilo de Autor',
+        quote: '“Escribe aquí la cita o frase inspiradora del nuevo estilo.”',
+        description: 'Añade aquí la descripción detallada de los materiales, colores y concepto de este nuevo estilo.'
       }
     ],
 
@@ -97,6 +105,8 @@ const translations = {
 
     stylesLabel: 'Our Identity',
     stylesTitle: 'Signature Design Lines',
+    showMoreStylesBtn: 'View more styles',
+    showLessStylesBtn: 'View less styles',
     cards: [
       {
         category: 'Natura Collection',
@@ -121,6 +131,12 @@ const translations = {
         title: 'Contemporary Line',
         quote: '“The reflection of current design. Sophisticated spaces where iconic art pieces meet classic moldings.”',
         description: 'Spaces where modern finishes, bold marble veining, and a balanced color palette coexist seamlessly.'
+      },
+      {
+        category: 'Template Collection (Edit)',
+        title: 'New Signature Style',
+        quote: '“Write the inspirational quote for the new style here.”',
+        description: 'Add the detailed description of materials, colors, and concept for this new style here.'
       }
     ],
 
@@ -235,6 +251,8 @@ function Home() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
+  const [showAllStyles, setShowAllStyles] = useState(false);
+
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
@@ -267,7 +285,9 @@ function Home() {
     ['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png'],
     ['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png'],
     ['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png'],
-    ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']
+    ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png'],
+
+    ['/assets/balines-1.png', '/assets/minimal-1.png'] 
   ];
 
   const featuredImageAssets = [
@@ -275,6 +295,8 @@ function Home() {
     '/assets/minimal-1.png',
     '/assets/contemporaneo-1.png'
   ];
+
+  const visibleCards = showAllStyles ? t.cards : t.cards.slice(0, 4);
 
   return (
     <div className={styles.homeContainer}>
@@ -332,7 +354,7 @@ function Home() {
           />
         </div>
 
-        {t.cards.map((card, idx) => (
+        {visibleCards.map((card, idx) => (
           <StyleCard 
             key={idx}
             index={idx}
@@ -341,9 +363,20 @@ function Home() {
             title={card.title}
             quote={card.quote}
             description={card.description}
-            images={imagesList[idx]}
+            images={imagesList[idx] || imagesList[0]}
           />
         ))}
+
+        {t.cards.length > 4 && (
+          <div className={styles.toggleStylesWrapper}>
+            <button 
+              className={styles.moreStylesButton} 
+              onClick={() => setShowAllStyles(!showAllStyles)}
+            >
+              {showAllStyles ? t.showLessStylesBtn : t.showMoreStylesBtn}
+            </button>
+          </div>
+        )}
       </section>
 
       {/* 4. PROYECTOS DESTACADOS */}
