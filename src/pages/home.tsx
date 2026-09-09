@@ -361,18 +361,20 @@ function Home() {
           />
         </div>
 
-        {visibleCards.map((card, idx) => (
-          <StyleCard 
-            key={idx}
-            index={idx}
-            alignment={idx % 2 === 0 ? 'left' : 'right'}
-            category={card.category}
-            title={card.title}
-            quote={card.quote}
-            description={card.description}
-            images={imagesList[idx] || imagesList[0]}
-          />
-        ))}
+        <div className={styles.horizontalScrollContainer}>
+          {visibleCards.map((card, idx) => (
+            <StyleCard 
+              key={idx}
+              index={idx}
+              alignment={idx % 2 === 0 ? 'left' : 'right'}
+              category={card.category}
+              title={card.title}
+              quote={card.quote}
+              description={card.description}
+              images={imagesList[idx] || imagesList[0]}
+            />
+          ))}
+        </div>
 
         {t.cards.length > 4 && (
           <div className={styles.toggleStylesWrapper}>
@@ -396,7 +398,7 @@ function Home() {
           />
         </div>
 
-        <div className={styles.projectsGrid}>
+        <div className={styles.horizontalScrollContainer}>
           {t.featuredProjects.map((project, idx) => (
             <div key={idx} className={styles.projectCard}>
               <div className={styles.projectImageWrapper}>
