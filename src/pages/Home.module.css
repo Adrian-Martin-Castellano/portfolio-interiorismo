@@ -864,6 +864,17 @@
   }
 }
 
+.editorialProgressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #c5a059, #e2c99b);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.5);
+}
+
 /* ==========================================
    9. RESPONSIVE / MEDIA QUERIES
    ========================================== */

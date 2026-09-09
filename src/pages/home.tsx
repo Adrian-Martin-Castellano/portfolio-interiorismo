@@ -252,6 +252,8 @@ function Home() {
   const isDark = theme === 'dark';
 
   const [showAllStyles, setShowAllStyles] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
     const mode = isDark ? 'oscuro' : 'claro';
@@ -259,18 +261,19 @@ function Home() {
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
   };
 
-  const [showScrollTop, setShowScrollTop] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
+      const currentScroll = window.scrollY;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (totalHeight > 0) {
+        setScrollProgress((currentScroll / totalHeight) * 100);
       }
+
+      setShowScrollTop(currentScroll > 400);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -286,7 +289,6 @@ function Home() {
     ['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png'],
     ['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png'],
     ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png'],
-
     ['/assets/balines-1.png', '/assets/minimal-1.png'] 
   ];
 
@@ -300,6 +302,11 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
+      <div 
+        className={styles.editorialProgressBar} 
+        style={{ width: `${scrollProgress}%` }} 
+      />
+
       {/* 1. HERO SECTION */}
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
