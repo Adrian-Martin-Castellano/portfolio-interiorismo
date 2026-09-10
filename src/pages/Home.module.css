@@ -1190,3 +1190,64 @@
   height: auto !important;
   object-fit: cover !important;
 }
+/* ==========================================
+   NAVEGACIÓN MÓVIL INDEPENDIENTE
+   ========================================== */
+
+.stylesCarouselNav,
+.featuredCarouselNav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .stylesCarouselNav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: -0.5rem !important;    
+    margin-bottom: 0.5rem !important; 
+  }
+
+  .featuredCarouselNav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1.5rem !important;    
+    margin-bottom: 0rem !important; 
+  }
+
+  .carouselCounter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #d4be9b;
+    white-space: nowrap;
+  }
+
+  .counterDivider {
+    margin: 0 4px;
+    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .minimalProgressTrack {
+    flex: 1;
+    height: 2px;
+    background-color: rgba(212, 190, 155, 0.2);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+
+  .minimalProgressFill {
+    height: 100%;
+    background-color: #d4be9b;
+    border-radius: 1px;
+    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+}

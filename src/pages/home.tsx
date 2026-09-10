@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
@@ -28,8 +28,6 @@ const translations = {
 
     stylesLabel: 'Nuestra Identidad',
     stylesTitle: 'Líneas de Diseño de Autor',
-    showMoreStylesBtn: 'Ver más estilos',
-    showLessStylesBtn: 'Ver menos estilos',
     cards: [
       {
         category: 'Colección Natura',
@@ -105,8 +103,6 @@ const translations = {
 
     stylesLabel: 'Our Identity',
     stylesTitle: 'Signature Design Lines',
-    showMoreStylesBtn: 'View more styles',
-    showLessStylesBtn: 'View less styles',
     cards: [
       {
         category: 'Natura Collection',
@@ -156,8 +152,7 @@ const translations = {
       },
       {
         category: 'Commercial · Barcelona',
-        title: 'Atelier Concept Store',
-        subtitle: 'Commercial Architecture & Lighting'
+        title: 'Commercial Architecture & Lighting'
       }
     ],
 
@@ -251,15 +246,36 @@ function Home() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  const [showAllStyles, setShowAllStyles] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Estados de progreso del carrusel en %
+  const [stylesProgress, setStylesProgress] = useState(0);
+  const [featuredProgress, setFeaturedProgress] = useState(0);
+
+  // Referencias a los contenedores de scroll
+  const stylesScrollRef = useRef<HTMLDivElement>(null);
+  const featuredScrollRef = useRef<HTMLDivElement>(null);
 
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
   };
+
+  const handleScrollContainer = useCallback(
+    (ref: React.RefObject<HTMLDivElement | null>, setProgress: (val: number) => void) => {
+      if (ref.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = ref.current;
+        const maxScroll = scrollWidth - clientWidth;
+        if (maxScroll > 0) {
+          const percentage = (scrollLeft / maxScroll) * 100;
+          setProgress(Math.min(100, Math.max(0, percentage)));
+        }
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -297,8 +313,6 @@ function Home() {
     '/assets/minimal-1.png',
     '/assets/contemporaneo-1.png'
   ];
-
-  const visibleCards = showAllStyles ? t.cards : t.cards.slice(0, 4);
 
   return (
     <div className={styles.homeContainer}>
@@ -361,8 +375,12 @@ function Home() {
           />
         </div>
 
-        <div className={styles.horizontalScrollContainer}>
-          {visibleCards.map((card, idx) => (
+        <div 
+          ref={stylesScrollRef}
+          className={styles.horizontalScrollContainer}
+          onScroll={() => handleScrollContainer(stylesScrollRef, setStylesProgress)}
+        >
+          {t.cards.map((card, idx) => (
             <StyleCard 
               key={idx}
               index={idx}
@@ -376,16 +394,19 @@ function Home() {
           ))}
         </div>
 
-        {t.cards.length > 4 && (
-          <div className={styles.toggleStylesWrapper}>
-            <button 
-              className={styles.moreStylesButton} 
-              onClick={() => setShowAllStyles(!showAllStyles)}
-            >
-              {showAllStyles ? t.showLessStylesBtn : t.showMoreStylesBtn}
-            </button>
+        <div className={styles.stylesCarouselNav}>
+          <span className={styles.carouselCounter}>
+            {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesProgress / 100) * t.cards.length)))).padStart(2, '0')}
+            <span className={styles.counterDivider}>/</span>
+            {String(t.cards.length).padStart(2, '0')}
+          </span>
+          <div className={styles.minimalProgressTrack}>
+            <div 
+              className={styles.minimalProgressFill} 
+              style={{ width: `${Math.max(stylesProgress, 10)}%` }}
+            ></div>
           </div>
-        )}
+        </div>
       </section>
 
       {/* 4. PROYECTOS DESTACADOS */}
@@ -398,7 +419,11 @@ function Home() {
           />
         </div>
 
-        <div className={styles.horizontalScrollContainer}>
+        <div 
+          ref={featuredScrollRef}
+          className={styles.horizontalScrollContainer}
+          onScroll={() => handleScrollContainer(featuredScrollRef, setFeaturedProgress)}
+        >
           {t.featuredProjects.map((project, idx) => (
             <div key={idx} className={styles.projectCard}>
               <div className={styles.projectImageWrapper}>
@@ -417,6 +442,20 @@ function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className={styles.featuredCarouselNav}>
+          <span className={styles.carouselCounter}>
+            {String(Math.min(t.featuredProjects.length, Math.max(1, Math.ceil((featuredProgress / 100) * t.featuredProjects.length)))).padStart(2, '0')}
+            <span className={styles.counterDivider}>/</span>
+            {String(t.featuredProjects.length).padStart(2, '0')}
+          </span>
+          <div className={styles.minimalProgressTrack}>
+            <div 
+              className={styles.minimalProgressFill} 
+              style={{ width: `${Math.max(featuredProgress, 10)}%` }}
+            ></div>
+          </div>
         </div>
       </section>
 
