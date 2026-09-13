@@ -277,6 +277,16 @@ function Home() {
     []
   );
 
+  const scrollByAmount = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = ref.current.clientWidth * 0.75;
+      ref.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
@@ -400,11 +410,31 @@ function Home() {
             <span className={styles.counterDivider}>/</span>
             {String(t.cards.length).padStart(2, '0')}
           </span>
+
           <div className={styles.minimalProgressTrack}>
             <div 
               className={styles.minimalProgressFill} 
               style={{ width: `${Math.max(stylesProgress, 10)}%` }}
             ></div>
+          </div>
+
+          <div className={styles.navArrowsInline}>
+            <button 
+              className={`${styles.inlineArrow} ${stylesProgress <= 2 ? styles.arrowDisabled : ''}`}
+              onClick={() => scrollByAmount(stylesScrollRef, 'left')}
+              aria-label="Anterior"
+              disabled={stylesProgress <= 2}
+            >
+              ←
+            </button>
+            <button 
+              className={`${styles.inlineArrow} ${stylesProgress >= 98 ? styles.arrowDisabled : ''}`}
+              onClick={() => scrollByAmount(stylesScrollRef, 'right')}
+              aria-label="Siguiente"
+              disabled={stylesProgress >= 98}
+            >
+              →
+            </button>
           </div>
         </div>
       </section>
@@ -450,11 +480,31 @@ function Home() {
             <span className={styles.counterDivider}>/</span>
             {String(t.featuredProjects.length).padStart(2, '0')}
           </span>
+
           <div className={styles.minimalProgressTrack}>
             <div 
               className={styles.minimalProgressFill} 
               style={{ width: `${Math.max(featuredProgress, 10)}%` }}
             ></div>
+          </div>
+
+          <div className={styles.navArrowsInline}>
+            <button 
+              className={`${styles.inlineArrow} ${featuredProgress <= 2 ? styles.arrowDisabled : ''}`}
+              onClick={() => scrollByAmount(featuredScrollRef, 'left')}
+              aria-label="Anterior"
+              disabled={featuredProgress <= 2}
+            >
+              ←
+            </button>
+            <button 
+              className={`${styles.inlineArrow} ${featuredProgress >= 98 ? styles.arrowDisabled : ''}`}
+              onClick={() => scrollByAmount(featuredScrollRef, 'right')}
+              aria-label="Siguiente"
+              disabled={featuredProgress >= 98}
+            >
+              →
+            </button>
           </div>
         </div>
       </section>

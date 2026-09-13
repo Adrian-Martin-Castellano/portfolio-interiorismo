@@ -1251,3 +1251,86 @@
     transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   }
 }
+
+.stylesCarouselNav,
+.featuredCarouselNav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .stylesCarouselNav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    margin: 1.2rem 0 2rem 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .featuredCarouselNav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    margin: 0.8rem 0 1.5rem 0;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .carouselCounter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #d4be9b;
+    white-space: nowrap;
+  }
+
+  .counterDivider {
+    margin: 0 4px;
+    opacity: 0.5;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .minimalProgressTrack {
+    flex: 1;
+    height: 1px; 
+    background-color: rgba(212, 190, 155, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .minimalProgressFill {
+    height: 100%;
+    background-color: #d4be9b;
+    transition: width 0.2s ease-out;
+  }
+
+  .navArrowsInline {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .inlineArrow {
+    background: transparent;
+    border: none;
+    color: #d4be9b;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0 2px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .inlineArrow:active {
+    opacity: 1;
+  }
+
+  .arrowDisabled {
+    opacity: 0.18 !important;
+    cursor: default;
+  }
+}
