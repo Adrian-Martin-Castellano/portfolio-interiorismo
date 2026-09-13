@@ -1,16 +1,21 @@
+import { useEffect } from 'react';
 import styles from '../pages/Home.module.css';
-import type { StyleDetails } from '../components/StyleCard';
+import type { StyleDetails } from './StyleCard';
 
-interface LightboxModalProps {
+export interface LightboxModalProps {
   isOpen: boolean;
   images: string[];
   index: number;
   title: string;
   category: string;
   details: StyleDetails | null;
+  styleIndex: number;
+  totalStyles: number;
   onClose: () => void;
-  onNext: (e?: React.MouseEvent) => void;
-  onPrev: (e?: React.MouseEvent) => void;
+  onNextImage: (e?: React.MouseEvent) => void;
+  onPrevImage: (e?: React.MouseEvent) => void;
+  onNextStyle: () => void;
+  onPrevStyle: () => void;
 }
 
 export function LightboxModal({
@@ -20,46 +25,77 @@ export function LightboxModal({
   title,
   category,
   details,
+  styleIndex,
+  totalStyles,
   onClose,
-  onNext,
-  onPrev
+  onNextImage,
+  onPrevImage,
+  onNextStyle,
+  onPrevStyle
 }: LightboxModalProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') onNextImage();
+      if (e.key === 'ArrowLeft') onPrevImage();
+      if (e.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onNextImage, onPrevImage, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div className={styles.lightboxOverlay} onClick={onClose}>
-      <div className={styles.lightboxHeader}>
+      <div className={styles.lightboxHeader} onClick={(e) => e.stopPropagation()}>
+        {/* Selector / Conmutador entre Estilos */}
+        <div className={styles.styleSwitchNav}>
+          <button className={styles.styleNavBtn} onClick={onPrevStyle} title="Estilo anterior">
+            ← Estilo anterior
+          </button>
+          <span className={styles.styleNavCounter}>
+            Estilo {String(styleIndex + 1).padStart(2, '0')} / {String(totalStyles).padStart(2, '0')}
+          </span>
+          <button className={styles.styleNavBtn} onClick={onNextStyle} title="Siguiente estilo">
+            Siguiente estilo →
+          </button>
+        </div>
+
         <div className={styles.lightboxHeaderTitles}>
           <span className={styles.lightboxCategory}>{category}</span>
           <h2 className={styles.lightboxTitle}>{title}</h2>
         </div>
-        <button className={styles.lightboxCloseBtn} onClick={onClose}>✕</button>
+
+        <button className={styles.lightboxCloseBtn} onClick={onClose} aria-label="Cerrar">
+          ✕
+        </button>
       </div>
 
       <div className={styles.lightboxMainLayout} onClick={(e) => e.stopPropagation()}>
+        {/* Visor de imágenes */}
         <div className={styles.lightboxStage}>
-          <img 
-            src={images[index]} 
-            alt={title} 
-            className={styles.lightboxImage} 
-          />
+          <img src={images[index]} alt={title} className={styles.lightboxImage} />
 
           {images.length > 1 && (
             <>
-              <button className={`${styles.lightboxArrow} ${styles.lightboxPrev}`} onClick={onPrev}>
+              <button className={`${styles.lightboxArrow} ${styles.lightboxPrev}`} onClick={onPrevImage}>
                 ‹
               </button>
-              <button className={`${styles.lightboxArrow} ${styles.lightboxNext}`} onClick={onNext}>
+              <button className={`${styles.lightboxArrow} ${styles.lightboxNext}`} onClick={onNextImage}>
                 ›
               </button>
             </>
           )}
 
           <div className={styles.lightboxImgCounter}>
-            {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+            Foto {String(index + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
           </div>
         </div>
 
+        {/* Panel de detalles */}
         {details && (
           <div className={styles.lightboxDetailsPanel}>
             <div className={styles.detailsSection}>

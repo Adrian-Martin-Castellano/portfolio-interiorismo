@@ -4,7 +4,6 @@ import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { StyleCard } from '../components/StyleCard';
-import type { StyleDetails } from '../components/StyleCard';
 import { LightboxModal } from '../components/LightboxModal';
 import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
 import { translations } from '../data/translations';
@@ -37,21 +36,14 @@ function Home() {
   const stylesScroll = useHorizontalScroll(stylesScrollRef);
   const featuredScroll = useHorizontalScroll(featuredScrollRef);
 
-  // Lightbox Modal Data
+  // Estado del Estilo Activo y Lightbox
+  const [currentStyleIndex, setCurrentStyleIndex] = useState<number>(0);
   const [lightboxData, setLightboxData] = useState<{
     isOpen: boolean;
-    images: string[];
-    index: number;
-    title: string;
-    category: string;
-    details: StyleDetails | null;
+    imageIndex: number;
   }>({
     isOpen: false,
-    images: [],
-    index: 0,
-    title: '',
-    category: '',
-    details: null
+    imageIndex: 0
   });
 
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
@@ -60,20 +52,12 @@ function Home() {
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
   };
 
-  const openLightbox = (
-    images: string[], 
-    initialIndex: number, 
-    title: string, 
-    category: string, 
-    details: StyleDetails
-  ) => {
+  // Abrir Lightbox indicando el índice del estilo y de la foto
+  const openLightbox = (styleIdx: number, initialImageIdx: number) => {
+    setCurrentStyleIndex(styleIdx);
     setLightboxData({
       isOpen: true,
-      images,
-      index: initialIndex,
-      title,
-      category,
-      details
+      imageIndex: initialImageIdx
     });
     document.body.style.overflow = 'hidden';
   };
@@ -83,20 +67,36 @@ function Home() {
     document.body.style.overflow = '';
   };
 
+  // Navegación entre IMÁGENES del mismo estilo
   const nextLightboxImg = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    const currentImages = IMAGES_LIST[currentStyleIndex] || IMAGES_LIST[0];
     setLightboxData((prev) => ({
       ...prev,
-      index: (prev.index + 1) % prev.images.length
+      imageIndex: (prev.imageIndex + 1) % currentImages.length
     }));
   };
 
   const prevLightboxImg = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    const currentImages = IMAGES_LIST[currentStyleIndex] || IMAGES_LIST[0];
     setLightboxData((prev) => ({
       ...prev,
-      index: (prev.index - 1 + prev.images.length) % prev.images.length
+      imageIndex: (prev.imageIndex - 1 + currentImages.length) % currentImages.length
     }));
+  };
+
+  // Navegación entre ESTILOS (Colecciones)
+  const nextStyle = () => {
+    const totalStyles = t.cards.length;
+    setCurrentStyleIndex((prev) => (prev + 1) % totalStyles);
+    setLightboxData({ isOpen: true, imageIndex: 0 });
+  };
+
+  const prevStyle = () => {
+    const totalStyles = t.cards.length;
+    setCurrentStyleIndex((prev) => (prev - 1 + totalStyles) % totalStyles);
+    setLightboxData({ isOpen: true, imageIndex: 0 });
   };
 
   useEffect(() => {
@@ -121,6 +121,10 @@ function Home() {
       behavior: 'smooth'
     });
   };
+
+  // Datos dinámicos del estilo actualmente visible en la modal
+  const activeCard = t.cards[currentStyleIndex] || t.cards[0];
+  const activeImages = IMAGES_LIST[currentStyleIndex] || IMAGES_LIST[0];
 
   return (
     <div className={styles.homeContainer}>
@@ -200,7 +204,7 @@ function Home() {
               details={card.details}
               images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
               learnMoreText={t.learnMoreBtn}
-              onOpenLightbox={openLightbox}
+              onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
             />
           ))}
         </div>
@@ -322,7 +326,7 @@ function Home() {
         </div>
       </section>
 
-      {/* 6. BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR AL LOGO */}
+      {/* 6. BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
@@ -351,17 +355,21 @@ function Home() {
         )}
       </div>
 
-      {/* 7. LIGHTBOX MODAL ENRIQUECIDO */}
+      {/* 7. LIGHTBOX MODAL CON CAMBIO DE ESTILOS E IMÁGENES */}
       <LightboxModal 
         isOpen={lightboxData.isOpen}
-        images={lightboxData.images}
-        index={lightboxData.index}
-        title={lightboxData.title}
-        category={lightboxData.category}
-        details={lightboxData.details}
+        images={activeImages}
+        index={lightboxData.imageIndex}
+        title={activeCard.title}
+        category={activeCard.category}
+        details={activeCard.details}
+        styleIndex={currentStyleIndex}
+        totalStyles={t.cards.length}
         onClose={closeLightbox}
-        onNext={nextLightboxImg}
-        onPrev={prevLightboxImg}
+        onNextImage={nextLightboxImg}
+        onPrevImage={prevLightboxImg}
+        onNextStyle={nextStyle}
+        onPrevStyle={prevStyle}
       />
     </div>
   );

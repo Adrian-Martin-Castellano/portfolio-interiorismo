@@ -1712,3 +1712,93 @@
     height: 45vh;
   }
 }
+/* Botones de navegación de imágenes dentro del Lightbox */
+.lightboxArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 18, 18, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 10;
+}
+
+.lightboxPrev {
+  left: 20px;
+}
+
+.lightboxNext {
+  right: 20px;
+}
+
+.arrowIcon {
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.lightboxArrow:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #121212;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightboxPrev:hover .arrowIcon {
+  transform: translateX(-2px);
+}
+
+.lightboxNext:hover .arrowIcon {
+  transform: translateX(2px);
+}
+
+/* =========================================================
+   NUEVO: Selector de Cambiar Estilos (Header del Lightbox)
+   ========================================================= */
+.styleSwitchNav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 6px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.styleNavBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.styleNavBtn:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.styleNavCounter {
+  font-size: 0.78rem;
+  opacity: 0.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0 12px;
+}
