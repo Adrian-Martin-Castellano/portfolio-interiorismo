@@ -4,6 +4,13 @@ import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 
+interface StyleDetails {
+  palette: string[];
+  materials: string[];
+  lighting: string;
+  extendedText: string;
+}
+
 interface StyleCardProps {
   index: number;
   images: string[];
@@ -12,6 +19,8 @@ interface StyleCardProps {
   quote: string;
   description: string;
   alignment: 'left' | 'right';
+  details: StyleDetails;
+  onOpenLightbox: (images: string[], initialIndex: number, title: string, category: string, details: StyleDetails) => void;
 }
 
 const translations = {
@@ -33,31 +42,49 @@ const translations = {
         category: 'Colección Natura',
         title: 'Esencia Balinesa',
         quote: '“Una oda a la desconexión tropical, donde la arquitectura se rinde ante la textura pura de la piedra y la teca.”',
-        description: 'Uso profundo de maderas exóticas certificadas, fibras naturales trenzadas a mano y presencia de piedra volcánica escultórica.'
+        description: 'Uso profundo de maderas exóticas certificadas, fibras naturales trenzadas a mano y presencia de piedra volcánica escultórica.',
+        details: {
+          palette: ['#C3A27D', '#6B543D', '#2B2621', '#E8DEC9'],
+          materials: ['Teca maciza', 'Piedra volcánica', 'Ratan trenzado', 'Mortero de cal beige'],
+          lighting: 'Luz cálida tamizada mediante pantallas de fibras naturales y retroiluminación focal.',
+          extendedText: 'Inspirado en los refugios tropicales del sudeste asiático, este estilo busca la simbiosis absoluta entre el interior y la naturaleza circundante. Los espacios fluidos y las texturas orgánicas promueven la serenidad interior y el ritmo pausado.'
+        }
       },
       {
         category: 'Colección Pureza',
         title: 'Minimalismo Cálido',
         quote: '“Reducir a lo esencial para hallar la calma absoluta, esculpiendo el espacio a través de la luz y los materiales crudos.”',
-        description: 'Ausencia de ornamentos innecesarios en favor de geometrías puras, morteros de cal y paletas tonales en gamas suaves.'
+        description: 'Ausencia de ornamentos innecesarios en favor de geometrías puras, morteros de cal y paletas tonales en gamas suaves.',
+        details: {
+          palette: ['#EBE7E0', '#D3C9BC', '#A89B8C', '#5C554E'],
+          materials: ['Microcemento neutro', 'Roble blanqueado', 'Lino lavado', 'Cal hidráulica'],
+          lighting: 'Grandes entradas de luz natural indirecta con cortinajes difusores de lino puro.',
+          extendedText: 'Una interpretación sobria pero acogedora del diseño funcional. Eliminamos las distracciones visuales para acentuar el valor espacial, la serenidad del orden y la sutileza de los tonos neutros en armonía.'
+        }
       },
       {
         category: 'Colección Urbana',
         title: 'Industrial Orgánico',
         quote: '“El carácter de la estructura vista y el metal, suavizado por la calidez texturizada de la madera recuperada.”',
-        description: 'Elementos estructurales honestos como hormigón o hierro forjado, contrastados estratégicamente con maderas nobles y vegetación.'
+        description: 'Elementos estructurales honestos como hormigón o hierro forjado, contrastados estratégicamente con maderas nobles y vegetación.',
+        details: {
+          palette: ['#3A3D40', '#8C857B', '#A66E4E', '#1F2022'],
+          materials: ['Hierro negro mate', 'Hormigón visto', 'Madera recuperada', 'Cuero envejecido'],
+          lighting: 'Focos direccionales tipo estudio, bombillas de filamento expuesto y baños de luz focalizados.',
+          extendedText: 'Combina el carácter tectónico y vanguardista de la arquitectura contemporánea con toques de calidez orgánica. Es el equilibrio perfecto entre la solidez industrial y el bienestar táctil.'
+        }
       },
       {
         category: 'Colección Vanguardia',
         title: 'Línea Contemporánea',
         quote: '“El reflejo del diseño actual. Espacios sofisticados donde conviven piezas icónicas de arte con molduras clásicas.”',
-        description: 'Espacios donde conviven acabados modernos, mármoles de vetas muy marcadas y una paleta cromática audaz y equilibrada.'
-      },
-      {
-        category: 'Colección Modelo (Editar)',
-        title: 'Nuevo Estilo de Autor',
-        quote: '“Escribe aquí la cita o frase inspiradora del nuevo estilo.”',
-        description: 'Añade aquí la descripción detallada de los materiales, colores y concepto de este nuevo estilo.'
+        description: 'Espacios donde conviven acabados modernos, mármoles de vetas muy marcadas y una paleta cromática audaz y equilibrada.',
+        details: {
+          palette: ['#1C1D21', '#E0D6C3', '#682D2B', '#8E9196'],
+          materials: ['Mármol Calacatta', 'Detalles en latón cepillado', 'Terciopelo denso', 'Molduras contemporáneas'],
+          lighting: 'Diseño lumínico escenográfico con candiles escultóricos y perfiles LED ocultos.',
+          extendedText: 'La expresión máxima del lujo atemporal. Pensado para proyectos de alta gama que buscan proyectar personalidad, distinción y un diálogo sutil entre elementos clásicos revisados y diseño de autor.'
+        }
       }
     ],
 
@@ -88,7 +115,8 @@ const translations = {
     moreStylesCta: 'Explorar Todos los Proyectos →',
 
     stickyCtaText: '¿Tienes un espacio que quieras transformar?',
-    stickyCtaBtn: 'Contacta'
+    stickyCtaBtn: 'Contacta',
+    learnMoreBtn: 'Saber Más'
   },
   en: {
     heroCta: 'View Projects',
@@ -108,31 +136,49 @@ const translations = {
         category: 'Natura Collection',
         title: 'Balinese Essence',
         quote: '“An ode to tropical retreat, where architecture yields to the pure texture of stone and teak.”',
-        description: 'Deep use of certified exotic woods, hand-woven natural fibers, and sculptural volcanic stone.'
+        description: 'Deep use of certified exotic woods, hand-woven natural fibers, and sculptural volcanic stone.',
+        details: {
+          palette: ['#C3A27D', '#6B543D', '#2B2621', '#E8DEC9'],
+          materials: ['Solid Teak', 'Volcanic Stone', 'Woven Rattan', 'Beige Lime Mortar'],
+          lighting: 'Warm light filtered through woven shades and focal backlighting.',
+          extendedText: 'Inspired by South East Asian tropical sanctuaries, this style creates seamless continuity between inside and outside living.'
+        }
       },
       {
         category: 'Purity Collection',
         title: 'Warm Minimalism',
         quote: '“Reducing to the essential to find absolute calm, sculpting space through light and raw materials.”',
-        description: 'Absence of unnecessary ornament in favor of pure geometry, lime mortars, and soft bone color palettes.'
+        description: 'Absence of unnecessary ornament in favor of pure geometry, lime mortars, and soft bone color palettes.',
+        details: {
+          palette: ['#EBE7E0', '#D3C9BC', '#A89B8C', '#5C554E'],
+          materials: ['Neutral Microcement', 'Bleached Oak', 'Washed Linen', 'Hydraulic Lime'],
+          lighting: 'Abundant indirect natural light softened by raw linen drapery.',
+          extendedText: 'A welcoming approach to functional design, removing visual distractions to highlight spatial volume.'
+        }
       },
       {
         category: 'Urban Collection',
         title: 'Organic Industrial',
         quote: '“The character of exposed structure and metal, softened by the textured warmth of reclaimed wood.”',
-        description: 'Honest structural elements like concrete or wrought iron, strategically balanced with noble woods and greenery.'
+        description: 'Honest structural elements like concrete or wrought iron, strategically balanced with noble woods and greenery.',
+        details: {
+          palette: ['#3A3D40', '#8C857B', '#A66E4E', '#1F2022'],
+          materials: ['Matte Black Iron', 'Exposed Concrete', 'Reclaimed Wood', 'Aged Leather'],
+          lighting: 'Studio directional spotlights and focused washes of light.',
+          extendedText: 'Combines structural architectural character with organic warmth for a tactile, grounded atmosphere.'
+        }
       },
       {
         category: 'Vanguard Collection',
         title: 'Contemporary Line',
         quote: '“The reflection of current design. Sophisticated spaces where iconic art pieces meet classic moldings.”',
-        description: 'Spaces where modern finishes, bold marble veining, and a balanced color palette coexist seamlessly.'
-      },
-      {
-        category: 'Template Collection (Edit)',
-        title: 'New Signature Style',
-        quote: '“Write the inspirational quote for the new style here.”',
-        description: 'Add the detailed description of materials, colors, and concept for this new style here.'
+        description: 'Spaces where modern finishes, bold marble veining, and a balanced color palette coexist seamlessly.',
+        details: {
+          palette: ['#1C1D21', '#E0D6C3', '#682D2B', '#8E9196'],
+          materials: ['Calacatta Marble', 'Brushed Brass Details', 'Rich Velvet', 'Contemporary Moldings'],
+          lighting: 'Scenographic lighting design featuring sculptural fixtures and recessed LEDs.',
+          extendedText: 'The ultimate expression of timeless luxury tailored for high-end bespoke residential projects.'
+        }
       }
     ],
 
@@ -162,39 +208,52 @@ const translations = {
     moreStylesCta: 'Explore All Completed Projects →',
 
     stickyCtaText: 'Have a space you wish to transform?',
-    stickyCtaBtn: "Let's Talk"
+    stickyCtaBtn: "Let's Talk",
+    learnMoreBtn: 'Learn More'
   }
 };
 
-function StyleCard({ index, images, category, title, quote, description, alignment }: StyleCardProps) {
+function StyleCard({ index, images, category, title, quote, description, alignment, details, onOpenLightbox }: StyleCardProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { language } = useLanguage();
+  const learnMoreText = translations[language]?.learnMoreBtn || 'Saber Más';
 
-  const nextSlide = () => {
+  const nextSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
-  const prevSlide = () => {
+  const prevSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const alignmentClass = alignment === 'right' ? styles.alignRight : styles.alignLeft;
   const formattedNumber = String(index + 1).padStart(2, '0');
 
+  const handleOpenDetails = () => {
+    onOpenLightbox(images, currentIndex, title, category, details);
+  };
+
   return (
     <div className={`${styles.styleFloatingCard} ${alignmentClass}`}>
       <div className={styles.styleCardContent}>
-        <div className={styles.carouselContainer}>
+        <div 
+          className={styles.carouselContainer} 
+          onClick={handleOpenDetails}
+        >
           <div 
             className={styles.carouselTrack} 
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((img, imgIdx) => (
-              <img 
-                key={imgIdx} 
-                src={img} 
-                alt={`${title} ${imgIdx + 1}`} 
-                className={styles.carouselImage} 
-              />
+              <div key={imgIdx} className={styles.imageZoomWrapper}>
+                <img 
+                  src={img} 
+                  alt={`${title} ${imgIdx + 1}`} 
+                  className={styles.carouselImage} 
+                />
+              </div>
             ))}
           </div>
 
@@ -219,7 +278,10 @@ function StyleCard({ index, images, category, title, quote, description, alignme
                   <button
                     key={dotIdx}
                     className={`${styles.dot} ${dotIdx === currentIndex ? styles.activeDot : ''}`}
-                    onClick={() => setCurrentIndex(dotIdx)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentIndex(dotIdx);
+                    }}
                     aria-label={`Ir a imagen ${dotIdx + 1}`}
                   />
                 ))}
@@ -234,6 +296,14 @@ function StyleCard({ index, images, category, title, quote, description, alignme
           <h3>{title}</h3>
           <p className={styles.editorialQuote}>{quote}</p>
           <p className={styles.mainDescription}>{description}</p>
+
+          <button 
+            className={styles.learnMoreCardBtn}
+            onClick={handleOpenDetails}
+          >
+            <span>{learnMoreText}</span>
+            <span className={styles.btnArrow}>→</span>
+          </button>
         </div>
       </div>
     </div>
@@ -249,11 +319,26 @@ function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Estados de progreso del carrusel en %
   const [stylesProgress, setStylesProgress] = useState(0);
   const [featuredProgress, setFeaturedProgress] = useState(0);
 
-  // Referencias a los contenedores de scroll
+  // Lightbox Modal Data
+  const [lightboxData, setLightboxData] = useState<{
+    isOpen: boolean;
+    images: string[];
+    index: number;
+    title: string;
+    category: string;
+    details: StyleDetails | null;
+  }>({
+    isOpen: false,
+    images: [],
+    index: 0,
+    title: '',
+    category: '',
+    details: null
+  });
+
   const stylesScrollRef = useRef<HTMLDivElement>(null);
   const featuredScrollRef = useRef<HTMLDivElement>(null);
 
@@ -287,6 +372,45 @@ function Home() {
     }
   };
 
+  const openLightbox = (
+    images: string[], 
+    initialIndex: number, 
+    title: string, 
+    category: string, 
+    details: StyleDetails
+  ) => {
+    setLightboxData({
+      isOpen: true,
+      images,
+      index: initialIndex,
+      title,
+      category,
+      details
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxData((prev) => ({ ...prev, isOpen: false }));
+    document.body.style.overflow = '';
+  };
+
+  const nextLightboxImg = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setLightboxData((prev) => ({
+      ...prev,
+      index: (prev.index + 1) % prev.images.length
+    }));
+  };
+
+  const prevLightboxImg = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setLightboxData((prev) => ({
+      ...prev,
+      index: (prev.index - 1 + prev.images.length) % prev.images.length
+    }));
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
@@ -314,8 +438,7 @@ function Home() {
     ['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png'],
     ['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png'],
     ['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png'],
-    ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png'],
-    ['/assets/balines-1.png', '/assets/minimal-1.png'] 
+    ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']
   ];
 
   const featuredImageAssets = [
@@ -399,7 +522,9 @@ function Home() {
               title={card.title}
               quote={card.quote}
               description={card.description}
+              details={card.details}
               images={imagesList[idx] || imagesList[0]}
+              onOpenLightbox={openLightbox}
             />
           ))}
         </div>
@@ -549,6 +674,78 @@ function Home() {
           </button>
         )}
       </div>
+
+      {/* 7. LIGHTBOX MODAL ENRIQUECIDO */}
+      {lightboxData.isOpen && (
+        <div className={styles.lightboxOverlay} onClick={closeLightbox}>
+          <div className={styles.lightboxHeader}>
+            <div className={styles.lightboxHeaderTitles}>
+              <span className={styles.lightboxCategory}>{lightboxData.category}</span>
+              <h2 className={styles.lightboxTitle}>{lightboxData.title}</h2>
+            </div>
+            <button className={styles.lightboxCloseBtn} onClick={closeLightbox}>✕</button>
+          </div>
+
+          <div className={styles.lightboxMainLayout} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.lightboxStage}>
+              <img 
+                src={lightboxData.images[lightboxData.index]} 
+                alt={lightboxData.title} 
+                className={styles.lightboxImage} 
+              />
+
+              {lightboxData.images.length > 1 && (
+                <>
+                  <button className={`${styles.lightboxArrow} ${styles.lightboxPrev}`} onClick={prevLightboxImg}>
+                    ‹
+                  </button>
+                  <button className={`${styles.lightboxArrow} ${styles.lightboxNext}`} onClick={nextLightboxImg}>
+                    ›
+                  </button>
+                </>
+              )}
+
+              <div className={styles.lightboxImgCounter}>
+                {String(lightboxData.index + 1).padStart(2, '0')} / {String(lightboxData.images.length).padStart(2, '0')}
+              </div>
+            </div>
+
+            {lightboxData.details && (
+              <div className={styles.lightboxDetailsPanel}>
+                <div className={styles.detailsSection}>
+                  <p className={styles.extendedDescription}>{lightboxData.details.extendedText}</p>
+                </div>
+
+                <div className={styles.detailsSection}>
+                  <h4>Paleta Cromática</h4>
+                  <div className={styles.colorSwatches}>
+                    {lightboxData.details.palette.map((color, cIdx) => (
+                      <div key={cIdx} className={styles.swatchItem}>
+                        <span className={styles.colorCircle} style={{ backgroundColor: color }} />
+                        <span className={styles.colorCode}>{color}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.detailsSection}>
+                  <h4>Materiales Clave</h4>
+                  <ul className={styles.materialsList}>
+                    {lightboxData.details.materials.map((mat, mIdx) => (
+                      <li key={mIdx}>{mat}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className={styles.detailsSection}>
+                  <h4>Iluminación</h4>
+                  <p className={styles.lightingText}>{lightboxData.details.lighting}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

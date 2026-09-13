@@ -1334,3 +1334,381 @@
     cursor: default;
   }
 }
+
+/* ==========================================
+   EFECTO ZOOM HINT EN TARJETAS Y LIGHTBOX
+   ========================================== */
+
+.carouselContainer {
+  cursor: pointer;
+}
+
+.imageZoomWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.expandHint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(212, 190, 155, 0.3);
+  color: #d4be9b;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.carouselContainer:hover .expandHint {
+  opacity: 1;
+}
+
+/* MODAL LIGHTBOX PANTALLA COMPLETA */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 12, 12, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  animation: fadeInLightbox 0.25s ease-out;
+}
+
+@keyframes fadeInLightbox {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxHeader {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #d4be9b;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  z-index: 10000;
+}
+
+.lightboxTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.lightboxCloseBtn {
+  background: transparent;
+  border: none;
+  color: #d4be9b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 12px;
+  transition: transform 0.2s ease;
+}
+
+.lightboxCloseBtn:active {
+  transform: scale(0.9);
+}
+
+.lightboxStage {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* FLECHAS DE NAVEGACIÓN EN LIGHTBOX */
+.lightboxArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 18, 18, 0.5);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(212, 190, 155, 0.3);
+  color: #d4be9b;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.lightboxArrow:active {
+  background: rgba(212, 190, 155, 0.2);
+}
+
+.lightboxPrev {
+  left: 10px;
+}
+
+.lightboxNext {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .lightboxStage {
+    height: 75vh;
+  }
+
+  .lightboxArrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+  }
+
+  .lightboxTitle {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================
+   BOTÓN "SABER MÁS" Y MODAL EXPANDIDO DE DETALLES
+   ========================================== */
+
+.learnMoreCardBtn {
+  margin-top: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #d4be9b;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.learnMoreCardBtn:hover {
+  opacity: 0.8;
+}
+
+.btnArrow {
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.learnMoreCardBtn:hover .btnArrow {
+  transform: translateX(4px);
+}
+
+/* OVERLAY DE LIGHTBOX */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(12, 12, 12, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.lightboxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.lightboxCategory {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #d4be9b;
+  text-transform: uppercase;
+}
+
+.lightboxTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 4px 0 0 0;
+}
+
+.lightboxCloseBtn {
+  background: transparent;
+  border: none;
+  color: #d4be9b;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+/* DISPOSICIÓN PRINCIPAL EN EL MODAL */
+.lightboxMainLayout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: start;
+}
+
+.lightboxStage {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightboxImgCounter {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  color: #d4be9b;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  background: rgba(18, 18, 18, 0.6);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.lightboxArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 18, 18, 0.6);
+  border: 1px solid rgba(212, 190, 155, 0.3);
+  color: #d4be9b;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.lightboxPrev { left: 12px; }
+.lightboxNext { right: 12px; }
+
+/* PANEL DE DETALLES */
+.lightboxDetailsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.detailsSection h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: #d4be9b;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+.extendedDescription,
+.lightingText {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.colorSwatches {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.swatchItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.colorCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.colorCode {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.materialsList {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.materialsList li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .lightboxMainLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .lightboxStage {
+    height: 45vh;
+  }
+}
