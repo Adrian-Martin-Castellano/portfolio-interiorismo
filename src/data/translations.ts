@@ -91,7 +91,11 @@ export const translations = {
 
     stickyCtaText: '¿Tienes un espacio que quieras transformar?',
     stickyCtaBtn: 'Contacta',
-    learnMoreBtn: 'Saber Más'
+    learnMoreBtn: 'Saber Más',
+    lightbox: {
+      prev: 'ANT',
+      next: 'SIG',
+    }
   },
   en: {
     heroCta: 'View Projects',
@@ -185,6 +189,10 @@ export const translations = {
 
     stickyCtaText: 'Have a space you wish to transform?',
     stickyCtaBtn: "Let's Talk",
-    learnMoreBtn: 'Learn More'
+    learnMoreBtn: 'Learn More',
+    lightbox: {
+      prev: 'PREV',
+      next: 'NEXT',
+    }
   }
 };

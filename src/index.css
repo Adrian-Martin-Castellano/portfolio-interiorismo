@@ -33,3 +33,10 @@ html, body {
   color: var(--text-color) !important;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
+
+body.lightbox-open > #root > header,
+body.lightbox-open > #root > div > header,
+body.lightbox-open > #root > nav,
+body.lightbox-open > #root > div > nav {
+  display: none !important;
+}

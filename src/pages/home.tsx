@@ -46,25 +46,37 @@ function Home() {
     imageIndex: 0
   });
 
+  useEffect(() => {
+    if (lightboxData.isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('lightbox-open');
+    } else {
+      document.body.style.overflow = '';
+      document.body.classList.remove('lightbox-open');
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.classList.remove('lightbox-open');
+    };
+  }, [lightboxData.isOpen]);
+
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
   };
 
-  // Abrir Lightbox indicando el índice del estilo y de la foto
   const openLightbox = (styleIdx: number, initialImageIdx: number) => {
     setCurrentStyleIndex(styleIdx);
     setLightboxData({
       isOpen: true,
       imageIndex: initialImageIdx
     });
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setLightboxData((prev) => ({ ...prev, isOpen: false }));
-    document.body.style.overflow = '';
   };
 
   // Navegación entre IMÁGENES del mismo estilo
