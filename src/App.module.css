@@ -1,77 +1,57 @@
-.pageContainer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #fcfbfa; 
-  color: #333333;
+:root {
+  --bg-color: #fdfcfa;
+  --bg-navbar: rgba(253, 252, 250, 0.85);
+  --bg-card: #fcfbfa;
+  --text-color: #333230;
+  --text-color-secondary: #8e867a;
+  --border-color: rgba(197, 168, 128, 0.15);
+  --accent-color: #c5a880;
+
+  --lightbox-bg: #f7f5f0;
+  --lightbox-overlay: rgba(245, 242, 237, 0.78);
+  --lightbox-text: #2c2825;
+  --lightbox-subtext: #7c7365;
+  --lightbox-border: rgba(197, 168, 128, 0.25);
+  --lightbox-pill-bg: #eae6de;
+  --lightbox-pill-btn-hover: #ded8cb;
 }
 
-.heroSection {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 2rem;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+[data-theme='dark'] {
+  --bg-color: #141312;
+  --bg-navbar: rgba(20, 19, 18, 0.85);
+  --bg-card: #1c1a18;
+  --text-color: #f3f0ec;
+  --text-color-secondary: #a39c93;
+  --border-color: rgba(197, 168, 128, 0.25);
+  --accent-color: #d4b890;
+
+  --lightbox-bg: #1a1917;
+  --lightbox-overlay: rgba(12, 11, 10, 0.82);
+  --lightbox-text: #f0ece6;
+  --lightbox-subtext: #a8a095;
+  --lightbox-border: rgba(212, 184, 144, 0.2);
+  --lightbox-pill-bg: #262421;
+  --lightbox-pill-btn-hover: #33302c;
 }
 
-.heroCard {
-  background-color: rgba(255, 255, 255, 0.85); 
-  backdrop-filter: blur(12px); 
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6); 
-  padding: 4rem 5rem;
-  border-radius: 4px; 
-  text-align: center;
-  max-width: 850px;
-  width: 100%;
-  box-shadow: 0 30px 60px rgba(142, 134, 122, 0.12); 
+* {
+  box-sizing: border-box;
 }
 
-.heroCard h1 {
-  color: #c5a880; 
-  font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
-  font-size: 3.5rem;
-  margin: 0 0 1.5rem 0;
-  font-weight: 400;
-  letter-spacing: 4px;
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden;
+  background-color: var(--bg-color) !important; 
+  color: var(--text-color) !important;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.subtitle {
-  color: #6e6a64;
-  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.subtitle span {
-  color: #bfa37a;
-  margin: 0 0.7rem;
-}
-
-@media (max-width: 768px) {
-  .heroSection {
-    padding-top: 80px;
-  }
-  
-  .heroCard {
-    padding: 3rem 1.5rem;
-    border-radius: 2px;
-  }
-
-  .heroCard h1 {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-  }
+body.lightbox-open > #root > header,
+body.lightbox-open > #root > div > header,
+body.lightbox-open > #root > nav,
+body.lightbox-open > #root > div > nav {
+  display: none !important;
 }
