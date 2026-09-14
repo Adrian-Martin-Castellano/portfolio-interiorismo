@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import styles from '../pages/Home.module.css';
+import styles from './LightboxModal.module.css'
 import type { StyleDetails } from './StyleCard';
 import { useLanguage } from '../context/LanguageContext';
 
