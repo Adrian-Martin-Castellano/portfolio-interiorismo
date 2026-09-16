@@ -1372,3 +1372,29 @@
 .carouselContainer:hover .expandHint {
   opacity: 1;
 }
+
+.learnMoreCardBtn {
+  margin-top: 1rem;
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.55rem 1.2rem;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.learnMoreCardBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

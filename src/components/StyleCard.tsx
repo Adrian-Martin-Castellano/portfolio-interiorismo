@@ -119,7 +119,7 @@ export function StyleCard({
             onClick={handleOpenDetails}
           >
             <span>{learnMoreText}</span>
-            <span className={styles.btnArrow}>→</span>
+            <span className={styles.btnArrow}></span>
           </button>
         </div>
       </div>
