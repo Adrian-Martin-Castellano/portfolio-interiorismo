@@ -149,10 +149,19 @@ function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <img 
-            src={getDynamicAsset('logos', 'logo_portada', 'jpeg')}
-            alt="Logo BLIC" 
-            className={styles.heroImage} 
-          />
+  src={getDynamicAsset('logos', 'logo_portada', 'jpeg')} 
+  alt="Logo BLIC" 
+  className={styles.heroImage} 
+  onError={(e) => {
+    // Si falla la extensión jpeg, intenta cambiarla a jpg
+    const target = e.currentTarget;
+    if (target.src.endsWith('.jpeg')) {
+      target.src = target.src.replace('.jpeg', '.jpg');
+    } else if (target.src.endsWith('.jpg')) {
+      target.src = target.src.replace('.jpg', '.jpeg');
+    }
+  }}
+/>
         </div>
       </section>
 
