@@ -1466,6 +1466,14 @@
   transform: translateY(-2px);
 }
 
+.quizCardImage {
+  width: 250px; 
+  height: auto;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  object-fit: contain;
+}
+
 .processSection {
   max-width: 1100px;
   width: 90%;
@@ -1517,5 +1525,18 @@
   
   .quizCard h2 {
     font-size: 1.6rem;
+  }
+
+  .stylesIntroHeaderthr {
+  text-align: center;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto 5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: -2.25rem !important;
+  margin-bottom: -0.5rem !important;
   }
 }

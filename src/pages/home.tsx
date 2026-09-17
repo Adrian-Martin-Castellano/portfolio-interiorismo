@@ -266,18 +266,22 @@ function Home() {
 
       {/* 4 SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
-        <div className={styles.stylesIntroHeader}>
+        <div className={styles.stylesIntroHeaderthr}>
           <img 
             src={getDynamicAsset('marcos', 'marco_descubre_tu_estilo')} 
-            alt={t.quizTitle} 
             className={styles.introHeaderImage}
           />
         </div>
 
         <div className={styles.quizCard}>
-          <span className={styles.videoTag}>{t.quizSubtitle}</span>
-          <h2>{t.quizTitle}</h2>
+          <img 
+            src="/assets/iconos/icono_quiz_claro.jpg" 
+            alt="Icono Test" 
+            className={styles.quizCardImage}
+          />
+          
           <p>{t.quizDescription}</p>
+          
           <button className={styles.quizStartBtn} onClick={() => setShowQuizModal(true)}>
             {t.quizCta}
           </button>

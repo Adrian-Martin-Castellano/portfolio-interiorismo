@@ -96,10 +96,8 @@ export const translations = {
       prev: 'ANT',
       next: 'SIG',
     },
-    quizSubtitle: "TEST INTERACTIVO DE DISEÑO",
-    quizTitle: "¿Con qué identidad te identificas?",
     quizDescription: "Responde a 10 preguntas visuales y definiremos la línea arquitectónica y de interiorismo que mejor encaja con tu visión.",
-    quizCta: "Iniciar Test de Estilo →",
+    quizCta: "Iniciar Test de Estilo",
     processSteps: [
       {
         number: "01",
@@ -215,10 +213,8 @@ export const translations = {
       prev: 'PREV',
       next: 'NEXT',
     },
-    quizSubtitle: "INTERACTIVE DESIGN QUIZ",
-    quizTitle: "Which identity do you identify with?",
     quizDescription: "Answer 10 visual questions and we will define the architectural and interior design line that best fits your vision.",
-    quizCta: "Start Style Test →",
+    quizCta: "Start Style Test",
     processSteps: [
       {
         number: "01",
