@@ -95,7 +95,28 @@ export const translations = {
     lightbox: {
       prev: 'ANT',
       next: 'SIG',
-    }
+    },
+    quizSubtitle: "TEST INTERACTIVO DE DISEÑO",
+    quizTitle: "¿Con qué identidad te identificas?",
+    quizDescription: "Responde a 10 preguntas visuales y definiremos la línea arquitectónica y de interiorismo que mejor encaja con tu visión.",
+    quizCta: "Iniciar Test de Estilo →",
+    processSteps: [
+      {
+        number: "01",
+        title: "Concepto & Identidad",
+        description: "Definimos las líneas generales del proyecto según tus necesidades y la visión arquitectónica."
+      },
+      {
+        number: "02",
+        title: "Desarrollo 3D & Detalle",
+        description: "Visualización fotorrealista de iluminación, materiales y espacios antes de construir."
+      },
+      {
+        number: "03",
+        title: "Ejecución & Dirección",
+        description: "Gestión integral para materializar la propuesta con acabados de alta gama."
+      }
+    ]
   },
   en: {
     heroCta: 'View Projects',
@@ -193,6 +214,27 @@ export const translations = {
     lightbox: {
       prev: 'PREV',
       next: 'NEXT',
-    }
+    },
+    quizSubtitle: "INTERACTIVE DESIGN QUIZ",
+    quizTitle: "Which identity do you identify with?",
+    quizDescription: "Answer 10 visual questions and we will define the architectural and interior design line that best fits your vision.",
+    quizCta: "Start Style Test →",
+    processSteps: [
+      {
+        number: "01",
+        title: "Concept & Identity",
+        description: "We define the general guidelines of the project according to your needs and architectural vision."
+      },
+      {
+        number: "02",
+        title: "3D Development & Detail",
+        description: "Photorealistic visualization of lighting, materials, and spaces before construction."
+      },
+      {
+        number: "03",
+        title: "Execution & Direction",
+        description: "Comprehensive management to materialize the proposal with high-end finishes."
+      }
+    ]
   }
 };

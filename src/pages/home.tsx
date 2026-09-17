@@ -264,7 +264,27 @@ function Home() {
         </div>
       </section>
 
-      {/* 4. PROYECTOS DESTACADOS */}
+      {/* 4 SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
+      <section className={styles.quizSection}>
+        <div className={styles.stylesIntroHeader}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_descubre_tu_estilo')} 
+            alt={t.quizTitle} 
+            className={styles.introHeaderImage}
+          />
+        </div>
+
+        <div className={styles.quizCard}>
+          <span className={styles.videoTag}>{t.quizSubtitle}</span>
+          <h2>{t.quizTitle}</h2>
+          <p>{t.quizDescription}</p>
+          <button className={styles.quizStartBtn} onClick={() => setShowQuizModal(true)}>
+            {t.quizCta}
+          </button>
+        </div>
+      </section>
+
+      {/* 5. PROYECTOS DESTACADOS */}
       <section className={styles.featuredProjectsSection}>
         <div className={styles.stylesIntroHeaderScd}>
           <img 
@@ -334,7 +354,7 @@ function Home() {
         </div>
       </section>
 
-      {/* 5. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
+      {/* 6. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
       <section className={styles.moreStylesSection}>
         <div className={styles.moreStylesContent}>
           <span className={styles.moreStylesTag}>{t.moreStylesLabel}</span>
@@ -346,7 +366,28 @@ function Home() {
         </div>
       </section>
 
-      {/* 6. BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR */}
+      {/* 7 PROCESO DE TRABAJO (METODOLOGÍA) */}
+      <section className={styles.processSectionWrapper}>
+        <div className={styles.stylesIntroHeader}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_nuestro_proceso')} 
+            alt="Proceso de diseño" 
+            className={styles.introHeaderImage}
+          />
+        </div>
+
+        <div className={styles.processGrid}>
+          {t.processSteps.map((step, idx) => (
+            <div key={idx} className={styles.processStep}>
+              <span className={styles.stepNumber}>{step.number}</span>
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
@@ -375,7 +416,7 @@ function Home() {
         )}
       </div>
 
-      {/* 7. LIGHTBOX MODAL CON CAMBIO DE ESTILOS E IMÁGENES */}
+      {/* LIGHTBOX MODAL CON CAMBIO DE ESTILOS E IMÁGENES */}
       <LightboxModal 
         isOpen={lightboxData.isOpen}
         images={activeImages}
