@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { QUIZ_QUESTIONS} from './quizData';
-import type {QuizOption } from './quizData';
+import { QUIZ_QUESTIONS } from './quizData';
+import type { QuizOption } from './quizData';
 import { QuizQuestion } from './QuizQuestion';
 import { QuizResult } from './QuizResult';
 import styles from './QuizModal.module.css';
@@ -72,15 +72,29 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className={styles.modalOverlay}>
-      <button 
-        className={styles.closeBtn} 
-        onClick={onClose}
-        aria-label="Cerrar test"
-      >
-        ✕
-      </button>
-
       <div className={styles.modalContainer}>
+        {!isFinished && (
+          <button 
+            className={styles.closeBtn} 
+            onClick={onClose}
+            aria-label="Cerrar test"
+          >
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        )}
+
         {!isFinished ? (
           <>
             <QuizQuestion
@@ -105,8 +119,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
             </div>
           </>
         ) : (
-          <QuizResult answers={answers} onClose={onClose} />
-        )}
+        <QuizResult answers={answers} onClose={onClose} />        )}
       </div>
     </div>
   );

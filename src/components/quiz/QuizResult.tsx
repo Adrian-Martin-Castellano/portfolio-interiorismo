@@ -44,7 +44,14 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
 
   const winnerStyle = calculateWinnerStyle();
 
-  const styleDetails: Record<string, { title: { es: string; en: string }; subtitle: { es: string; en: string }; description: { es: string; en: string } }> = {
+  const styleDetails: Record<
+    string,
+    {
+      title: { es: string; en: string };
+      subtitle: { es: string; en: string };
+      description: { es: string; en: string };
+    }
+  > = {
     minimal: {
       title: { es: "Línea Minimalista Calma", en: "Calm Minimalist Line" },
       subtitle: { es: "Pureza, orden y elegancia atemporal", en: "Purity, order, and timeless elegance" },
@@ -70,13 +77,14 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
       <span className={styles.resultTag}>
         {lang === 'en' ? 'YOUR DESIGN DIAGNOSTIC' : 'TU DIAGNÓSTICO DE DISEÑO'}
       </span>
+      
       <h2 className={styles.resultTitle}>{result.title[lang]}</h2>
       <h3 className={styles.resultSubtitle}>{result.subtitle[lang]}</h3>
       <p className={styles.resultDescription}>{result.description[lang]}</p>
 
       <div className={styles.resultActions}>
         <button onClick={onClose} className={styles.primaryResultBtn}>
-          {lang === 'en' ? 'Explore Projects' : 'Explorar Proyectos'}
+          {lang === 'en' ? 'Return to Website' : 'Volver a la web'}
         </button>
       </div>
     </div>

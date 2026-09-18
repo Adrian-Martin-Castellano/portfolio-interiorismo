@@ -33,21 +33,21 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p1_opt1",
         label: { es: "Luminosa & Calma", en: "Luminous & Calm" },
         sublabel: { es: "Elegancia neutra y serenidad", en: "Neutral elegance and serenity" },
-        image: "/assets/quiz/p1_neutro.webp",
+        image: "/assets/quiz/p1_neutro.jpg",
         styles: { minimal: 3, japandi: 2 }
       },
       {
         id: "p1_opt2",
         label: { es: "Cálida & Terrenal", en: "Warm & Earthy" },
         sublabel: { es: "Conexión orgánica con la naturaleza", en: "Organic connection with nature" },
-        image: "/assets/quiz/p1_organico.webp",
+        image: "/assets/quiz/p1_organico.jpg",
         styles: { balines: 3, mediterraneo: 2 }
       },
       {
         id: "p1_opt3",
         label: { es: "Sobria & Sofisticada", en: "Sober & Sophisticated" },
         sublabel: { es: "Contraste visual y carácter", en: "Visual contrast and character" },
-        image: "/assets/quiz/p1_oscuro.webp",
+        image: "/assets/quiz/p1_oscuro.jpg",
         styles: { industrial: 3, contemporaneo: 2 }
       }
     ]

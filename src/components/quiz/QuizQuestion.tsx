@@ -17,6 +17,8 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   const { language } = useLanguage();
   const lang = (language === 'en' ? 'en' : 'es') as 'es' | 'en';
 
+  console.log("Opciones recibidas en la pregunta:", question.options);
+
   return (
     <div className={styles.questionContainer}>
       <span className={styles.questionStep}>
