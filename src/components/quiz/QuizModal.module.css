@@ -11,11 +11,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .modalContainer {
-  position: relative;
+  position: relative; 
   width: 100%;
   max-width: 800px;
   background: var(--bg-card, rgba(18, 18, 18, 0.95));
@@ -30,17 +30,27 @@
 .closeBtn {
   position: absolute;
   top: 1.2rem;
-  right: 1.5rem;
-  background: transparent;
-  border: none;
-  color: var(--text-color-secondary, #a0a0a0);
-  font-size: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-color, #ffffff);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: color 0.2s ease;
+  z-index: 50;
+  padding: 0;
+  transition: all 0.25s ease;
 }
 
 .closeBtn:hover {
-  color: var(--accent-color, #d4af37);
+  color: #000000;
+  background: var(--accent-color, #d4af37);
+  border-color: var(--accent-color, #d4af37);
+  transform: scale(1.05);
 }
 
 .questionContainer {
@@ -90,6 +100,8 @@
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .optionCard:hover {
@@ -215,7 +227,6 @@
   border-color: var(--text-color, #ffffff);
 }
 
-
 .nextBtn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -283,55 +294,24 @@
   opacity: 0.9;
 }
 
-.closeBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--text-color, #ffffff);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 50;
-  padding: 0;
-  transition: all 0.25s ease;
-}
-
-.closeBtn:hover {
-  color: #000000;
-  background: var(--accent-color, #d4af37);
-  border-color: var(--accent-color, #d4af37);
-  transform: scale(1.05);
-}
-
+/* Reglas Responsive para Móvil (< 600px) */
 @media (max-width: 600px) {
   .modalContainer {
     padding: 3rem 1.2rem 1.5rem 1.2rem;
   }
 
   .closeBtn {
-    position: fixed; 
-    top: 2.5rem;
-    right: 2.5rem;
-    width: 38px;
-    height: 38px;
-    background: rgba(18, 18, 18, 0.85); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 100; 
+    position: absolute; /* Mantiene la cruz fijada al marco del modal en cualquier pantalla */
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 36px;
+    height: 36px;
   }
 
   .questionStep {
     margin-top: 0.5rem;
   }
-}
 
-@media (max-width: 600px) {
   .navigationFooter {
     flex-direction: column-reverse; 
     gap: 0.75rem;
