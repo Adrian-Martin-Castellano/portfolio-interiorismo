@@ -7,6 +7,7 @@ export interface QuizOption {
   styles: Record<string, number>;
 }
 
+
 export interface Question {
   id: number;
   title: { es: string; en: string };
