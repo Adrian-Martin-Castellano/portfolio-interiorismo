@@ -7,7 +7,6 @@ export interface QuizOption {
   styles: Record<string, number>;
 }
 
-
 export interface Question {
   id: number;
   title: { es: string; en: string };
@@ -66,12 +65,16 @@ export const QUIZ_QUESTIONS: Question[] = [
     type: "multiple",
     maxSelections: 3,
     options: [
-      { id: "c1", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { minimal: 2, japandi: 3 } },
-      { id: "c2", label: { es: "Negro Azabache", en: "Jet Black" }, hex: "#1A1A1A", styles: { industrial: 3, contemporaneo: 2 } },
-      { id: "c3", label: { es: "Verde Oliva", en: "Olive Green" }, hex: "#556B2F", styles: { balines: 3, organico: 2 } },
-      { id: "c4", label: { es: "Terracota", en: "Terracotta" }, hex: "#C86D51", styles: { mediterraneo: 3 } },
-      { id: "c5", label: { es: "Gris Hormigón", en: "Concrete Grey" }, hex: "#8C8C8C", styles: { industrial: 2, minimal: 2 } },
-      { id: "c6", label: { es: "Madera Nogal", en: "Walnut Wood" }, hex: "#4A3525", styles: { contemporaneo: 3, balines: 1 } }
+      { id: "c1", label: { es: "Blanco Marfil", en: "Ivory White" }, hex: "#F5F2EB", styles: { minimal: 3, japandi: 2 } },
+      { id: "c2", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { minimal: 2, japandi: 3 } },
+      { id: "c3", label: { es: "Verde Salvia", en: "Sage Green" }, hex: "#9CAF88", styles: { japandi: 2, balines: 2 } },
+      { id: "c4", label: { es: "Verde Oliva", en: "Olive Green" }, hex: "#556B2F", styles: { balines: 3, mediterraneo: 1 } },
+      { id: "c5", label: { es: "Terracota Warm", en: "Warm Terracotta" }, hex: "#C86D51", styles: { mediterraneo: 3, balines: 2 } },
+      { id: "c6", label: { es: "Azul Profundo", en: "Deep Blue" }, hex: "#1C2D37", styles: { contemporaneo: 2, mediterraneo: 2 } },
+      { id: "c7", label: { es: "Gris Hormigón", en: "Concrete Grey" }, hex: "#8C8C8C", styles: { industrial: 3, minimal: 1 } },
+      { id: "c8", label: { es: "Madera Roble", en: "Oak Wood" }, hex: "#B88A58", styles: { japandi: 3, balines: 2 } },
+      { id: "c9", label: { es: "Madera Nogal", en: "Walnut Wood" }, hex: "#4A3525", styles: { contemporaneo: 3, industrial: 1 } },
+      { id: "c10", label: { es: "Negro Azabache", en: "Jet Black" }, hex: "#1A1A1A", styles: { industrial: 3, contemporaneo: 2 } }
     ]
   }
 ];
