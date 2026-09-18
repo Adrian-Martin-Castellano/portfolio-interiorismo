@@ -1,0 +1,113 @@
+import React, { useEffect } from 'react';
+import { QUIZ_QUESTIONS} from './quizData';
+import type {QuizOption } from './quizData';
+import { QuizQuestion } from './QuizQuestion';
+import { QuizResult } from './QuizResult';
+import styles from './QuizModal.module.css';
+
+interface QuizModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
+  const [currentStep, setCurrentStep] = React.useState(0);
+  const [answers, setAnswers] = React.useState<Record<number, string[]>>({});
+  const [isFinished, setIsFinished] = React.useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('quiz-open');
+    } else {
+      document.body.style.overflow = '';
+      document.body.classList.remove('quiz-open');
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.classList.remove('quiz-open');
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const currentQuestion = QUIZ_QUESTIONS[currentStep];
+  const currentSelections = answers[currentQuestion?.id] || [];
+
+  const handleSelectOption = (option: QuizOption) => {
+    const qId = currentQuestion.id;
+
+    if (currentQuestion.type === 'single') {
+      setAnswers((prev) => ({ ...prev, [qId]: [option.id] }));
+    } else {
+      const max = currentQuestion.maxSelections || 3;
+      const exists = currentSelections.includes(option.id);
+
+      if (exists) {
+        setAnswers((prev) => ({
+          ...prev,
+          [qId]: currentSelections.filter((id) => id !== option.id)
+        }));
+      } else if (currentSelections.length < max) {
+        setAnswers((prev) => ({
+          ...prev,
+          [qId]: [...currentSelections, option.id]
+        }));
+      }
+    }
+  };
+
+  const handleNext = () => {
+    if (currentStep < QUIZ_QUESTIONS.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      setIsFinished(true);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentStep > 0) setCurrentStep((prev) => prev - 1);
+  };
+
+  return (
+    <div className={styles.modalOverlay}>
+      <button 
+        className={styles.closeBtn} 
+        onClick={onClose}
+        aria-label="Cerrar test"
+      >
+        ✕
+      </button>
+
+      <div className={styles.modalContainer}>
+        {!isFinished ? (
+          <>
+            <QuizQuestion
+              question={currentQuestion}
+              selectedOptions={currentSelections}
+              onSelectOption={handleSelectOption}
+            />
+
+            <div className={styles.navigationFooter}>
+              {currentStep > 0 && (
+                <button className={styles.prevBtn} onClick={handlePrev}>
+                  Anterior
+                </button>
+              )}
+              <button
+                className={styles.nextBtn}
+                onClick={handleNext}
+                disabled={currentSelections.length === 0}
+              >
+                {currentStep === QUIZ_QUESTIONS.length - 1 ? 'Ver Resultado' : 'Siguiente'}
+              </button>
+            </div>
+          </>
+        ) : (
+          <QuizResult answers={answers} onClose={onClose} />
+        )}
+      </div>
+    </div>
+  );
+};

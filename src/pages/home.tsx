@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { StyleCard } from '../components/StyleCard';
 import { LightboxModal } from '../components/LightboxModal';
+import { QuizModal } from '../components/quiz/QuizModal';
 import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
 import { translations } from '../data/translations';
 
@@ -29,6 +30,7 @@ function Home() {
 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
 
   const stylesScrollRef = useRef<HTMLDivElement>(null);
   const featuredScrollRef = useRef<HTMLDivElement>(null);
@@ -264,11 +266,12 @@ function Home() {
         </div>
       </section>
 
-      {/* 4 SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
+      {/* 4. SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
         <div className={styles.stylesIntroHeaderthr}>
           <img 
             src={getDynamicAsset('marcos', 'marco_descubre_tu_estilo')} 
+            alt="Descubre Tu Estilo"
             className={styles.introHeaderImage}
           />
         </div>
@@ -370,7 +373,7 @@ function Home() {
         </div>
       </section>
 
-      {/* 7 PROCESO DE TRABAJO (METODOLOGÍA) */}
+      {/* 7. PROCESO DE TRABAJO (METODOLOGÍA) */}
       <section className={styles.processSectionWrapper}>
         <div className={styles.stylesIntroHeader}>
           <img 
@@ -435,6 +438,12 @@ function Home() {
         onPrevImage={prevLightboxImg}
         onNextStyle={nextStyle}
         onPrevStyle={prevStyle}
+      />
+
+      {/* MODAL INTERACTIVA DEL QUIZ DE ESTILOS */}
+      <QuizModal 
+        isOpen={showQuizModal} 
+        onClose={() => setShowQuizModal(false)} 
       />
     </div>
   );
