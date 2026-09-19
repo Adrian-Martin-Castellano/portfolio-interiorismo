@@ -32,23 +32,23 @@ export const QUIZ_QUESTIONS: Question[] = [
       {
         id: "p1_opt1",
         label: { es: "Luminosa & Calma", en: "Luminous & Calm" },
-        sublabel: { es: "Elegancia neutra y serenidad", en: "Neutral elegance and serenity" },
+        sublabel: { es: "Elegancia neutra, orden y serenidad", en: "Neutral elegance, order, and serenity" },
         image: "/assets/quiz/p1_neutro.jpg",
-        styles: { minimal: 3, japandi: 2 }
+        styles: { minimal: 3, japandi: 3, escandinavo: 2 }
       },
       {
         id: "p1_opt2",
         label: { es: "Cálida & Terrenal", en: "Warm & Earthy" },
-        sublabel: { es: "Conexión orgánica con la naturaleza", en: "Organic connection with nature" },
+        sublabel: { es: "Conexión orgánica y texturas naturales", en: "Organic connection and natural textures" },
         image: "/assets/quiz/p1_organico.jpg",
-        styles: { balines: 3, mediterraneo: 2 }
+        styles: { balines: 3, mediterraneo: 2, rustico: 2, wabi_sabi: 1 }
       },
       {
         id: "p1_opt3",
         label: { es: "Sobria & Sofisticada", en: "Sober & Sophisticated" },
-        sublabel: { es: "Contraste visual y carácter", en: "Visual contrast and character" },
+        sublabel: { es: "Contraste visual, carácter y exclusividad", en: "Visual contrast, character, and exclusivity" },
         image: "/assets/quiz/p1_oscuro.jpg",
-        styles: { industrial: 3, contemporaneo: 2 }
+        styles: { industrial: 3, contemporaneo: 3, art_deco: 2 }
       }
     ]
   },
@@ -65,16 +65,16 @@ export const QUIZ_QUESTIONS: Question[] = [
     type: "multiple",
     maxSelections: 3,
     options: [
-      { id: "c1", label: { es: "Blanco Marfil", en: "Ivory White" }, hex: "#F5F2EB", styles: { minimal: 3, japandi: 2 } },
-      { id: "c2", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { minimal: 2, japandi: 3 } },
-      { id: "c3", label: { es: "Verde Salvia", en: "Sage Green" }, hex: "#9CAF88", styles: { japandi: 2, balines: 2 } },
-      { id: "c4", label: { es: "Verde Oliva", en: "Olive Green" }, hex: "#556B2F", styles: { balines: 3, mediterraneo: 1 } },
-      { id: "c5", label: { es: "Terracota Warm", en: "Warm Terracotta" }, hex: "#C86D51", styles: { mediterraneo: 3, balines: 2 } },
-      { id: "c6", label: { es: "Azul Profundo", en: "Deep Blue" }, hex: "#1C2D37", styles: { contemporaneo: 2, mediterraneo: 2 } },
-      { id: "c7", label: { es: "Gris Hormigón", en: "Concrete Grey" }, hex: "#8C8C8C", styles: { industrial: 3, minimal: 1 } },
-      { id: "c8", label: { es: "Madera Roble", en: "Oak Wood" }, hex: "#B88A58", styles: { japandi: 3, balines: 2 } },
-      { id: "c9", label: { es: "Madera Nogal", en: "Walnut Wood" }, hex: "#4A3525", styles: { contemporaneo: 3, industrial: 1 } },
-      { id: "c10", label: { es: "Negro Azabache", en: "Jet Black" }, hex: "#1A1A1A", styles: { industrial: 3, contemporaneo: 2 } }
+      { id: "c1", label: { es: "Blanco Marfil", en: "Ivory White" }, hex: "#F5F2EB", styles: { minimal: 3, escandinavo: 2, japandi: 1 } },
+      { id: "c2", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { japandi: 3, wabi_sabi: 2, mediterraneo: 1 } },
+      { id: "c3", label: { es: "Verde Salvia", en: "Sage Green" }, hex: "#9CAF88", styles: { escandinavo: 2, japandi: 2, balines: 1 } },
+      { id: "c4", label: { es: "Verde Oliva", en: "Olive Green" }, hex: "#556B2F", styles: { balines: 3, rustico: 2, mediterraneo: 1 } },
+      { id: "c5", label: { es: "Terracota Warm", en: "Warm Terracotta" }, hex: "#C86D51", styles: { mediterraneo: 3, rustico: 2 } },
+      { id: "c6", label: { es: "Azul Profundo", en: "Deep Blue" }, hex: "#1C2D37", styles: { contemporaneo: 3, art_deco: 2 } },
+      { id: "c7", label: { es: "Gris Hormigón", en: "Concrete Grey" }, hex: "#8C8C8C", styles: { industrial: 3, minimal: 2 } },
+      { id: "c8", label: { es: "Madera Roble", en: "Oak Wood" }, hex: "#B88A58", styles: { escandinavo: 3, japandi: 2, balines: 1 } },
+      { id: "c9", label: { es: "Madera Nogal / Dorados", en: "Walnut & Brass" }, hex: "#4A3525", styles: { art_deco: 3, contemporaneo: 2 } },
+      { id: "c10", label: { es: "Negro Azabache", en: "Jet Black" }, hex: "#1A1A1A", styles: { industrial: 3, contemporaneo: 2, art_deco: 1 } }
     ]
   }
 ];

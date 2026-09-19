@@ -325,3 +325,123 @@
     padding: 0.9rem 1rem;
   }
 }
+
+/* Ajustes para la tarjeta de resultado mejorada */
+.resultContainer {
+  margin: -2.5rem -2rem -2.5rem -2rem; /* Expande la imagen hasta los bordes del modal */
+  padding: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.resultHeaderImage {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.resultHeaderImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resultImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(18,18,18,1) 100%);
+}
+
+.resultHeaderContent {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultMatchBadge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--accent-color, #d4af37);
+  color: #000;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resultBody {
+  padding: 1rem 2rem 2.5rem 2rem;
+  text-align: center;
+}
+
+/* Grid de detalles/características */
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.highlightCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.highlightIcon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.highlightCard strong {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--accent-color, #d4af37);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.highlightCard p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-color, #ffffff);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Ajuste móvil */
+@media (max-width: 600px) {
+  .resultContainer {
+    margin: -3rem -1.2rem -1.5rem -1.2rem;
+  }
+
+  .resultHeaderImage {
+    height: 180px;
+  }
+
+  .resultBody {
+    padding: 1rem 1.2rem 2rem 1.2rem;
+  }
+
+  .highlightsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
