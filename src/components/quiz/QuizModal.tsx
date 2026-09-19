@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react'; // <-- 1. Importar useRef
 import { QUIZ_QUESTIONS } from './quizData';
 import type { QuizOption } from './quizData';
 import { QuizQuestion } from './QuizQuestion';
@@ -15,6 +15,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
   const [answers, setAnswers] = React.useState<Record<number, string[]>>({});
   const [isFinished, setIsFinished] = React.useState(false);
 
+  // 2. Referencia para el contenedor escroleable
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -29,6 +32,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
       document.body.classList.remove('quiz-open');
     };
   }, [isOpen]);
+
+  // 3. Resetear el scroll hacia arriba cada vez que cambia la pregunta
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, [currentStep, isFinished]);
 
   if (!isOpen) return null;
 
@@ -72,7 +82,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalContainer}>
+      {/* 4. Asignar ref={containerRef} aquí */}
+      <div className={styles.modalContainer} ref={containerRef}>
         {!isFinished && (
           <button 
             className={styles.closeBtn} 
@@ -119,7 +130,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
             </div>
           </>
         ) : (
-        <QuizResult answers={answers} onClose={onClose} />        )}
+          <QuizResult answers={answers} onClose={onClose} />
+        )}
       </div>
     </div>
   );
