@@ -204,36 +204,39 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
 
   return (
     <div className={styles.resultContainer}>
-      {/* Banner con imagen del estilo */}
       <div className={styles.resultHeaderImage}>
         <img 
           src={result.image} 
           alt={result.title[lang]} 
           onError={(e) => {
-            // Fallback por si la imagen aún no existe en el proyecto
             (e.target as HTMLElement).style.display = 'none';
           }}
         />
         <div className={styles.resultImageOverlay} />
-        <div className={styles.resultHeaderContent}>
-          <span className={styles.resultMatchBadge}>
-            ✨ {lang === 'en' ? '98% Style Match' : '98% de Coincidencia'}
-          </span>
-          <span className={styles.resultTag}>
-            {lang === 'en' ? 'YOUR DESIGN DIAGNOSTIC' : 'TU DIAGNÓSTICO DE DISEÑO'}
-          </span>
-        </div>
       </div>
 
       <div className={styles.resultBody}>
+        <div className={styles.resultTopInfo}>
+          <span className={styles.resultTag}>
+            {lang === 'en' ? 'YOUR DESIGN DIAGNOSTIC' : 'TU DIAGNÓSTICO DE DISEÑO'}
+          </span>
+          <span className={styles.resultMatchBadge}>
+            98% {lang === 'en' ? 'Match' : 'de Coincidencia'}
+          </span>
+        </div>
+
         <h2 className={styles.resultTitle}>{result.title[lang]}</h2>
         <h3 className={styles.resultSubtitle}>{result.subtitle[lang]}</h3>
         <p className={styles.resultDescription}>{result.description[lang]}</p>
 
-        {/* Bloque de características clave */}
         <div className={styles.highlightsGrid}>
           <div className={styles.highlightCard}>
-            <span className={styles.highlightIcon}>🧱</span>
+            <div className={styles.highlightIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </div>
             <div>
               <strong>{lang === 'en' ? 'Key Materials' : 'Materiales Clave'}</strong>
               <p>{result.highlights.materials[lang]}</p>
@@ -241,7 +244,12 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
           </div>
 
           <div className={styles.highlightCard}>
-            <span className={styles.highlightIcon}>🎨</span>
+            <div className={styles.highlightIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor" opacity="0.2" />
+              </svg>
+            </div>
             <div>
               <strong>{lang === 'en' ? 'Color Palette' : 'Paleta de Color'}</strong>
               <p>{result.highlights.palette[lang]}</p>
@@ -249,7 +257,11 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
           </div>
 
           <div className={styles.highlightCard}>
-            <span className={styles.highlightIcon}>✨</span>
+            <div className={styles.highlightIcon}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 2l2.4 6.6L21 11l-5.4 4.8 1.8 6.8-5.4-3.8-5.4 3.8 1.8-6.8L3 11l6.6-2.4L12 2z" />
+              </svg>
+            </div>
             <div>
               <strong>{lang === 'en' ? 'Sensorial Atmosphere' : 'Atmósfera Sensorial'}</strong>
               <p>{result.highlights.vibe[lang]}</p>
