@@ -76,5 +76,47 @@ export const QUIZ_QUESTIONS: Question[] = [
       { id: "c9", label: { es: "Madera Nogal / Dorados", en: "Walnut & Brass" }, hex: "#4A3525", styles: { art_deco: 3, contemporaneo: 2 } },
       { id: "c10", label: { es: "Negro Azabache", en: "Jet Black" }, hex: "#1A1A1A", styles: { industrial: 3, contemporaneo: 2, art_deco: 1 } }
     ]
+  },
+  {
+    id: 3,
+    title: {
+      es: "¿Qué tipo de atmósfera e iluminación te hace sentir más cómodo?",
+      en: "What kind of atmosphere and lighting makes you feel most at ease?"
+    },
+    subtitle: {
+      es: "Selecciona el tipo de luz y espacio con el que más conectas (1 opción)",
+      en: "Select the light and space type you connect with most (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p3_opt1",
+        label: { es: "Luz Natural & Amplitud", en: "Natural Light & Spaciousness" },
+        sublabel: { es: "Ventanales amplios, espacios limpios y sensación diáfana", en: "Large windows, clean spaces, and an open feel" },
+        image: "/assets/quiz/p3_luz_natural.jpg",
+        styles: { minimal: 3, escandinavo: 3, mediterraneo: 2 }
+      },
+      {
+        id: "p3_opt2",
+        label: { es: "Cálida & Intimista", en: "Warm & Intimate" },
+        sublabel: { es: "Iluminación tenue, sombras suaves y texturas orgánicas", en: "Dim lighting, soft shadows, and organic textures" },
+        image: "/assets/quiz/p3_luz_tenue.jpg",
+        styles: { japandi: 3, wabi_sabi: 3, rustico: 1 }
+      },
+      {
+        id: "p3_opt3",
+        label: { es: "Focal & Dramática", en: "Focal & Dramatic" },
+        sublabel: { es: "Contrastes marcados, luz indirecta y toques metalizados", en: "Bold contrasts, indirect lighting, and metallic hints" },
+        image: "/assets/quiz/p3_luz_focal.jpg",
+        styles: { industrial: 3, contemporaneo: 3, art_deco: 2 }
+      },
+      {
+        id: "p3_opt4",
+        label: { es: "Tamizada & Sensorial", en: "Filtered & Sensory" },
+        sublabel: { es: "Luz suave con vegetación y conexión directa con el exterior", en: "Soft light with greenery and direct outdoor connection" },
+        image: "/assets/quiz/p3_luz_tamizada.png",
+        styles: { balines: 3, mediterraneo: 3, rustico: 2 }
+      }
+    ]
   }
 ];
