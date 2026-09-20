@@ -242,5 +242,40 @@ export const QUIZ_QUESTIONS: Question[] = [
         }
       }
     ]
+  },
+  {
+    id: 6,
+    title: {
+      es: "¿Cuál es tu relación real con los objetos diarios y la organización?",
+      en: "What is your real relationship with daily items and organization?"
+    },
+    subtitle: {
+      es: "Elige la filosofía de almacenaje que mejor encaja con tus hábitos (1 opción)",
+      en: "Choose the storage philosophy that best fits your habits (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p6_opt1",
+        label: { es: "Oculto & Panelado", en: "Hidden & Panelled" },
+        sublabel: { es: "Todo integrado tras armarios invisibles; la vista debe quedar despejada", en: "Everything integrated behind invisible doors; clean lines only" },
+        image: "/assets/quiz/p6_oculto.png",
+        styles: { minimal: 3, japandi: 2, contemporaneo: 1 }
+      },
+      {
+        id: "p6_opt2",
+        label: { es: "Exposición Curada", en: "Curated Display" },
+        sublabel: { es: "Estanterías abiertas con libros, cerámica, objetos personales y arte", en: "Open shelving with books, ceramics, personal items, and art" },
+        image: "/assets/quiz/p6_exposicion.png",
+        styles: { wabi_sabi: 3, escandinavo: 2, rustico: 2 }
+      },
+      {
+        id: "p6_opt3",
+        label: { es: "Mecanizado & Funcional", en: "Mechanized & Functional" },
+        sublabel: { es: "Sistemas modulares, rieles, estructuras vistas y practicidad urbana", en: "Modular systems, open rails, exposed structures, and urban practicality" },
+        image: "/assets/quiz/p6_industrial.png",
+        styles: { industrial: 3, contemporaneo: 2 }
+      }
+    ]
   }
 ];
