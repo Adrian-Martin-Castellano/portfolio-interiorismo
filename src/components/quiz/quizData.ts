@@ -118,5 +118,47 @@ export const QUIZ_QUESTIONS: Question[] = [
         styles: { balines: 3, mediterraneo: 3, rustico: 2 }
       }
     ]
+  },
+  {
+    id: 4,
+    title: {
+      es: "Al tocar y sentir los materiales de tu hogar ideal, ¿cuáles prefieres?",
+      en: "When touching and feeling the materials of your ideal home, which do you prefer?"
+    },
+    subtitle: {
+      es: "Selecciona la combinación de texturas que más te conecta (1 opción)",
+      en: "Select the combination of textures that resonates most with you (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p4_opt1",
+        label: { es: "Orgánicos & Artesanales", en: "Organic & Handcrafted" },
+        sublabel: { es: "Maderas nobles sin tratar, piedra natural, lino crudo y barro", en: "Raw noble woods, natural stone, raw linen, and terracotta" },
+        image: "/assets/quiz/p4_organico.png",
+        styles: { wabi_sabi: 3, balines: 3, mediterraneo: 2, rustico: 2 }
+      },
+      {
+        id: "p4_opt2",
+        label: { es: "Lisos, Limpios & Pulidos", en: "Smooth, Clean & Polished" },
+        sublabel: { es: "Microcemento, cristal, superficies continuas y acabados mate", en: "Microcement, glass, seamless surfaces, and matte finishes" },
+        image: "/assets/quiz/p4_pulido.png",
+        styles: { minimal: 3, escandinavo: 2, japandi: 2 }
+      },
+      {
+        id: "p4_opt3",
+        label: { es: "Estructurales & Con Carácter", en: "Structural & Bold" },
+        sublabel: { es: "Hormigón visto, acero negro, ladrillo y cuero envejecido", en: "Exposed concrete, black steel, brick, and aged leather" },
+        image: "/assets/quiz/p4_industrial.png",
+        styles: { industrial: 3, contemporaneo: 2 }
+      },
+      {
+        id: "p4_opt4",
+        label: { es: "Nobles & Sofisticados", en: "Noble & Sophisticated" },
+        sublabel: { es: "Mármoles vetados, madera de nogal, terciopelo y destellos en latón", en: "Veined marble, walnut wood, velvet, and brass accents" },
+        image: "/assets/quiz/p4_lujo.png",
+        styles: { art_deco: 3, contemporaneo: 3 }
+      }
+    ]
   }
 ];
