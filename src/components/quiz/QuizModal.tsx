@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'; 
-import { QUIZ_QUESTIONS } from './quizData';
+import { QUIZ_QUESTIONS, ALL_QUIZ_IMAGES } from './quizData';
 import type { QuizOption } from './quizData';
 import { QuizQuestion } from './QuizQuestion';
 import { QuizResult } from './QuizResult';
+import { preloadImages } from '../../utils/preloadImages'; 
 import styles from './QuizModal.module.css';
 
 interface QuizModalProps {
@@ -17,6 +18,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
   const [isFinished, setIsFinished] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen && ALL_QUIZ_IMAGES && ALL_QUIZ_IMAGES.length > 0) {
+      preloadImages(ALL_QUIZ_IMAGES);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {

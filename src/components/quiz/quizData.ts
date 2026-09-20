@@ -11,8 +11,8 @@ export interface SliderOption {
   id: string;
   label: { es: string; en: string };
   sublabel?: { es: string; en: string };
-  minLabel: { es: string; en: string }; 
-  maxLabel: { es: string; en: string }; 
+  minLabel: { es: string; en: string };
+  maxLabel: { es: string; en: string };
   defaultValue?: number;
   getStyles: (value: number) => Record<string, number>;
 }
@@ -278,4 +278,26 @@ export const QUIZ_QUESTIONS: Question[] = [
       }
     ]
   }
+];
+
+export const QUIZ_RESULT_IMAGES: string[] = [
+  '/assets/quiz/results/minimal.jpg',
+  '/assets/quiz/results/japandi.jpg',
+  '/assets/quiz/results/balines.jpg',
+  '/assets/quiz/results/mediterraneo.jpg',
+  '/assets/quiz/results/industrial.jpg',
+  '/assets/quiz/results/contemporaneo.jpg',
+  '/assets/quiz/results/wabi_sabi.jpg',
+  '/assets/quiz/results/escandinavo.jpg',
+  '/assets/quiz/results/art_deco.jpg',
+  '/assets/quiz/results/rustico.jpg',
+];
+
+export const QUIZ_QUESTION_IMAGES: string[] = QUIZ_QUESTIONS.flatMap((q) =>
+  q.options ? q.options.map((opt) => opt.image).filter((img): img is string => Boolean(img)) : []
+);
+
+export const ALL_QUIZ_IMAGES: string[] = [
+  ...QUIZ_QUESTION_IMAGES,
+  ...QUIZ_RESULT_IMAGES,
 ];
