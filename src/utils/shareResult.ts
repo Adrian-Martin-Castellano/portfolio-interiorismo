@@ -27,13 +27,23 @@ export const shareQuizResult = async (data: ShareData): Promise<void> => {
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 };
 
-export const copyResultToClipboard = async (text: string, url?: string): Promise<boolean> => {
-  const shareUrl = url || window.location.origin;
-  const fullText = `${text}\n${shareUrl}`;
-
+export const copyResultToClipboard = async (text: string): Promise<boolean> => {
   try {
-    await navigator.clipboard.writeText(fullText);
-    return true;
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return successful;
+    }
   } catch (err) {
     console.error('Error al copiar al portapapeles:', err);
     return false;
