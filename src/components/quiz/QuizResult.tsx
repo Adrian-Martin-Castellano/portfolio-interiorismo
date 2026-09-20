@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QUIZ_QUESTIONS } from './quizData';
 import styles from './QuizModal.module.css';
 import { useLanguage } from '../../context/LanguageContext';
+import { shareQuizResult, copyResultToClipboard } from '../../utils/shareResult';
 
 interface QuizResultProps {
   answers: Record<number, string[]>;
@@ -12,10 +13,11 @@ interface QuizResultProps {
 export const QuizResult: React.FC<QuizResultProps> = ({
   answers,
   sliderValues = {},
-  onClose
+  onClose,
 }) => {
   const { language } = useLanguage();
   const lang = (language === 'en' ? 'en' : 'es') as 'es' | 'en';
+  const [copied, setCopied] = useState(false);
 
   const calculateWinnerStyle = () => {
     const styleScores: Record<string, number> = {};
@@ -224,6 +226,31 @@ export const QuizResult: React.FC<QuizResultProps> = ({
 
   const result = styleDetails[winnerStyle] || styleDetails.minimal;
 
+  const handleShare = () => {
+    const shareText =
+      lang === 'en'
+        ? `✨ My interior design style is: ${result.title.en}! Find out yours with this quiz:`
+        : `✨ Mi estilo de diseño de interiores es: ${result.title.es}! Descubre el tuyo con este test:`;
+
+    shareQuizResult({
+      title: result.title[lang],
+      text: shareText,
+    });
+  };
+
+  const handleCopy = async () => {
+    const textToCopy =
+      lang === 'en'
+        ? `✨ My interior design style is: ${result.title.en}!`
+        : `✨ Mi estilo de diseño de interiores es: ${result.title.es}!`;
+
+    const success = await copyResultToClipboard(textToCopy);
+    if (success) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
+
   return (
     <div className={styles.resultContainer}>
       <div className={styles.resultHeaderImage}>
@@ -292,6 +319,37 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         </div>
 
         <div className={styles.resultActions}>
+          <div className={styles.shareButtonsGroup}>
+            <button
+              onClick={handleShare}
+              className={styles.shareBtn}
+              type="button"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+              </svg>
+              {lang === 'en' ? 'Share Result' : 'Compartir Resultado'}
+            </button>
+
+            <button
+              onClick={handleCopy}
+              className={styles.copyBtn}
+              type="button"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              {copied
+                ? lang === 'en' ? 'Copied!' : '¡Copiado!'
+                : lang === 'en' ? 'Copy Link' : 'Copiar enlace'}
+            </button>
+          </div>
+
           <button onClick={onClose} className={styles.primaryResultBtn}>
             {lang === 'en' ? 'Return to Website' : 'Volver a la web'}
           </button>
