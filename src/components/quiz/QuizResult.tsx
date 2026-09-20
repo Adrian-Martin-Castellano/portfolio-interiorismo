@@ -239,12 +239,8 @@ export const QuizResult: React.FC<QuizResultProps> = ({
   };
 
   const handleCopy = async () => {
-    const textToCopy =
-      lang === 'en'
-        ? `✨ My interior design style is: ${result.title.en}!`
-        : `✨ Mi estilo de diseño de interiores es: ${result.title.es}!`;
-
-    const success = await copyResultToClipboard(textToCopy);
+    const success = await copyResultToClipboard(window.location.href);
+    
     if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
