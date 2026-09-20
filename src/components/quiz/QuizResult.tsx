@@ -5,10 +5,15 @@ import { useLanguage } from '../../context/LanguageContext';
 
 interface QuizResultProps {
   answers: Record<number, string[]>;
+  sliderValues?: Record<number, Record<string, number>>;
   onClose: () => void;
 }
 
-export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
+export const QuizResult: React.FC<QuizResultProps> = ({
+  answers,
+  sliderValues = {},
+  onClose
+}) => {
   const { language } = useLanguage();
   const lang = (language === 'en' ? 'en' : 'es') as 'es' | 'en';
 
@@ -17,14 +22,31 @@ export const QuizResult: React.FC<QuizResultProps> = ({ answers, onClose }) => {
 
     Object.entries(answers).forEach(([questionId, selectedOptionIds]) => {
       const question = QUIZ_QUESTIONS.find((q) => q.id === Number(questionId));
-      if (!question) return;
+      if (!question || !question.options) return;
 
       selectedOptionIds.forEach((optionId) => {
-        const option = question.options.find((opt) => opt.id === optionId);
+        const option = question.options?.find((opt) => opt.id === optionId);
         if (!option || !option.styles) return;
 
         Object.entries(option.styles).forEach(([styleName, score]) => {
           styleScores[styleName] = (styleScores[styleName] || 0) + score;
+        });
+      });
+    });
+
+    Object.entries(sliderValues).forEach(([questionId, sliders]) => {
+      const question = QUIZ_QUESTIONS.find((q) => q.id === Number(questionId));
+      if (!question || !question.sliders) return;
+
+      Object.entries(sliders).forEach(([sliderId, val]) => {
+        const slider = question.sliders?.find((s) => s.id === sliderId);
+        if (!slider || !slider.getStyles) return;
+
+        const calculatedStyles = slider.getStyles(val);
+        Object.entries(calculatedStyles).forEach(([styleName, score]) => {
+          if (typeof score === 'number') {
+            styleScores[styleName] = (styleScores[styleName] || 0) + score;
+          }
         });
       });
     });

@@ -7,13 +7,24 @@ export interface QuizOption {
   styles: Record<string, number>;
 }
 
+export interface SliderOption {
+  id: string;
+  label: { es: string; en: string };
+  sublabel?: { es: string; en: string };
+  minLabel: { es: string; en: string }; 
+  maxLabel: { es: string; en: string }; 
+  defaultValue?: number;
+  getStyles: (value: number) => Record<string, number>;
+}
+
 export interface Question {
   id: number;
   title: { es: string; en: string };
   subtitle: { es: string; en: string };
-  type: 'single' | 'multiple';
+  type: 'single' | 'multiple' | 'slider_group';
   maxSelections?: number;
-  options: QuizOption[];
+  options?: QuizOption[];
+  sliders?: SliderOption[];
 }
 
 export const QUIZ_QUESTIONS: Question[] = [
@@ -158,6 +169,77 @@ export const QUIZ_QUESTIONS: Question[] = [
         sublabel: { es: "Mármoles vetados, madera de nogal, terciopelo y destellos en latón", en: "Veined marble, walnut wood, velvet, and brass accents" },
         image: "/assets/quiz/p4_lujo.png",
         styles: { art_deco: 3, contemporaneo: 3 }
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: {
+      es: "Ajusta las escalas según tus preferencias de estilo de vida",
+      en: "Adjust the scales according to your lifestyle preferences"
+    },
+    subtitle: {
+      es: "Desliza del 1 al 10 para indicar tu grado de afinidad con cada aspecto",
+      en: "Slide from 1 to 10 to indicate your level of affinity with each aspect"
+    },
+    type: "slider_group",
+    sliders: [
+      {
+        id: "s1_nature",
+        label: {
+          es: "¿Cuánto te atrae la presencia de naturaleza y plantas?",
+          en: "How much do you value the presence of nature and greenery?"
+        },
+        sublabel: {
+          es: "Integración de vegetación, frescura y luz solar",
+          en: "Greenery integration, freshness, and sunlight"
+        },
+        minLabel: { es: "1 - Urbano / Mínimo", en: "1 - Urban / Minimal" },
+        maxLabel: { es: "10 - Oasis / Abundante", en: "10 - Oasis / Abundant" },
+        defaultValue: 5,
+        getStyles: (val: number): Record<string, number> => {
+          if (val >= 8) return { balines: 3, mediterraneo: 3, rustico: 2, japandi: 1 };
+          if (val >= 5) return { escandinavo: 2, japandi: 2, mediterraneo: 1 };
+          return { minimal: 2, industrial: 2, contemporaneo: 2 };
+        }
+      },
+      {
+        id: "s2_contrast",
+        label: {
+          es: "¿Qué nivel de contraste y tonos oscuros prefieres?",
+          en: "What level of contrast and dark tones do you prefer?"
+        },
+        sublabel: {
+          es: "Superficies oscuras, sombras marcadas y dramatismo visual",
+          en: "Dark surfaces, strong shadows, and visual drama"
+        },
+        minLabel: { es: "1 - Suave / Claro", en: "1 - Soft / Light" },
+        maxLabel: { es: "10 - Sobrio / Oscuro", en: "10 - Sober / Dark" },
+        defaultValue: 5,
+        getStyles: (val: number): Record<string, number> => {
+          if (val >= 8) return { industrial: 3, contemporaneo: 3, art_deco: 2 };
+          if (val >= 5) return { mediterraneo: 1, rustico: 1 };
+          return { minimal: 3, escandinavo: 3, japandi: 2 };
+        }
+      },
+      {
+        id: "s3_craft",
+        label: {
+          es: "¿Cuánto valoras lo artesanal y las texturas imperfectas?",
+          en: "How much do you value handcrafted items and raw textures?"
+        },
+        sublabel: {
+          es: "Cerámicas hechas a mano, maderas vivas y piezas únicas",
+          en: "Handmade ceramics, raw woods, and unique pieces"
+        },
+        minLabel: { es: "1 - Pulido / Perfecto", en: "1 - Polished / Perfect" },
+        maxLabel: { es: "10 - Orgánico / Artesanal", en: "10 - Organic / Handcrafted" },
+        defaultValue: 5,
+        getStyles: (val: number): Record<string, number> => {
+          if (val >= 8) return { wabi_sabi: 3, rustico: 3, balines: 2, japandi: 1 };
+          if (val >= 5) return { mediterraneo: 2, japandi: 2 };
+          return { minimal: 3, contemporaneo: 2, art_deco: 2 };
+        }
       }
     ]
   }

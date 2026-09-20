@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'; 
+import React, { useEffect, useRef, useState } from 'react'; 
 import { QUIZ_QUESTIONS } from './quizData';
 import type { QuizOption } from './quizData';
 import { QuizQuestion } from './QuizQuestion';
@@ -11,9 +11,10 @@ interface QuizModalProps {
 }
 
 export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
-  const [currentStep, setCurrentStep] = React.useState(0);
-  const [answers, setAnswers] = React.useState<Record<number, string[]>>({});
-  const [isFinished, setIsFinished] = React.useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, string[]>>({});
+  const [sliderValues, setSliderValues] = useState<Record<number, Record<string, number>>>({});
+  const [isFinished, setIsFinished] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -41,9 +42,41 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const currentQuestion = QUIZ_QUESTIONS[currentStep];
-  const currentSelections = answers[currentQuestion?.id] || [];
+
+  if (!currentQuestion && !isFinished) {
+    return (
+      <div className={styles.modalOverlay}>
+        <div className={styles.modalContainer}>
+          <p style={{ textAlign: 'center', padding: '20px' }}>No hay preguntas disponibles.</p>
+          <button onClick={onClose}>Cerrar</button>
+        </div>
+      </div>
+    );
+  }
+
+  const currentSelections = currentQuestion ? answers[currentQuestion.id] || [] : [];
+
+  const getCurrentSliders = (): Record<string, number> => {
+    if (!currentQuestion) return {};
+    
+    if (sliderValues[currentQuestion.id]) {
+      return sliderValues[currentQuestion.id];
+    }
+    if (currentQuestion.type === 'slider_group' && currentQuestion.sliders) {
+      const defaults: Record<string, number> = {};
+      currentQuestion.sliders.forEach((s) => {
+        defaults[s.id] = s.defaultValue ?? 5;
+      });
+      return defaults;
+    }
+
+    return {};
+  };
+
+  const currentSliders = getCurrentSliders();
 
   const handleSelectOption = (option: QuizOption) => {
+    if (!currentQuestion) return;
     const qId = currentQuestion.id;
 
     if (currentQuestion.type === 'single') {
@@ -55,15 +88,31 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
       if (exists) {
         setAnswers((prev) => ({
           ...prev,
-          [qId]: currentSelections.filter((id) => id !== option.id)
+          [qId]: currentSelections.filter((id) => id !== option.id),
         }));
       } else if (currentSelections.length < max) {
         setAnswers((prev) => ({
           ...prev,
-          [qId]: [...currentSelections, option.id]
+          [qId]: [...currentSelections, option.id],
         }));
       }
     }
+  };
+
+  const handleSliderChange = (
+    sliderId: string,
+    value: number,
+    _calculatedStyles: Record<string, number>
+  ) => {
+    if (!currentQuestion) return;
+    const qId = currentQuestion.id;
+    setSliderValues((prev) => ({
+      ...prev,
+      [qId]: {
+        ...(prev[qId] || currentSliders),
+        [sliderId]: value,
+      },
+    }));
   };
 
   const handleNext = () => {
@@ -78,13 +127,29 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
     if (currentStep > 0) setCurrentStep((prev) => prev - 1);
   };
 
+  const isNextDisabled = () => {
+    if (!currentQuestion) return true;
+    if (currentQuestion.type === 'slider_group') {
+      return false;
+    }
+    return currentSelections.length === 0;
+  };
+
+  const handleClose = () => {
+    setCurrentStep(0);
+    setAnswers({});
+    setSliderValues({});
+    setIsFinished(false);
+    onClose();
+  };
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContainer} ref={containerRef}>
         {!isFinished && (
           <button 
             className={styles.closeBtn} 
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Cerrar test"
           >
             <svg 
@@ -109,6 +174,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
               question={currentQuestion}
               selectedOptions={currentSelections}
               onSelectOption={handleSelectOption}
+              sliderValues={currentSliders}
+              onSliderChange={handleSliderChange}
             />
 
             <div className={styles.navigationFooter}>
@@ -120,14 +187,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
               <button
                 className={styles.nextBtn}
                 onClick={handleNext}
-                disabled={currentSelections.length === 0}
+                disabled={isNextDisabled()}
               >
                 {currentStep === QUIZ_QUESTIONS.length - 1 ? 'Ver Resultado' : 'Siguiente'}
               </button>
             </div>
           </>
         ) : (
-          <QuizResult answers={answers} onClose={onClose} />
+          <QuizResult answers={answers} sliderValues={sliderValues} onClose={handleClose} />
         )}
       </div>
     </div>
