@@ -312,6 +312,62 @@ export const QUIZ_QUESTIONS: Question[] = [
         styles: { contemporaneo: 3, balines: 2, art_deco: 1 }
       }
     ]
+  },
+  {
+    id: 8,
+    title: {
+      es: "Si observas los detalles y cojines de tu sofá ideal, ¿qué textura o patrón predomina?",
+      en: "Looking at the details and cushions of your ideal sofa, what texture or pattern dominates?"
+    },
+    subtitle: {
+      es: "Selecciona el acabado textil que mejor complementa tu idea de descanso (1 opción)",
+      en: "Select the textile finish that best complements your idea of rest (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p8_opt1",
+        label: { es: "Lino Liso & Tonos Neutros", en: "Smooth Linen & Neutral Tones" },
+        sublabel: { es: "Sin estampados, fundas holgadas y tonos beige, crema o marfil", en: "No prints, loose covers, and beige, cream, or ivory tones" },
+        image: "/assets/quiz/p8_lino.jpg",
+        styles: { minimal: 3, escandinavo: 2, japandi: 2 }
+      },
+      {
+        id: "p8_opt2",
+        label: { es: "Bouclé, Trama Gruesa & Tacto Algodón", en: "Bouclé, Chunky Weave & Cotton Touch" },
+        sublabel: { es: "Relieve suave, textura aborregada o tejidos de punto acogedores", en: "Soft relief, cozy bouclé texture, or knitted fabrics" },
+        image: "/assets/quiz/p8_boucle.jpg",
+        styles: { japandi: 3, wabi_sabi: 3, escandinavo: 1 }
+      },
+      {
+        id: "p8_opt3",
+        label: { es: "Terciopelo & Brillo Satinado", en: "Velvet & Satin Sheen" },
+        sublabel: { es: "Tejidos suntuosos, suaves al tacto y en colores intensos o joya", en: "Sumptuous fabrics, soft touch, and rich or jewel tones" },
+        image: "/assets/quiz/p8_terciopelo.jpg",
+        styles: { art_deco: 3, contemporaneo: 3 }
+      },
+      {
+        id: "p8_opt4",
+        label: { es: "Fibras Naturales & Bordados Artesanales", en: "Natural Fibers & Handcrafted Embroidery" },
+        sublabel: { es: "Cojines de yute, borlas, flecos o estampados étnicos/geometría tribal", en: "Jute cushions, tassels, fringes, or ethnic/tribal geometric prints" },
+        image: "/assets/quiz/p8_artesanal.jpg",
+        styles: { balines: 3, mediterraneo: 3, rustico: 2 }
+      },
+      {
+        id: "p8_opt5",
+        label: { es: "Cuero Envejecido & Lona Resistente", en: "Aged Leather & Sturdy Canvas" },
+        sublabel: { es: "Cuero en tonos camel o tabaco, costuras gruesas vistas y estética robusta", en: "Camel or tobacco leather, thick exposed stitching, and robust look" },
+        image: "/assets/quiz/p8_cuero.jpg",
+        styles: { industrial: 3, rustico: 2, contemporaneo: 1 }
+      },
+      {
+        id: "p8_opt6",
+        label: { es: "Geometría Gráfica & Estampado Abstracto", en: "Graphic Geometry & Abstract Prints" },
+        sublabel: { es: "Patrones geométricos en contraste (blanco/negro, líneas, formas artísticas)", en: "Contrasting geometric patterns (black/white, lines, artistic shapes)" },
+        image: "/assets/quiz/p8_geometrico.jpg",
+        styles: { contemporaneo: 3, art_deco: 2, escandinavo: 1 }
+      }
+    ]
   }
 ];
 
