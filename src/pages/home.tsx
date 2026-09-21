@@ -308,19 +308,15 @@ function Home() {
         >
           {t.featuredProjects.map((project, idx) => (
             <div key={idx} className={styles.projectCard}>
-              <div className={styles.projectImageWrapper}>
-                <img 
-                  src={FEATURED_IMAGES[idx]} 
-                  alt={project.title} 
-                  className={styles.projectImage} 
-                />
-                <div className={styles.projectOverlay}>
-                  <div className={styles.projectOverlayContent}>
-                    <span className={styles.projectCategory}>{project.category}</span>
-                    <h3 className={styles.projectTitle}>{project.title}</h3>
-                    <p className={styles.projectLocation}>{project.subtitle}</p>
-                  </div>
-                </div>
+              <img 
+                src={FEATURED_IMAGES[idx]} 
+                alt={project.title} 
+                className={styles.projectImage} 
+              />
+              <div className={styles.projectOverlay}>
+                <span className={styles.projectCategory}>{project.category}</span>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectLocation}>{project.subtitle}</p>
               </div>
             </div>
           ))}
