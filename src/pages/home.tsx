@@ -38,7 +38,6 @@ function Home() {
   const stylesScroll = useHorizontalScroll(stylesScrollRef);
   const featuredScroll = useHorizontalScroll(featuredScrollRef);
 
-  // Estado del Estilo Activo y Lightbox
   const [currentStyleIndex, setCurrentStyleIndex] = useState<number>(0);
   const [lightboxData, setLightboxData] = useState<{
     isOpen: boolean;
@@ -81,7 +80,6 @@ function Home() {
     setLightboxData((prev) => ({ ...prev, isOpen: false }));
   };
 
-  // Navegación entre IMÁGENES del mismo estilo
   const nextLightboxImg = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const currentImages = IMAGES_LIST[currentStyleIndex] || IMAGES_LIST[0];
@@ -100,7 +98,6 @@ function Home() {
     }));
   };
 
-  // Navegación entre ESTILOS (Colecciones)
   const nextStyle = () => {
     const totalStyles = t.cards.length;
     setCurrentStyleIndex((prev) => (prev + 1) % totalStyles);
@@ -136,7 +133,6 @@ function Home() {
     });
   };
 
-  // Datos dinámicos del estilo actualmente visible en la modal
   const activeCard = t.cards[currentStyleIndex] || t.cards[0];
   const activeImages = IMAGES_LIST[currentStyleIndex] || IMAGES_LIST[0];
 
@@ -201,97 +197,90 @@ function Home() {
 
       {/* 3. LÍNEAS DE DISEÑO (ESTILOS) */}
       <section className={styles.stylesSectionWrapper}>
-  <div className={styles.stylesIntroHeader}>
-    <img 
-      src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
-      alt="Líneas de Diseño de Autor" 
-      className={styles.introHeaderImage}
-    />
-  </div>
-
-  {/* Contenedor relativo para posicionar las flechas flotantes globales en PC */}
-  <div className={styles.carouselOuterWrapper}>
-    
-    {/* Flecha flotante izquierda (PC) */}
-    <button 
-      className={`${styles.styleChangeBtn} ${styles.stylePrevBtn} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
-      onClick={() => stylesScroll.scrollByAmount('left')}
-      aria-label="Estilo anterior"
-      disabled={stylesScroll.progress <= 2}
-    >
-      &#8249;
-    </button>
-
-    {/* Contenedor con scroll horizontal de tarjetas */}
-    <div 
-      ref={stylesScrollRef}
-      className={styles.horizontalScrollContainer}
-      onScroll={stylesScroll.handleScroll}
-    >
-      {t.cards.map((card, idx) => (
-        <StyleCard 
-          key={idx}
-          index={idx}
-          alignment={idx % 2 === 0 ? 'left' : 'right'}
-          category={card.category}
-          title={card.title}
-          quote={card.quote}
-          description={card.description}
-          details={card.details}
-          images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
-          learnMoreText={t.learnMoreBtn}
-          onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
+      <div className={styles.stylesIntroHeader}>
+        <img 
+          src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
+          alt="Líneas de Diseño de Autor" 
+          className={styles.introHeaderImage}
         />
-      ))}
-    </div>
+      </div>
 
-    {/* Flecha flotante derecha (PC) */}
-    <button 
-      className={`${styles.styleChangeBtn} ${styles.styleNextBtn} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
-      onClick={() => stylesScroll.scrollByAmount('right')}
-      aria-label="Siguiente estilo"
-      disabled={stylesScroll.progress >= 98}
-    >
-      &#8250;
-    </button>
+      <div className={styles.carouselOuterWrapper}>
+        <button 
+          className={`${styles.styleChangeBtn} ${styles.stylePrevBtn} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+          onClick={() => stylesScroll.scrollByAmount('left')}
+          aria-label="Estilo anterior"
+          disabled={stylesScroll.progress <= 2}
+        >
+          &#8249;
+        </button>
+        <div 
+          ref={stylesScrollRef}
+          className={styles.horizontalScrollContainer}
+          onScroll={stylesScroll.handleScroll}
+        >
+          {t.cards.map((card, idx) => (
+            <StyleCard 
+              key={idx}
+              index={idx}
+              alignment={idx % 2 === 0 ? 'left' : 'right'}
+              category={card.category}
+              title={card.title}
+              quote={card.quote}
+              description={card.description}
+              details={card.details}
+              images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
+              learnMoreText={t.learnMoreBtn}
+              onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
+            />
+          ))}
+        </div>
 
-  </div>
+        <button 
+          className={`${styles.styleChangeBtn} ${styles.styleNextBtn} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+          onClick={() => stylesScroll.scrollByAmount('right')}
+          aria-label="Siguiente estilo"
+          disabled={stylesScroll.progress >= 98}
+        >
+          &#8250;
+        </button>
 
-  {/* Barra de navegación inferior (Conserva intactos móvil y PC) */}
-  <div className={styles.stylesCarouselNav}>
-    <span className={styles.carouselCounter}>
-      {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
-      <span className={styles.counterDivider}>/</span>
-      {String(t.cards.length).padStart(2, '0')}
-    </span>
+      </div>
 
-    <div className={styles.minimalProgressTrack}>
-      <div 
-        className={styles.minimalProgressFill} 
-        style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
-      ></div>
-    </div>
+      <div className={styles.stylesCarouselNav}>
+        <span className={styles.carouselCounter}>
+          {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
+          <span className={styles.counterDivider}>/</span>
+          {String(t.cards.length).padStart(2, '0')}
+        </span>
 
-    <div className={styles.navArrowsInline}>
-      <button 
-        className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
-        onClick={() => stylesScroll.scrollByAmount('left')}
-        aria-label="Anterior"
-        disabled={stylesScroll.progress <= 2}
-      >
-        ←
-      </button>
-      <button 
-        className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
-        onClick={() => stylesScroll.scrollByAmount('right')}
-        aria-label="Siguiente"
-        disabled={stylesScroll.progress >= 98}
-      >
-        →
-      </button>
-    </div>
-  </div>
-</section>
+        <div className={styles.minimalProgressTrack}>
+          <div 
+            className={styles.minimalProgressFill} 
+            style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
+          ></div>
+        </div>
+
+        <div className={styles.navArrowsInline}>
+          <button 
+            className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+            onClick={() => stylesScroll.scrollByAmount('left')}
+            aria-label="Anterior"
+            disabled={stylesScroll.progress <= 2}
+          >
+            ←
+          </button>
+          <button 
+            className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+            onClick={() => stylesScroll.scrollByAmount('right')}
+            aria-label="Siguiente"
+            disabled={stylesScroll.progress >= 98}
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </section>
 
       {/* 4. SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
@@ -304,17 +293,45 @@ function Home() {
         </div>
 
         <div className={styles.quizCard}>
-          <img 
-            src="/assets/iconos/icono_quiz_claro.jpg" 
-            alt="Icono Test" 
-            className={styles.quizCardImage}
-          />
-          
-          <p>{t.quizDescription}</p>
-          
-          <button className={styles.quizStartBtn} onClick={() => setShowQuizModal(true)}>
-            {t.quizCta}
-          </button>
+          {/* Imagen descriptiva del proceso */}
+          <div className={styles.quizCardMedia}>
+            <img 
+              src="/assets/iconos/icono_quiz_claro.jpg" 
+              alt="Diagnóstico de Estilo" 
+              className={styles.quizCardImage}
+            />
+          </div>
+
+          {/* Bloque de Contenido Enriquecido */}
+          <div className={styles.quizCardContent}>
+            <span className={styles.quizTag}>Diagnóstico de Interiorismo</span>
+            <h2>Encuentra el alma de tu espacio</h2>
+            <p>
+              A través de una breve selección de atmósferas visuales, texturas y elementos arquitectónicos, analizaremos tus preferencias para definir la línea de diseño de autor que mejor se adapta a tu estilo de vida.
+            </p>
+
+            {/* Grid de detalles/ventajas para dar cuerpo a la tarjeta */}
+            <div className={styles.quizFeatures}>
+              <div className={styles.featureItem}>
+                <span className={styles.featureNumber}>10</span>
+                <span className={styles.featureText}>Preguntas visuales</span>
+              </div>
+              <div className={styles.featureDivider}></div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureNumber}>3 min</span>
+                <span className={styles.featureText}>Tiempo estimado</span>
+              </div>
+              <div className={styles.featureDivider}></div>
+              <div className={styles.featureItem}>
+                <span className={styles.featureNumber}>100%</span>
+                <span className={styles.featureText}>Paleta personalizada</span>
+              </div>
+            </div>
+            
+            <button className={styles.quizStartBtn} onClick={() => setShowQuizModal(true)}>
+              COMENZAR DIAGNÓSTICO
+            </button>
+          </div>
         </div>
       </section>
 
