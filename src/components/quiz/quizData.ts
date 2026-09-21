@@ -410,6 +410,48 @@ export const QUIZ_QUESTIONS: Question[] = [
         styles: { art_deco: 3, minimal: 2, industrial: 1 }
       }
     ]
+  },
+  {
+    id: 10,
+    title: {
+      es: "Si miras las paredes de tu estancia ideal, ¿qué es lo primero que destaca?",
+      en: "Looking at the walls of your ideal room, what stands out first?"
+    },
+    subtitle: {
+      es: "Selecciona el tratamiento vertical que mejor define tu estilo visual (1 opción)",
+      en: "Select the wall expression that best defines your visual style (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p10_opt1",
+        label: { es: "Paredes Desnudas & Textura de Mortero", en: "Bare Walls & Plaster Texture" },
+        sublabel: { es: "Acabados de cal, microcemento o Yeso sin cuadros para destacar la luz y la sombra", en: "Lime wash, subtle plaster, or raw microcement without artwork to emphasize light" },
+        image: "/assets/quiz/p10_mortero.jpg",
+        styles: { wabi_sabi: 3, minimal: 3, japandi: 2 }
+      },
+      {
+        id: "p10_opt2",
+        label: { es: "Cuadro Abstracto de Gran Formato", en: "Large-Scale Abstract Artwork" },
+        sublabel: { es: "Una única obra de arte de gran tamaño que aporta carácter sin recargar el espacio", en: "A single oversized statement canvas adding character without clutter" },
+        image: "/assets/quiz/p10_arte_grande.jpg",
+        styles: { contemporaneo: 3, minimal: 2, industrial: 1 }
+      },
+      {
+        id: "p10_opt3",
+        label: { es: "Molduras Clásicas, Espejos & Latón", en: "Classic Moldings, Mirrors & Brass" },
+        sublabel: { es: "Paneles arquitectónicos en pared, espejos con marco y detalles dorados", en: "Wainscoting, decorative moldings, framed mirrors, and refined brass touches" },
+        image: "/assets/quiz/p10_molduras.jpg",
+        styles: { art_deco: 3, contemporaneo: 2 }
+      },
+      {
+        id: "p10_opt4",
+        label: { es: "Galería de Cuadros, Tapices & Arte Local", en: "Curated Gallery Wall, Tapestries & Local Crafts" },
+        sublabel: { es: "Composición de fotografías, espejos orgánicos, fibras tejidas o piezas artesanales", en: "Collage of framed photos, organic mirrors, woven wall hangings, or artisan crafts" },
+        image: "/assets/quiz/p10_galeria.jpg",
+        styles: { mediterraneo: 3, balines: 3, escandinavo: 2, rustico: 2 }
+      }
+    ]
   }
 ];
 
