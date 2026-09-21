@@ -600,3 +600,9 @@
     flex-direction: column;
   }
 }
+
+@media (min-width: 768px) {
+  .fourOptionsGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

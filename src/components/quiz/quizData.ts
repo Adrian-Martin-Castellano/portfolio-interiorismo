@@ -77,7 +77,7 @@ export const QUIZ_QUESTIONS: Question[] = [
     maxSelections: 3,
     options: [
       { id: "c1", label: { es: "Blanco Marfil", en: "Ivory White" }, hex: "#F5F2EB", styles: { minimal: 3, escandinavo: 2, japandi: 1 } },
-      { id: "c2", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { japandi: 3, wabi_sabi: 2, mediterraneo: 1 } },
+      { id: "c2", label: { es: "Arena / Lino", en: "Sand / Linen" }, hex: "#E5D9C5", styles: { japandi: 3, wabi_sabi: 2, mediterraneo: 1, rustico: 1, balines: 1 } },
       { id: "c3", label: { es: "Verde Salvia", en: "Sage Green" }, hex: "#9CAF88", styles: { escandinavo: 2, japandi: 2, balines: 1 } },
       { id: "c4", label: { es: "Verde Oliva", en: "Olive Green" }, hex: "#556B2F", styles: { balines: 3, rustico: 2, mediterraneo: 1 } },
       { id: "c5", label: { es: "Terracota Warm", en: "Warm Terracotta" }, hex: "#C86D51", styles: { mediterraneo: 3, rustico: 2 } },
@@ -200,7 +200,7 @@ export const QUIZ_QUESTIONS: Question[] = [
         getStyles: (val: number): Record<string, number> => {
           if (val >= 8) return { balines: 3, mediterraneo: 3, rustico: 2, japandi: 1 };
           if (val >= 5) return { escandinavo: 2, japandi: 2, mediterraneo: 1 };
-          return { minimal: 2, industrial: 2, contemporaneo: 2 };
+          return { minimal: 2, industrial: 2, contemporaneo: 2, art_deco: 1 };
         }
       },
       {
@@ -219,7 +219,7 @@ export const QUIZ_QUESTIONS: Question[] = [
         getStyles: (val: number): Record<string, number> => {
           if (val >= 8) return { industrial: 3, contemporaneo: 3, art_deco: 2 };
           if (val >= 5) return { mediterraneo: 1, rustico: 1 };
-          return { minimal: 3, escandinavo: 3, japandi: 2 };
+          return { minimal: 3, escandinavo: 3, japandi: 2, wabi_sabi: 1 };
         }
       },
       {
@@ -237,8 +237,8 @@ export const QUIZ_QUESTIONS: Question[] = [
         defaultValue: 5,
         getStyles: (val: number): Record<string, number> => {
           if (val >= 8) return { wabi_sabi: 3, rustico: 3, balines: 2, japandi: 1 };
-          if (val >= 5) return { mediterraneo: 2, japandi: 2 };
-          return { minimal: 3, contemporaneo: 2, art_deco: 2 };
+          if (val >= 5) return { mediterraneo: 2, japandi: 2, escandinavo: 1 };
+          return { minimal: 3, contemporaneo: 2, art_deco: 2, industrial: 1 };
         }
       }
     ]
@@ -295,14 +295,14 @@ export const QUIZ_QUESTIONS: Question[] = [
         label: { es: "Líneas Rectas & Geométricas", en: "Straight & Geometric Lines" },
         sublabel: { es: "Estructuras cuadradas, ángulos definidos y simetría", en: "Square structures, defined angles, and symmetry" },
         image: "/assets/quiz/p7_recto.jpg",
-        styles: { minimal: 3, industrial: 2, art_deco: 2 }
+        styles: { minimal: 3, escandinavo: 2, industrial: 2, art_deco: 2 }
       },
       {
         id: "p7_opt2",
         label: { es: "Curvas Orgánicas & Envolventes", en: "Organic & Enveloping Curves" },
         sublabel: { es: "Sofás redondeados, arcos, mesas ovales y bordes suaves", en: "Rounded sofas, arches, oval tables, and soft edges" },
         image: "/assets/quiz/p7_curvo.jpg",
-        styles: { japandi: 3, mediterraneo: 3, wabi_sabi: 2 }
+        styles: { japandi: 3, mediterraneo: 3, wabi_sabi: 2, escandinavo: 1 }
       },
       {
         id: "p7_opt3",

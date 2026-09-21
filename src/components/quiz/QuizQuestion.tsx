@@ -21,7 +21,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   const { language } = useLanguage();
   const lang = (language === 'en' ? 'en' : 'es') as 'es' | 'en';
 
-  const totalQuestions = 5;
+  const totalQuestions = 10;
 
   return (
     <div className={styles.questionContainer}>
@@ -97,7 +97,11 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
           })}
         </div>
       ) : (
-        <div className={styles.optionsGrid}>
+        <div
+          className={`${styles.optionsGrid} ${
+            question.options?.length === 4 ? styles.fourOptionsGrid : ''
+          }`}
+        >
           {question.options?.map((option) => {
             const isSelected = selectedOptions.includes(option.id);
             return (

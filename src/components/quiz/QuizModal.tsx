@@ -72,7 +72,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
     if (currentQuestion.type === 'slider_group' && currentQuestion.sliders) {
       const defaults: Record<string, number> = {};
       currentQuestion.sliders.forEach((s) => {
-        defaults[s.id] = s.defaultValue ?? 5;
+        defaults[s.id] = s.defaultValue ?? 10;
       });
       return defaults;
     }
