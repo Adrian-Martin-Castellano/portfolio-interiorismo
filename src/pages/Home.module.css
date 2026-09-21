@@ -187,13 +187,13 @@
 }
 
 /* ==========================================
-   3. SECCIÓN VÍDEO Y PRESENTACIÓN
+   3. SECCIÓN VÍDEO Y PRESENTACIÓN - BASE PC
    ========================================== */
 
 .videoSection {
-  max-width: 1100px;
+  max-width: 1200px;
   width: 90%;
-  margin: 80px auto;
+  margin: 100px auto;
   scroll-margin-top: 100px;
   background: transparent;
   padding: 0;
@@ -206,8 +206,8 @@
 
 .videoGrid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 3.5rem;
+  grid-template-columns: 1.1fr 1fr; /* Proporción más equilibrada en PC */
+  gap: 3rem;
   align-items: center;
 }
 
@@ -219,6 +219,8 @@
 .videoWrapper {
   position: relative;
   overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .videoWrapper::after {
@@ -248,10 +250,10 @@
   background-color: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 2.5rem;
+  padding: 3rem; /* Un poco más de espacio interior para PC */
   border-radius: 4px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
@@ -267,11 +269,11 @@
 
 .videoContent h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: var(--text-color);
   font-weight: 400;
   margin: 0 0 1.25rem 0;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .videoQuote {
@@ -280,7 +282,7 @@
   color: var(--text-color-secondary);
   font-size: 1.05rem;
   line-height: 1.7;
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 1.5rem 0;
   padding-left: 1.25rem;
   border-left: 2px solid var(--accent-color);
 }
@@ -291,12 +293,12 @@
   font-size: 0.9rem;
   line-height: 1.8;
   font-weight: 300;
-  margin: 0 0 2rem 0;
+  margin: 0 0 2.2rem 0;
 }
 
 .videoFooterDetails {
   display: flex;
-  gap: 2.5rem;
+  gap: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -320,6 +322,38 @@
   font-size: 0.85rem;
   color: var(--text-color); 
   font-weight: 300;
+}
+
+
+/* ==========================================
+   ADAPTACIÓN SECCIÓN 3 EXCLUSIVA PARA MÓVIL
+   (Conserva exactamente tus valores para pantalla pequeña)
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .videoSection {
+    width: 90%;
+    margin: 50px auto;
+  }
+
+  .videoGrid {
+    grid-template-columns: 1fr; /* Una sola columna apilada */
+    gap: 1.5rem;
+  }
+
+  .videoContent {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .videoContent h2 {
+    font-size: 1.8rem;
+  }
+
+  .videoFooterDetails {
+    gap: 1.5rem;
+  }
+
 }
 
 /* ==========================================
