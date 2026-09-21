@@ -34,7 +34,7 @@
 }
 
 /* ==========================================
-   2. HERO / PORTADA (PANTALLA INICIAL) - BASE PC
+   2. HERO / PORTADA 
    ========================================== */
 
 .heroSection {
@@ -57,7 +57,7 @@
   -webkit-backdrop-filter: none;
   box-shadow: none;
   padding: 0;
-  max-width: 420px; /* Reducido para que en PC luzca estilizada y no tape todo el fondo */
+  max-width: 420px;
   width: 100%; 
   display: flex;
   flex-direction: column;
@@ -154,12 +154,6 @@
   box-shadow: 0 10px 20px rgba(197, 168, 128, 0.25);
 }
 
-
-/* ==========================================
-   ADAPTACIÓN HERO EXCLUSIVA PARA MÓVIL
-   (Conserva exactamente tus valores para pantalla pequeña)
-   ========================================== */
-
 @media (max-width: 768px) {
 
   .heroSection {
@@ -187,7 +181,7 @@
 }
 
 /* ==========================================
-   3. SECCIÓN VÍDEO Y PRESENTACIÓN - BASE PC
+   3. SECCIÓN VÍDEO Y PRESENTACIÓN
    ========================================== */
 
 .videoSection {
@@ -206,7 +200,7 @@
 
 .videoGrid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr; /* Proporción más equilibrada en PC */
+  grid-template-columns: 1.1fr 1fr; 
   gap: 3rem;
   align-items: center;
 }
@@ -250,7 +244,7 @@
   background-color: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 3rem; /* Un poco más de espacio interior para PC */
+  padding: 3rem; 
   border-radius: 4px;
   border: 1px solid var(--border-color);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
@@ -324,12 +318,6 @@
   font-weight: 300;
 }
 
-
-/* ==========================================
-   ADAPTACIÓN SECCIÓN 3 EXCLUSIVA PARA MÓVIL
-   (Conserva exactamente tus valores para pantalla pequeña)
-   ========================================== */
-
 @media (max-width: 768px) {
 
   .videoSection {
@@ -338,7 +326,7 @@
   }
 
   .videoGrid {
-    grid-template-columns: 1fr; /* Una sola columna apilada */
+    grid-template-columns: 1fr; 
     gap: 1.5rem;
   }
 
@@ -357,7 +345,7 @@
 }
 
 /* ==========================================
-   4. LÍNEAS DE DISEÑO / TARJETAS DE ESTILO
+   4. LÍNEAS DE DISEÑO / TARJETAS DE ESTILO 
    ========================================== */
 
 .stylesSectionWrapper {
@@ -370,22 +358,12 @@
   box-sizing: border-box;
 }
 
-.stylesIntroHeader {
-  text-align: center;
-  max-width: 650px;
-  width: 100%;
-  margin: 0 auto 5rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
+.stylesIntroHeader,
 .stylesIntroHeaderScd {
   text-align: center;
-  max-width: 650px;
+  max-width: 420px; 
   width: 100%;
-  margin: 0 auto 5rem auto;
+  margin: 0 auto 3.5rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -412,6 +390,7 @@
   margin-bottom: 5rem;
   box-sizing: border-box;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+  position: relative; 
 }
 
 .styleFloatingCard:hover {
@@ -440,6 +419,41 @@
   grid-template-columns: 1.3fr 1fr;
   gap: 3.5rem;
   align-items: center;
+}
+
+.styleChangeBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  background-color: var(--bg-card); /* Mismo fondo elegante de la tarjeta */
+  border: 0.1px solid var(--accent-color); /* Borde dorado destacado */
+  color: var(--accent-color); /* Icono dorado */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.styleChangeBtn:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 12px 30px rgba(197, 168, 128, 0.35);
+}
+
+.stylePrevBtn {
+  left: -26px; /* Flotando a la mitad del borde izquierdo */
+}
+
+.styleNextBtn {
+  right: -26px; /* Flotando a la mitad del borde derecho */
 }
 
 .carouselContainer {
@@ -474,31 +488,29 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--bg-card);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
+  background-color: rgba(15, 15, 15, 0.65); /* Oscuro translúcido discreto */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde blanco sutil */
+  color: rgba(255, 255, 255, 0.85); /* Flecha blanca suave */
   font-family: serif;
-  font-size: 1.6rem;
-  width: 42px;
-  height: 42px;
+  font-size: 1.1rem;
+  width: 36px; /* Tamaño reducido para no tapar la fotografía */
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border-radius: 50%;
   z-index: 10;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  opacity: 0;
-  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  opacity: 0; /* Solo se muestra al pasar el ratón por la foto */
 }
 
 .navButton:hover {
-  background-color: var(--accent-color);
-  color: #ffffff;
+  background-color: rgba(20, 20, 20, 0.9);
+  color: var(--accent-color); /* Al hacer hover sobre la foto se tiñe de dorado */
   border-color: var(--accent-color);
-  box-shadow: 0 8px 20px rgba(197, 168, 128, 0.25);
   transform: translateY(-50%) scale(1.08);
 }
 
@@ -507,11 +519,11 @@
 }
 
 .prevBtn {
-  left: 15px;
+  left: 12px;
 }
 
 .nextBtn {
-  right: 15px;
+  right: 12px;
 }
 
 .carouselDots {
@@ -603,6 +615,61 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+
+  .stylesSectionWrapper {
+    padding: 0 1rem;
+  }
+
+  .stylesIntroHeader,
+  .stylesIntroHeaderScd {
+    max-width: 650px;
+    margin-bottom: 3rem;
+  }
+
+  .styleFloatingCard {
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .styleCardContent {
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+  }
+
+  .styleInfo h3 {
+    font-size: 1.8rem;
+  }
+
+  .watermarkNumber {
+    font-size: 5rem;
+    top: -30px;
+  }
+
+  .styleChangeBtn {
+    display: none;
+  }
+
+}
+
+.carouselOuterWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.stylePrevBtn {
+  left: -80px; 
+}
+
+.styleNextBtn {
+  right: -80px;
+}
+
+@media (max-width: 768px) {
+  .styleChangeBtn {
+    display: none !important;
+  }
+}
 /* ==========================================
    5. SECCIÓN MÁS ESTILOS
    ========================================== */

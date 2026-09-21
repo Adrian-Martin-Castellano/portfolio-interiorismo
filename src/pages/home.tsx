@@ -201,70 +201,97 @@ function Home() {
 
       {/* 3. LÍNEAS DE DISEÑO (ESTILOS) */}
       <section className={styles.stylesSectionWrapper}>
-        <div className={styles.stylesIntroHeader}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
-            alt="Líneas de Diseño de Autor" 
-            className={styles.introHeaderImage}
-          />
-        </div>
+  <div className={styles.stylesIntroHeader}>
+    <img 
+      src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
+      alt="Líneas de Diseño de Autor" 
+      className={styles.introHeaderImage}
+    />
+  </div>
 
-        <div 
-          ref={stylesScrollRef}
-          className={styles.horizontalScrollContainer}
-          onScroll={stylesScroll.handleScroll}
-        >
-          {t.cards.map((card, idx) => (
-            <StyleCard 
-              key={idx}
-              index={idx}
-              alignment={idx % 2 === 0 ? 'left' : 'right'}
-              category={card.category}
-              title={card.title}
-              quote={card.quote}
-              description={card.description}
-              details={card.details}
-              images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
-              learnMoreText={t.learnMoreBtn}
-              onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
-            />
-          ))}
-        </div>
+  {/* Contenedor relativo para posicionar las flechas flotantes globales en PC */}
+  <div className={styles.carouselOuterWrapper}>
+    
+    {/* Flecha flotante izquierda (PC) */}
+    <button 
+      className={`${styles.styleChangeBtn} ${styles.stylePrevBtn} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+      onClick={() => stylesScroll.scrollByAmount('left')}
+      aria-label="Estilo anterior"
+      disabled={stylesScroll.progress <= 2}
+    >
+      &#8249;
+    </button>
 
-        <div className={styles.stylesCarouselNav}>
-          <span className={styles.carouselCounter}>
-            {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
-            <span className={styles.counterDivider}>/</span>
-            {String(t.cards.length).padStart(2, '0')}
-          </span>
+    {/* Contenedor con scroll horizontal de tarjetas */}
+    <div 
+      ref={stylesScrollRef}
+      className={styles.horizontalScrollContainer}
+      onScroll={stylesScroll.handleScroll}
+    >
+      {t.cards.map((card, idx) => (
+        <StyleCard 
+          key={idx}
+          index={idx}
+          alignment={idx % 2 === 0 ? 'left' : 'right'}
+          category={card.category}
+          title={card.title}
+          quote={card.quote}
+          description={card.description}
+          details={card.details}
+          images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
+          learnMoreText={t.learnMoreBtn}
+          onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
+        />
+      ))}
+    </div>
 
-          <div className={styles.minimalProgressTrack}>
-            <div 
-              className={styles.minimalProgressFill} 
-              style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
-            ></div>
-          </div>
+    {/* Flecha flotante derecha (PC) */}
+    <button 
+      className={`${styles.styleChangeBtn} ${styles.styleNextBtn} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+      onClick={() => stylesScroll.scrollByAmount('right')}
+      aria-label="Siguiente estilo"
+      disabled={stylesScroll.progress >= 98}
+    >
+      &#8250;
+    </button>
 
-          <div className={styles.navArrowsInline}>
-            <button 
-              className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
-              onClick={() => stylesScroll.scrollByAmount('left')}
-              aria-label="Anterior"
-              disabled={stylesScroll.progress <= 2}
-            >
-              ←
-            </button>
-            <button 
-              className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
-              onClick={() => stylesScroll.scrollByAmount('right')}
-              aria-label="Siguiente"
-              disabled={stylesScroll.progress >= 98}
-            >
-              →
-            </button>
-          </div>
-        </div>
-      </section>
+  </div>
+
+  {/* Barra de navegación inferior (Conserva intactos móvil y PC) */}
+  <div className={styles.stylesCarouselNav}>
+    <span className={styles.carouselCounter}>
+      {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
+      <span className={styles.counterDivider}>/</span>
+      {String(t.cards.length).padStart(2, '0')}
+    </span>
+
+    <div className={styles.minimalProgressTrack}>
+      <div 
+        className={styles.minimalProgressFill} 
+        style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
+      ></div>
+    </div>
+
+    <div className={styles.navArrowsInline}>
+      <button 
+        className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+        onClick={() => stylesScroll.scrollByAmount('left')}
+        aria-label="Anterior"
+        disabled={stylesScroll.progress <= 2}
+      >
+        ←
+      </button>
+      <button 
+        className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+        onClick={() => stylesScroll.scrollByAmount('right')}
+        aria-label="Siguiente"
+        disabled={stylesScroll.progress >= 98}
+      >
+        →
+      </button>
+    </div>
+  </div>
+</section>
 
       {/* 4. SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
