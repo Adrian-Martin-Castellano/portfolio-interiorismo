@@ -368,6 +368,48 @@ export const QUIZ_QUESTIONS: Question[] = [
         styles: { contemporaneo: 3, art_deco: 2, escandinavo: 1 }
       }
     ]
+  },
+  {
+    id: 9,
+    title: {
+      es: "¿Alrededor de qué elemento gravita la vida en tu espacio principal?",
+      en: "Around what element does life revolve in your main space?"
+    },
+    subtitle: {
+      es: "Selecciona el punto focal que define cómo disfrutas tu hogar (1 opción)",
+      en: "Select the focal point that defines how you enjoy your home (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p9_opt1",
+        label: { es: "Espacio Diáfano & Isla Central", en: "Open Plan & Central Island" },
+        sublabel: { es: "Flujo continuo entre cocina y salón, pensado para cocinar y compartir de forma fluida", en: "Seamless flow between kitchen and living, designed for casual cooking and gathering" },
+        image: "/assets/quiz/p9_isla.jpg",
+        styles: { contemporaneo: 3, industrial: 2, escandinavo: 2 }
+      },
+      {
+        id: "p9_opt2",
+        label: { es: "El Refugio del Sofá & Luz Fina", en: "Sofa Haven & Ambient Glow" },
+        sublabel: { es: "Disposición recogida y orientada al descanso, la lectura o el bienestar íntimo", en: "Cozy layout centered on rest, reading, or intimate comfort" },
+        image: "/assets/quiz/p9_refugio.jpg",
+        styles: { japandi: 3, wabi_sabi: 3, minimal: 1 }
+      },
+      {
+        id: "p9_opt3",
+        label: { es: "Mesa Amplia & Gran Reunión", en: "Large Table & Social Gathering" },
+        sublabel: { es: "Una mesa maciza presidiendo el espacio para sobremesas largas y vida social", en: "A substantial wooden or stone table anchoring the space for long meals and guests" },
+        image: "/assets/quiz/p9_mesa.jpg",
+        styles: { mediterraneo: 3, rustico: 3, balines: 2 }
+      },
+      {
+        id: "p9_opt4",
+        label: { es: "Composición Escénica & Arte Central", en: "Architectural Statement & Focal Point" },
+        sublabel: { es: "Disposición simétrica articulada en torno a una chimenea, pieza escultórica o gran ventanal", en: "Symmetrical setup anchored by a fireplace, sculptural piece, or floor-to-ceiling view" },
+        image: "/assets/quiz/p9_focal.jpg",
+        styles: { art_deco: 3, minimal: 2, industrial: 1 }
+      }
+    ]
   }
 ];
 
