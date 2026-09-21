@@ -277,6 +277,41 @@ export const QUIZ_QUESTIONS: Question[] = [
         styles: { industrial: 3, contemporaneo: 2 }
       }
     ]
+  },
+  {
+    id: 7,
+    title: {
+      es: "¿Qué siluetas y formas prefieres que predominen en tus muebles?",
+      en: "What silhouettes and shapes do you prefer to dominate your furniture?"
+    },
+    subtitle: {
+      es: "Selecciona el tipo de trazado con el que te sientes más cómodo (1 opción)",
+      en: "Select the type of outline you feel most comfortable with (1 choice)"
+    },
+    type: "single",
+    options: [
+      {
+        id: "p7_opt1",
+        label: { es: "Líneas Rectas & Geométricas", en: "Straight & Geometric Lines" },
+        sublabel: { es: "Estructuras cuadradas, ángulos definidos y simetría", en: "Square structures, defined angles, and symmetry" },
+        image: "/assets/quiz/p7_recto.jpg",
+        styles: { minimal: 3, industrial: 2, art_deco: 2 }
+      },
+      {
+        id: "p7_opt2",
+        label: { es: "Curvas Orgánicas & Envolventes", en: "Organic & Enveloping Curves" },
+        sublabel: { es: "Sofás redondeados, arcos, mesas ovales y bordes suaves", en: "Rounded sofas, arches, oval tables, and soft edges" },
+        image: "/assets/quiz/p7_curvo.jpg",
+        styles: { japandi: 3, mediterraneo: 3, wabi_sabi: 2 }
+      },
+      {
+        id: "p7_opt3",
+        label: { es: "Formas Irregulares & Escultóricas", en: "Irregular & Sculptural Shapes" },
+        sublabel: { es: "Piezas singulares con curvas dramáticas o formas naturales sin pulir", en: "Singular pieces with dramatic curves or raw natural forms" },
+        image: "/assets/quiz/p7_escultorico.jpg",
+        styles: { contemporaneo: 3, balines: 2, art_deco: 1 }
+      }
+    ]
   }
 ];
 
