@@ -104,6 +104,8 @@ export const translations = {
     },
     quizDescription: "Responde a 10 preguntas visuales y definiremos la línea arquitectónica y de interiorismo que mejor encaja con tu visión.",
     quizCta: "Iniciar Test de Estilo",
+    
+    processStepsHint: "Desliza para explorar el proceso",
     processSteps: [
       {
         number: "01",
@@ -119,6 +121,29 @@ export const translations = {
         number: "03",
         title: "Ejecución & Dirección",
         description: "Gestión integral para materializar la propuesta con acabados de alta gama."
+      }
+    ],
+
+    faqList: [
+      {
+        question: "¿En qué etapas del proyecto interviene el estudio?",
+        answer: "Acompañamos todo el proceso: desde la conceptualización inicial y distribución espacial, pasando por el diseño 3D fotorrealista, hasta la selección de materiales, dirección de obra y estilismo final."
+      },
+      {
+        question: "¿Cuánto tiempo suele durar un proyecto completo?",
+        answer: "Los plazos varían según la escala y complejidad del espacio. Tras la primera reunión técnica definimos un calendario detallado de fases que abarca desde la propuesta conceptual hasta la entrega final."
+      },
+      {
+        question: "¿Cómo se gestionan los presupuestos y la selección de materiales?",
+        answer: "Tratamos la inversión de forma transparente desde el primer momento. Adaptamos las propuestas de materiales y mobiliario al límite presupuestario acordado previo al inicio del proyecto."
+      },
+      {
+        question: "¿Se pueden integrar piezas artísticas o muebles que ya poseo?",
+        answer: "Por supuesto. Cada intervención busca resaltar la identidad del espacio, por lo que podemos incorporar y reinterpretar piezas con valor sentimental dentro de la nueva línea estética."
+      },
+      {
+        question: "¿Cuál es el primer paso para comenzar a trabajar juntos?",
+        answer: "Simplemente ponte en contacto con nosotros a través de nuestro formulario o cita previa. Realizaremos una toma de contacto para conocer las necesidades de tu espacio y presentarte una propuesta inicial."
       }
     ]
   },
@@ -227,6 +252,8 @@ export const translations = {
     },
     quizDescription: "Answer 10 visual questions and we will define the architectural and interior design line that best fits your vision.",
     quizCta: "Start Style Test",
+    
+    processStepsHint: "Swipe to explore the process",
     processSteps: [
       {
         number: "01",
@@ -242,6 +269,29 @@ export const translations = {
         number: "03",
         title: "Execution & Direction",
         description: "Comprehensive management to materialize the proposal with high-end finishes."
+      }
+    ],
+
+    faqList: [
+      {
+        question: "What stages of the project does the studio handle?",
+        answer: "We oversee the full journey: from initial concept and space planning to photorealistic 3D rendering, material curation, site supervision, and final styling."
+      },
+      {
+        question: "How long does a complete project usually take?",
+        answer: "Timelines vary depending on scale and complexity. Following our initial briefing, we establish a detailed schedule outlining key phases from concept to final delivery."
+      },
+      {
+        question: "How are budgets and material selection managed?",
+        answer: "We manage investments with complete transparency. Material and furniture proposals are tailored strictly to the agreed budget limit prior to starting."
+      },
+      {
+        question: "Can existing art or personal furniture pieces be integrated?",
+        answer: "Absolutely. Every project aims to reflect the identity of its user, allowing us to re-evaluate and integrate meaningful pieces seamlessly into the new design."
+      },
+      {
+        question: "What is the first step to starting a project together?",
+        answer: "Simply get in touch via our contact form or book a consultation. We will discuss your space's requirements and present an initial strategic approach."
       }
     ]
   }

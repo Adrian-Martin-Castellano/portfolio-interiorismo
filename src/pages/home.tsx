@@ -499,6 +499,32 @@ function Home() {
         </div>
       </section>
 
+      {/* 8. SECCIÓN PREGUNTAS FRECUENTES (FAQ) */}
+      <section className={styles.faqSectionWrapper}>
+        <div className={styles.stylesIntroHeader4}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_preguntas_frecuentes')} 
+            alt="Preguntas Frecuentes" 
+            className={styles.introHeaderImage}
+          />
+        </div>
+
+        <div className={styles.faqContainer}>
+          {t.faqList && t.faqList.map((faq, idx) => (
+            <details key={idx} className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>
+                <span className={styles.faqIndex}>0{idx + 1}</span>
+                <span className={styles.faqTitle}>{faq.question}</span>
+                <span className={styles.faqIcon}>+</span>
+              </summary>
+              <div className={styles.faqAnswer}>
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
