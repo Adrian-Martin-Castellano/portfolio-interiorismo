@@ -84,10 +84,16 @@ export const translations = {
       }
     ],
 
-    moreStylesLabel: 'Versatilidad sin límites',
-    moreStylesTitle: 'Cada espacio exige una identidad única',
-    moreStylesText: 'Estas cuatro líneas son solo el punto de partida. Nos adaptamos a la personalidad de cada cliente y a las exigencias arquitectónicas de cada espacio para crear proyectos totalmente a medida.',
-    moreStylesCta: 'Explorar Todos los Proyectos →',
+    moreStylesLabel: 'ARQUITECTURA DE AUTOR & INTERIORISMO',
+    moreStylesTitle: 'Cada espacio exige una identidad única e irrepetible',
+    moreStylesText: 'Las líneas de diseño son solo el punto de partida. Trascendemos los estilos predefinidos para moldear cada espacio según la personalidad de quien lo habita, fusionando la exigencia arquitectónica con una cuidada selección de materiales nobles.',
+    moreStylesFeature1Title: 'DISEÑO A MEDIDA',
+    moreStylesFeature1Desc: 'Desarrollo conceptual y volumétrico adaptado al espacio.',
+    moreStylesFeature2Title: 'MUEBLES DE AUTOR',
+    moreStylesFeature2Desc: 'Diseño de piezas exclusivas e integración de iluminación.',
+    moreStylesFeature3Title: 'GESTIÓN INTEGRAL',
+    moreStylesFeature3Desc: 'Supervisión de obra de la primera idea al último detalle.',
+    moreStylesCta: 'EXPLORAR EL PORTFOLIO COMPLETO',
 
     stickyCtaText: '¿Tienes un espacio que quieras transformar?',
     stickyCtaBtn: 'Contacta',
@@ -201,10 +207,16 @@ export const translations = {
       }
     ],
 
-    moreStylesLabel: 'Limitless Versatility',
-    moreStylesTitle: 'Every space demands a unique identity',
-    moreStylesText: 'These four design lines represent only a part of what we do. We tailor every detail to match your vision, lifestyle, and architectural requirements.',
-    moreStylesCta: 'Explore All Completed Projects →',
+    moreStylesLabel: 'SIGNATURE ARCHITECTURE & INTERIOR DESIGN',
+    moreStylesTitle: 'Every space demands a unique and unrepeatable identity',
+    moreStylesText: 'Design lines are merely the starting point. We transcend predefined styles to shape each space according to the personality of its inhabitant, fusing architectural precision with a curated selection of refined materials.',
+    moreStylesFeature1Title: 'CUSTOM DESIGN',
+    moreStylesFeature1Desc: 'Conceptual and volumetric development tailored to the space.',
+    moreStylesFeature2Title: 'SIGNATURE FURNITURE',
+    moreStylesFeature2Desc: 'Design of exclusive bespoke pieces and integrated lighting.',
+    moreStylesFeature3Title: 'FULL PROJECT MANAGEMENT',
+    moreStylesFeature3Desc: 'Comprehensive site supervision from the initial concept to the final detail.',
+    moreStylesCta: 'EXPLORE THE FULL PORTFOLIO',
 
     stickyCtaText: 'Have a space you wish to transform?',
     stickyCtaBtn: "Let's Talk",

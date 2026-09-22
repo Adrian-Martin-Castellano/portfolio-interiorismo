@@ -293,7 +293,6 @@ function Home() {
         </div>
 
         <div className={styles.quizCard}>
-          {/* Imagen descriptiva del proceso */}
           <div className={styles.quizCardMedia}>
             <img 
               src="/assets/iconos/icono_quiz_claro.jpg" 
@@ -302,7 +301,6 @@ function Home() {
             />
           </div>
 
-          {/* Bloque de Contenido Enriquecido */}
           <div className={styles.quizCardContent}>
             <span className={styles.quizTag}>Diagnóstico de Interiorismo</span>
             <h2>Encuentra el alma de tu espacio</h2>
@@ -310,7 +308,6 @@ function Home() {
               A través de una breve selección de atmósferas visuales, texturas y elementos arquitectónicos, analizaremos tus preferencias para definir la línea de diseño de autor que mejor se adapta a tu estilo de vida.
             </p>
 
-            {/* Grid de detalles/ventajas para dar cuerpo a la tarjeta */}
             <div className={styles.quizFeatures}>
               <div className={styles.featureItem}>
                 <span className={styles.featureNumber}>10</span>
@@ -337,21 +334,17 @@ function Home() {
 
       {/* 5. PROYECTOS DESTACADOS */}
       <section className={styles.featuredProjectsSection}>
-        <div className={styles.stylesIntroHeaderScd}>
+        <div className={styles.stylesIntroHeaderThr}>
           <img 
             src={getDynamicAsset('marcos', 'marco_proyectos_destacados')}
             alt={t.featuredTitle} 
-            className={styles.introHeaderImage}
+            className={styles.introHeaderImageThr}
           />
         </div>
 
-        <div 
-          ref={featuredScrollRef}
-          className={styles.horizontalScrollContainer}
-          onScroll={featuredScroll.handleScroll}
-        >
-          {t.featuredProjects.map((project, idx) => (
-            <div key={idx} className={styles.projectCard}>
+        <div className={styles.desktopProjectsGrid}>
+          {t.featuredProjects.slice(0, 3).map((project, idx) => (
+            <div key={idx} className={styles.projectCardDesktop}>
               <img 
                 src={FEATURED_IMAGES[idx]} 
                 alt={project.title} 
@@ -366,50 +359,104 @@ function Home() {
           ))}
         </div>
 
-        <div className={styles.featuredCarouselNav}>
-          <span className={styles.carouselCounter}>
-            {String(Math.min(t.featuredProjects.length, Math.max(1, Math.ceil((featuredScroll.progress / 100) * t.featuredProjects.length)))).padStart(2, '0')}
-            <span className={styles.counterDivider}>/</span>
-            {String(t.featuredProjects.length).padStart(2, '0')}
-          </span>
 
-          <div className={styles.minimalProgressTrack}>
-            <div 
-              className={styles.minimalProgressFill} 
-              style={{ width: `${Math.max(featuredScroll.progress, 10)}%` }}
-            ></div>
+        <div className={styles.mobileCarouselWrapper}>
+          <div 
+            ref={featuredScrollRef}
+            className={styles.horizontalScrollContainer}
+            onScroll={featuredScroll.handleScroll}
+          >
+            {t.featuredProjects.map((project, idx) => (
+              <div key={idx} className={styles.projectCardMobile}>
+                <img 
+                  src={FEATURED_IMAGES[idx]} 
+                  alt={project.title} 
+                  className={styles.projectImage} 
+                />
+                <div className={styles.projectOverlay}>
+                  <span className={styles.projectCategory}>{project.category}</span>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectLocation}>{project.subtitle}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className={styles.navArrowsInline}>
-            <button 
-              className={`${styles.inlineArrow} ${featuredScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
-              onClick={() => featuredScroll.scrollByAmount('left')}
-              aria-label="Anterior"
-              disabled={featuredScroll.progress <= 2}
-            >
-              ←
-            </button>
-            <button 
-              className={`${styles.inlineArrow} ${featuredScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
-              onClick={() => featuredScroll.scrollByAmount('right')}
-              aria-label="Siguiente"
-              disabled={featuredScroll.progress >= 98}
-            >
-              →
-            </button>
+          <div className={styles.featuredCarouselNav}>
+            <span className={styles.carouselCounter}>
+              {String(Math.min(t.featuredProjects.length, Math.max(1, Math.ceil((featuredScroll.progress / 100) * t.featuredProjects.length)))).padStart(2, '0')}
+              <span className={styles.counterDivider}>/</span>
+              {String(t.featuredProjects.length).padStart(2, '0')}
+            </span>
+
+            <div className={styles.minimalProgressTrack}>
+              <div 
+                className={styles.minimalProgressFill} 
+                style={{ width: `${Math.max(featuredScroll.progress, 10)}%` }}
+              ></div>
+            </div>
+
+            <div className={styles.navArrowsInline}>
+              <button 
+                className={`${styles.inlineArrow} ${featuredScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+                onClick={() => featuredScroll.scrollByAmount('left')}
+                aria-label="Anterior"
+                disabled={featuredScroll.progress <= 2}
+              >
+                ←
+              </button>
+              <button 
+                className={`${styles.inlineArrow} ${featuredScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+                onClick={() => featuredScroll.scrollByAmount('right')}
+                aria-label="Siguiente"
+                disabled={featuredScroll.progress >= 98}
+              >
+                →
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 6. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
       <section className={styles.moreStylesSection}>
-        <div className={styles.moreStylesContent}>
-          <span className={styles.moreStylesTag}>{t.moreStylesLabel}</span>
-          <h2>{t.moreStylesTitle}</h2>
-          <p>{t.moreStylesText}</p>
-          <Link to="/proyectos" className={styles.moreStylesButton}>
-            {t.moreStylesCta}
-          </Link>
+        <div className={styles.moreStylesCard}>
+          {/* Columna Izquierda: Imagen */}
+          <div className={styles.moreStylesImageWrapper}>
+            <img 
+              src="/assets/hero-bg-dark1.png" 
+              alt="Estudio de arquitectura e interiorismo" 
+              className={styles.moreStylesImage}
+            />
+            <div className={styles.moreStylesImageOverlay} />
+          </div>
+
+          <div className={styles.moreStylesContent}>
+            <span className={styles.moreStylesTag}>{t.moreStylesLabel}</span>
+            <h2>{t.moreStylesTitle}</h2>
+            <p className={styles.moreStylesText}>{t.moreStylesText}</p>
+            <div className={styles.moreStylesGrid}>
+              <div className={styles.moreStylesGridItem}>
+                <span className={styles.gridNumber}>01</span>
+                <div>
+                  <h4>{t.moreStylesFeature1Title}</h4>
+                  <p>{t.moreStylesFeature1Desc}</p>
+                </div>
+              </div>
+
+              <div className={styles.moreStylesGridItem}>
+                <span className={styles.gridNumber}>02</span>
+                <div>
+                  <h4>{t.moreStylesFeature2Title}</h4>
+                  <p>{t.moreStylesFeature2Desc}</p>
+                </div>
+              </div>
+            </div>
+
+            <Link to="/proyectos" className={styles.moreStylesButton}>
+              {t.moreStylesCta} →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -434,7 +481,6 @@ function Home() {
         </div>
       </section>
 
-      {/* BARRA FLOTANTE DE CONTACTO Y BOTÓN SUBIR */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
         <Link to="/contacto" className={styles.talkButton}>
@@ -463,7 +509,6 @@ function Home() {
         )}
       </div>
 
-      {/* LIGHTBOX MODAL CON CAMBIO DE ESTILOS E IMÁGENES */}
       <LightboxModal 
         isOpen={lightboxData.isOpen}
         images={activeImages}
@@ -480,7 +525,6 @@ function Home() {
         onPrevStyle={prevStyle}
       />
 
-      {/* MODAL INTERACTIVA DEL QUIZ DE ESTILOS */}
       <QuizModal 
         isOpen={showQuizModal} 
         onClose={() => setShowQuizModal(false)} 

@@ -376,6 +376,40 @@
   box-sizing: border-box;
 }
 
+.stylesIntroHeader::before {
+  content: '';
+  position: absolute;
+  right: 97.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
+}
+
+.stylesIntroHeader::after {
+  content: '';
+  position: absolute;
+  left: 97.5%;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
+}
+
 .introHeaderImage {
   max-width: 100%;
   height: auto;
@@ -687,6 +721,40 @@
   align-items: center;
 }
 
+.stylesIntroHeaderthr::before {
+  content: '';
+  position: absolute;
+  right: 94%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
+}
+
+.stylesIntroHeaderthr::after {
+  content: '';
+  position: absolute;
+  left: 94%;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
+}
+
 .introHeaderImage {
   width: 100%;
   max-height: 200px;
@@ -850,82 +918,7 @@
 }
 
 /* ==========================================
-   5. SECCIÓN MÁS ESTILOS
-   ========================================== */
-
-.moreStylesSection {
-  max-width: 900px;
-  width: 90%;
-  margin: 20px auto 100px auto;
-  background-color: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 4rem 2.5rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.moreStylesContent {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.moreStylesTag {
-  display: block;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 4px;
-  color: var(--accent-color);
-  margin-bottom: 0.8rem;
-  font-weight: 400;
-}
-
-.moreStylesContent h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  color: var(--text-color);
-  font-weight: 400;
-  margin: 0 0 1.5rem 0;
-  line-height: 1.3;
-}
-
-.moreStylesContent p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text-color-secondary);
-  line-height: 1.8;
-  font-weight: 300;
-  margin: 0 auto 2.5rem auto;
-}
-
-.moreStylesButton {
-  display: inline-block;
-  background-color: var(--accent-color);
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 2px;
-  padding: 1rem 2.5rem;
-  border-radius: 2px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  border: 1px solid var(--accent-color);
-}
-
-.moreStylesButton:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(197, 168, 128, 0.25);
-}
-
-/* ==========================================
-   PROYECTOS DESTACADOS (Sincronizado con variables del tema)
+   6. PROYECTOS DESTACADOS
    ========================================== */
 
 .featuredProjectsSection {
@@ -936,56 +929,21 @@
   box-sizing: border-box;
 }
 
-.stylesIntroHeaderScd {
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto 2.5rem auto;
+.introHeaderImageThr {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
 }
 
-.introHeaderImage {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Único contenedor de la tarjeta */
-.projectCard {
-  position: relative;
-  flex: 0 0 85%;
-  max-width: 380px;
-  
-  /* CAMBIA ESTO: Proporción panorámica más baja */
-  aspect-ratio: 16 / 11; /* O si la quieres aún más bajita, prueba '16 / 10' o '16 / 9' */
-  
-  scroll-snap-align: center;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-@media (min-width: 992px) {
-  .projectCard {
-    flex: 0 0 calc(33.333% - 1rem);
-    max-width: none;
-  }
-}
-
-/* Foto a tamaño completo */
 .projectImage {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Recorta la imagen limpiamente sin deformarla */
+  object-fit: cover;
   object-position: center;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projectCard:hover .projectImage {
-  transform: scale(1.04);
-}
-
-/* Capa flotante sobre la foto con gradiente adaptado al tema */
 .projectOverlay {
   position: absolute;
   bottom: 0;
@@ -1012,7 +970,7 @@
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: var(--accent-color); /* Color dorado/acento global */
+  color: var(--accent-color);
   margin-bottom: 0.3rem;
   font-weight: 500;
 }
@@ -1020,7 +978,7 @@
 .projectTitle {
   font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
-  color: #ffffff; /* Texto blanco asegurado para lectura sobre la foto */
+  color: #ffffff;
   font-weight: 400;
   margin: 0 0 0.3rem 0;
   line-height: 1.2;
@@ -1034,85 +992,386 @@
   margin: 0;
 }
 
-/* Controles de Navegación */
-.featuredCarouselNav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  padding: 0 0.5rem;
+.mobileCarouselWrapper {
+  display: none;
 }
 
-.carouselCounter {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  color: var(--accent-color);
-  white-space: nowrap;
-}
-
-.counterDivider {
-  margin: 0 4px;
-  opacity: 0.5;
-  color: var(--text-color-secondary);
-}
-
-.minimalProgressTrack {
-  flex: 1;
-  height: 2px;
-  background-color: var(--border-color);
+.stylesIntroHeaderThr {
   position: relative;
-  overflow: hidden;
-  border-radius: 1px;
+  width: 100%;
+  max-width: 350px !important;
+  margin: 0 auto 2.5rem auto;
 }
 
-.minimalProgressFill {
-  height: 100%;
-  background-color: var(--accent-color);
-  border-radius: 1px;
-  transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+.stylesIntroHeaderThr::before {
+  content: '';
+  position: absolute;
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
 }
 
-.navArrowsInline {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.inlineArrow {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--accent-color);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.inlineArrow:not(:disabled):hover {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  border-color: var(--accent-color);
-}
-
-.arrowDisabled {
-  opacity: 0.2 !important;
-  cursor: default;
+.stylesIntroHeaderThr::after {
+  content: '';
+  position: absolute;
+  left: 120%;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
 }
 
 @media (max-width: 768px) {
-  /* 1. Ajusta el espacio alrededor del encabezado/marco */
-  .stylesIntroHeaderScd {
-   /* Espacio superior para separarlo de la sección previa */
-    margin-top: 1.5rem !important;  /* Espacio entre el marco y el carrusel */
+  .stylesIntroHeader::before,
+  .stylesIntroHeader::after,
+  .stylesIntroHeaderthr::before,
+  .stylesIntroHeaderthr::after,
+  .stylesIntroHeaderThr::before,
+  .stylesIntroHeaderThr::after {
+    display: none !important;
   }
 }
+
+.stylesIntroHeader,
+.stylesIntroHeaderthr,
+.stylesIntroHeaderThr {
+  position: relative !important;
+}
+
+.desktopProjectsGrid {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem; 
+  box-sizing: border-box;
+}
+
+.projectCardDesktop {
+  position: relative;
+  flex: 1 1 0; 
+  min-width: 0; 
+  height: 420px; 
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-card);
+}
+
+.projectCardDesktop:hover .projectImage {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .desktopProjectsGrid {
+    display: none;
+  }
+
+  .mobileCarouselWrapper {
+    display: block;
+  }
+
+  .featuredProjectsSection {
+    margin: 20px auto 70px auto;
+    padding: 0 1rem;
+  }
+
+  .stylesIntroHeaderThr {
+    max-width: 100% !important;
+    margin: 0 auto 1.25rem auto;
+  }
+
+  .stylesIntroHeaderThr::before,
+  .stylesIntroHeaderThr::after {
+    display: none !important;
+  }
+
+  .horizontalScrollContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .horizontalScrollContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projectCardMobile {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    scroll-snap-align: center;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .featuredCarouselNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .carouselCounter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    white-space: nowrap;
+  }
+
+  .counterDivider {
+    margin: 0 4px;
+    opacity: 0.5;
+    color: var(--text-color-secondary);
+  }
+
+  .minimalProgressTrack {
+    flex: 1;
+    height: 2px;
+    background-color: var(--border-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+
+  .minimalProgressFill {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 1px;
+    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .navArrowsInline {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .inlineArrow {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--accent-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .inlineArrow:not(:disabled):hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+  }
+
+  .arrowDisabled {
+    opacity: 0.2 !important;
+    cursor: default;
+  }
+}
+
+.moreStylesSection {
+  max-width: 1150px;
+  width: 100%;
+  margin: 60px auto 140px auto;
+  box-sizing: border-box;
+}
+
+.moreStylesCard {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background-color: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.moreStylesImageWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background-color: #0d0d0d;
+}
+
+.moreStylesImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.moreStylesImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(18,18,18,0.95) 100%);
+}
+
+.moreStylesContent {
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.moreStylesTag {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--accent-color, #c5a880);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.moreStylesContent h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.moreStylesText {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+  font-weight: 300;
+  margin: 0 0 2rem 0;
+}
+
+.moreStylesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+}
+
+.moreStylesGridItem {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.gridNumber {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--accent-color, #c5a880);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.moreStylesGridItem h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0 0 0.3rem 0;
+  font-weight: 600;
+}
+
+.moreStylesGridItem p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 300;
+}
+
+.moreStylesButton {
+  display: inline-block;
+  background-color: var(--accent-color, #c5a880);
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2px;
+  text-decoration: none !important;
+  font-size: 0.78rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--accent-color, #c5a880);
+}
+
+@media screen and (max-width: 900px) {
+  
+  .moreStylesSection {
+    margin: 30px auto 120px auto !important;
+    padding: 0 1rem !important; 
+  }
+
+  .moreStylesCard {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .moreStylesImageWrapper {
+    width: 100% !important;
+    height: 220px !important;
+    min-height: 220px !important;
+  }
+
+  .moreStylesImageOverlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(18,18,18,0.95) 100%) !important;
+  }
+
+  .moreStylesContent {
+    padding: 2rem 1.2rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .moreStylesGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .moreStylesButton {
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+}
+
 /* ==========================================
    7. BARRA FLOTANTE DE CONTACTO
    ========================================== */
@@ -1268,7 +1527,6 @@
 @media (max-width: 768px) {
   .videoSection,
   .stylesSectionWrapper,
-  .moreStylesSection,
   .featuredProjectsSection {
     width: 90% !important;
     max-width: 100% !important;
@@ -1295,7 +1553,7 @@
     padding: 0 !important;
   }
 
-  .introHeaderImage {
+  .introHeaderImageThr {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
