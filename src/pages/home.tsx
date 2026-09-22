@@ -421,11 +421,10 @@ function Home() {
       {/* 6. SECCIÓN MÁS ESTILOS -> PROYECTOS */}
       <section className={styles.moreStylesSection}>
         <div className={styles.moreStylesCard}>
-          {/* Columna Izquierda: Imagen */}
           <div className={styles.moreStylesImageWrapper}>
             <img 
-              src="/assets/hero-bg-dark1.png" 
-              alt="Estudio de arquitectura e interiorismo" 
+              src="/assets/iconos/more-styles-cover.jpg" 
+              alt="Diagnóstico de Estilo" 
               className={styles.moreStylesImage}
             />
             <div className={styles.moreStylesImageOverlay} />
@@ -435,6 +434,7 @@ function Home() {
             <span className={styles.moreStylesTag}>{t.moreStylesLabel}</span>
             <h2>{t.moreStylesTitle}</h2>
             <p className={styles.moreStylesText}>{t.moreStylesText}</p>
+            
             <div className={styles.moreStylesGrid}>
               <div className={styles.moreStylesGridItem}>
                 <span className={styles.gridNumber}>01</span>
@@ -460,24 +460,42 @@ function Home() {
         </div>
       </section>
 
-      {/* 7. PROCESO DE TRABAJO (METODOLOGÍA) */}
+      {/* 7. PROCESO DE TRABAJO */}
       <section className={styles.processSectionWrapper}>
-        <div className={styles.stylesIntroHeader}>
+        <div className={styles.stylesIntroHeader4}>
           <img 
             src={getDynamicAsset('marcos', 'marco_nuestro_proceso')} 
             alt="Proceso de diseño" 
             className={styles.introHeaderImage}
           />
         </div>
-
         <div className={styles.processGrid}>
+          <div className={styles.processConnectorLine} />
+
           {t.processSteps.map((step, idx) => (
             <div key={idx} className={styles.processStep}>
-              <span className={styles.stepNumber}>{step.number}</span>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>{step.number}</span>
+                <div className={styles.stepBadge}>Paso {idx + 1}</div>
+              </div>
+
+              <div className={styles.stepImageWrapper}>
+                <img 
+                  src={`/assets/iconos/proceso_paso_${idx + 1}.jpg`} 
+                  alt={step.title}
+                  className={styles.stepImage}
+                />
+              </div>
+
               <h4>{step.title}</h4>
               <p>{step.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className={styles.mobileProcessHint}>
+          <span>Desliza para explorar el proceso</span>
+          <div className={styles.swipeIndicator}>→</div>
         </div>
       </section>
 
