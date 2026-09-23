@@ -675,7 +675,8 @@
   .stylesIntroHeader,
   .stylesIntroHeaderScd {
     max-width: 100%;
-    margin-bottom: 2.5rem;
+    margin-top: -1rem;
+    margin-bottom: 4.5rem;
   }
 
   .styleFloatingCard {
@@ -1049,7 +1050,9 @@
   .stylesIntroHeaderThr::before,
   .stylesIntroHeaderThr::after ,
   .stylesIntroHeader4::before,
-  .stylesIntroHeader4::after{
+  .stylesIntroHeader4::after,
+  .stylesIntroHeader5::before,
+  .stylesIntroHeader5::after{
     display: none !important;
   }
 }
@@ -1057,7 +1060,8 @@
 .stylesIntroHeader,
 .stylesIntroHeaderthr,
 .stylesIntroHeaderThr,
-.stylesIntroHeader4 {
+.stylesIntroHeader4,
+.stylesIntroHeader5 {
   position: relative !important;
 }
 
@@ -1101,6 +1105,13 @@
   .stylesIntroHeaderThr {
     max-width: 100% !important;
     margin: 0 auto 1.25rem auto;
+    margin-top: -5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stylesIntroHeaderthr {
+    margin-top: -4.25rem;
+    margin-bottom: 1rem;
   }
 
   .stylesIntroHeaderThr::before,
@@ -1149,6 +1160,17 @@
     letter-spacing: 2px;
     color: var(--accent-color);
     white-space: nowrap;
+    margin-top: -7.5em;
+  }
+
+  .carouselCounter2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    white-space: nowrap;
+    margin-top: -1em;
   }
 
   .counterDivider {
@@ -1164,6 +1186,17 @@
     position: relative;
     overflow: hidden;
     border-radius: 1px;
+    margin-top: -5.5em;
+  }
+
+  .minimalProgressTrack2 {
+    flex: 1;
+    height: 2px;
+    background-color: var(--border-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+    margin-top: -0.8em;
   }
 
   .minimalProgressFill {
@@ -1177,6 +1210,14 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    margin-top: -5.75em;
+  }
+
+  .navArrowsInline2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: -1em;
   }
 
   .inlineArrow {
@@ -1210,6 +1251,7 @@
   width: 100%;
   margin: 60px auto 140px auto;
   box-sizing: border-box;
+  margin-top: -2.5rem;
 }
 
 .moreStylesCard {
@@ -1570,8 +1612,8 @@
 
   .moreStylesSection {
     padding: 2.5rem 1.25rem !important;
-    margin-top: 1.5rem !important;
-    margin-bottom: 2rem !important;
+    margin-top: -1.5rem !important;
+    margin-bottom: -3.5rem !important;
   }
 
   .styleFloatingCard,
@@ -2425,4 +2467,59 @@
   .faqAnswer p {
     font-size: 0.82rem;
   }
+}
+
+.stylesIntroHeader5 {
+  position: relative !important;
+  width: 100%;
+  max-width: 350px !important;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7.5rem;
+  margin-bottom: 4.5rem;
+}
+
+@media (max-width: 768px) {
+  .stylesIntroHeader5 {
+    max-width: 310px !important;
+    width: 100% !important;
+    margin-top: -5.5em;
+    margin-bottom: 1em;
+  }
+}
+
+.stylesIntroHeader5::before {
+  content: '';
+  position: absolute;
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.webp');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
+}
+
+.stylesIntroHeader5::after {
+  content: '';
+  position: absolute;
+  left: 120%;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  width: 300px;
+  height: 90px;
+  background-image: url('/assets/marcos/filigrana.webp');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right center;
+  pointer-events: none;
+  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
+  z-index: 5;
 }

@@ -375,20 +375,20 @@ function Home() {
           </div>
 
           <div className={styles.featuredCarouselNav}>
-            <span className={styles.carouselCounter}>
+            <span className={styles.carouselCounter2}>
               {String(Math.min(t.featuredProjects.length, Math.max(1, Math.ceil((featuredScroll.progress / 100) * t.featuredProjects.length)))).padStart(2, '0')}
               <span className={styles.counterDivider}>/</span>
               {String(t.featuredProjects.length).padStart(2, '0')}
             </span>
 
-            <div className={styles.minimalProgressTrack}>
+            <div className={styles.minimalProgressTrack2}>
               <div 
                 className={styles.minimalProgressFill} 
                 style={{ width: `${Math.max(featuredScroll.progress, 10)}%` }}
               ></div>
             </div>
 
-            <div className={styles.navArrowsInline}>
+            <div className={styles.navArrowsInline2}>
               <button 
                 className={`${styles.inlineArrow} ${featuredScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
                 onClick={() => featuredScroll.scrollByAmount('left')}
@@ -493,7 +493,7 @@ function Home() {
 
       {/* 8. SECCIÓN PREGUNTAS FRECUENTES (FAQ) */}
       <section className={styles.faqSectionWrapper}>
-        <div className={styles.stylesIntroHeader4}>
+        <div className={styles.stylesIntroHeader5}>
           <img 
             src={getDynamicAsset('marcos', 'marco_preguntas_frecuentes')} 
             alt="Preguntas Frecuentes" 
