@@ -3,11 +3,11 @@
    ==========================================*/
    
 [data-theme='dark'] {
-  --hero-bg-image: url('../assets/hero-bg-dark1.png');
+  --hero-bg-image: url('../assets/hero-bg-dark1.webp');
 }
 
 [data-theme='light'] {
-  --hero-bg-image: url('../assets/hero-bg-light.jpg');
+  --hero-bg-image: url('../assets/hero-bg-light.webp');
 }
 
 /* ==========================================
@@ -384,7 +384,7 @@
   transform: translateY(-50%);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -401,7 +401,7 @@
   transform: translateY(-50%) scaleX(-1);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -729,7 +729,7 @@
   transform: translateY(-50%);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -746,7 +746,7 @@
   transform: translateY(-50%) scaleX(-1);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -1011,7 +1011,7 @@
   transform: translateY(-50%);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -1028,7 +1028,7 @@
   transform: translateY(-50%) scaleX(-1);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -2226,7 +2226,7 @@
   transform: translateY(-50%);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;
@@ -2243,7 +2243,7 @@
   transform: translateY(-50%) scaleX(-1);
   width: 300px;
   height: 90px;
-  background-image: url('/assets/marcos/filigrana.png');
+  background-image: url('/assets/marcos/filigrana.webp');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right center;

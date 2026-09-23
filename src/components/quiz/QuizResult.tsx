@@ -89,7 +89,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Tu visión prioriza la amplitud espacial, la luz natural y una paleta limpia donde cada elemento cumple una función esencial.",
         en: "Your vision prioritizes spaciousness, natural light, and a clean palette where every element serves a true purpose."
       },
-      image: "/assets/quiz/results/minimal.jpg",
+      image: "/assets/quiz/results/minimal.webp",
       highlights: {
         materials: { es: "Microcemento, cristal, acero pulido", en: "Microcement, glass, polished steel" },
         palette: { es: "Blancos puros, marfil, grises suaves", en: "Pure whites, ivory, soft greys" },
@@ -103,7 +103,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Buscas un refugio de paz. Un equilibrio perfecto entre la funcionalidad escandinava, las maderas claras y la sobriedad oriental.",
         en: "You look for a peaceful sanctuary. A subtle balance between Scandinavian functionality, light woods, and Asian minimalism."
       },
-      image: "/assets/quiz/results/japandi.jpg",
+      image: "/assets/quiz/results/japandi.webp",
       highlights: {
         materials: { es: "Madera de roble claro, papel de arroz, bambú", en: "Light oak wood, rice paper, bamboo" },
         palette: { es: "Lino, arena, beige y pinceladas negras", en: "Linen, sand, beige, and black accents" },
@@ -117,7 +117,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Conectas profundamente con la madera vista, las fibras naturales y una arquitectura sensorial que traslada la naturaleza al interior.",
         en: "You deeply connect with exposed wood, natural fibers, and a sensory architecture that brings nature indoors."
       },
-      image: "/assets/quiz/results/balines.jpg",
+      image: "/assets/quiz/results/balines.webp",
       highlights: {
         materials: { es: "Teca, ratán, piedra volcánica, yute", en: "Teak, rattan, volcanic stone, jute" },
         palette: { es: "Verdes vegetación, tonos canela, madera oscura", en: "Botanical greens, cinnamon tones, dark wood" },
@@ -131,7 +131,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Te inspiran los ambientes fluidos, la calidez de la arcilla, el lino y las tonalidades solares que evocan la costa y el bienestar.",
         en: "You are inspired by fluid spaces, warm terracotta, linen, and sun-kissed hues evoking coastal ease and well-being."
       },
-      image: "/assets/quiz/results/mediterraneo.jpg",
+      image: "/assets/quiz/results/mediterraneo.webp",
       highlights: {
         materials: { es: "Barro cocido, cal, madera lavada, lino", en: "Terracotta clay, whitewash, weathered wood, linen" },
         palette: { es: "Terracota, blanco cálido, azul cobalto", en: "Terracotta, warm white, cobalt blue" },
@@ -145,7 +145,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Prefieres espacios con personalidad marcada, donde el hormigón, el acero negro y las estructuras vistas toman el protagonismo.",
         en: "You prefer bold spaces with distinct character, featuring raw concrete, black steel, and exposed structural features."
       },
-      image: "/assets/quiz/results/industrial.jpg",
+      image: "/assets/quiz/results/industrial.webp",
       highlights: {
         materials: { es: "Hormigón visto, vigas de hierro, ladrillo, cuero", en: "Exposed concrete, iron beams, brick, leather" },
         palette: { es: "Gris grafito, negro mate, óxido, cuero envejecido", en: "Graphite grey, matte black, rust, aged leather" },
@@ -159,7 +159,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Tu estilo destaca por la combinación de tonos profundos, contrastes elegantes y piezas de autor con una estética muy cuidada.",
         en: "Your style stands out through deep color palettes, elegant contrasts, and signature pieces with refined aesthetics."
       },
-      image: "/assets/quiz/results/contemporaneo.jpg",
+      image: "/assets/quiz/results/contemporaneo.webp",
       highlights: {
         materials: { es: "Mármol ahumado, nogal, detalles dorados, terciopelo", en: "Smoked marble, walnut, brass details, velvet" },
         palette: { es: "Azul noche, nogal profundo, detalles en latón", en: "Midnight blue, deep walnut, brass accents" },
@@ -173,7 +173,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Aprecias la belleza en las texturas rugosas, la piedra natural, el yeso artesanal y los elementos con historia y textura.",
         en: "You value beauty in unrefined textures, raw stone, handcrafted plaster, and elements that tell an authentic story."
       },
-      image: "/assets/quiz/results/wabi_sabi.jpg",
+      image: "/assets/quiz/results/wabi_sabi.webp",
       highlights: {
         materials: { es: "Yeso a la cal, piedra sin pulir, madera recuperada", en: "Lime plaster, unpolished stone, reclaimed wood" },
         palette: { es: "Tono ceniza, tierra cruda, blanco roto", en: "Ash grey, raw earth, off-white" },
@@ -187,7 +187,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Priorizas los espacios acogedores (concepto Hygge), las maderas claras de roble y una iluminación envolvente y natural.",
         en: "You focus on cozy living (Hygge concept), light oak woods, and soft, natural, enveloping lighting."
       },
-      image: "/assets/quiz/results/escandinavo.jpg",
+      image: "/assets/quiz/results/escandinavo.webp",
       highlights: {
         materials: { es: "Roble claro, lana, cerámica, algodón", en: "Light oak, wool, ceramics, cotton" },
         palette: { es: "Blanco nieve, verde salvia, tonos pastel", en: "Snow white, sage green, soft pastels" },
@@ -201,7 +201,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Atraen tu atención los toques metalizados en latón, los mármoles vetados y las líneas geométricas que aportan elegancia exclusiva.",
         en: "You are drawn to brass metallic accents, veined marbles, and geometric lines that create exclusive, sophisticated spaces."
       },
-      image: "/assets/quiz/results/art_deco.jpg",
+      image: "/assets/quiz/results/art_deco.webp",
       highlights: {
         materials: { es: "Latón cepillado, mármol calacatta, espejos, sedas", en: "Brushed brass, calacatta marble, mirrors, silk" },
         palette: { es: "Dorado, negro brillante, verde esmeralda, marfil", en: "Gold, glossy black, emerald green, ivory" },
@@ -215,7 +215,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         es: "Buscas el refugio perfecto combinando la nobleza de la madera maciza y la piedra con la comodidad y amplitud del diseño moderno.",
         en: "You seek the ultimate cozy home by blending noble solid wood and stone with modern comfort and spatial freedom."
       },
-      image: "/assets/quiz/results/rustico.jpg",
+      image: "/assets/quiz/results/rustico.webp",
       highlights: {
         materials: { es: "Vigas de madera maciza, piedra mampostería, lino pesado", en: "Solid timber beams, masonry stone, heavy linen" },
         palette: { es: "Tonos roble, ocre, terracota suave, crema", en: "Oak tones, ochre, soft terracotta, cream" },

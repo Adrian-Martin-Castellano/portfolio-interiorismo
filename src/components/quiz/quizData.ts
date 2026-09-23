@@ -44,21 +44,21 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p1_opt1",
         label: { es: "Luminosa & Calma", en: "Luminous & Calm" },
         sublabel: { es: "Elegancia neutra, orden y serenidad", en: "Neutral elegance, order, and serenity" },
-        image: "/assets/quiz/p1_neutro.jpg",
+        image: "/assets/quiz/p1_neutro.webp",
         styles: { minimal: 3, japandi: 3, escandinavo: 2 }
       },
       {
         id: "p1_opt2",
         label: { es: "Cálida & Terrenal", en: "Warm & Earthy" },
         sublabel: { es: "Conexión orgánica y texturas naturales", en: "Organic connection and natural textures" },
-        image: "/assets/quiz/p1_organico.jpg",
+        image: "/assets/quiz/p1_organico.webp",
         styles: { balines: 3, mediterraneo: 2, rustico: 2, wabi_sabi: 1 }
       },
       {
         id: "p1_opt3",
         label: { es: "Sobria & Sofisticada", en: "Sober & Sophisticated" },
         sublabel: { es: "Contraste visual, carácter y exclusividad", en: "Visual contrast, character, and exclusivity" },
-        image: "/assets/quiz/p1_oscuro.jpg",
+        image: "/assets/quiz/p1_oscuro.webp",
         styles: { industrial: 3, contemporaneo: 3, art_deco: 2 }
       }
     ]
@@ -104,28 +104,28 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p3_opt1",
         label: { es: "Luz Natural & Amplitud", en: "Natural Light & Spaciousness" },
         sublabel: { es: "Ventanales amplios, espacios limpios y sensación diáfana", en: "Large windows, clean spaces, and an open feel" },
-        image: "/assets/quiz/p3_luz_natural.jpg",
+        image: "/assets/quiz/p3_luz_natural.webp",
         styles: { minimal: 3, escandinavo: 3, mediterraneo: 2 }
       },
       {
         id: "p3_opt2",
         label: { es: "Cálida & Intimista", en: "Warm & Intimate" },
         sublabel: { es: "Iluminación tenue, sombras suaves y texturas orgánicas", en: "Dim lighting, soft shadows, and organic textures" },
-        image: "/assets/quiz/p3_luz_tenue.jpg",
+        image: "/assets/quiz/p3_luz_tenue.webp",
         styles: { japandi: 3, wabi_sabi: 3, rustico: 1 }
       },
       {
         id: "p3_opt3",
         label: { es: "Focal & Dramática", en: "Focal & Dramatic" },
         sublabel: { es: "Contrastes marcados, luz indirecta y toques metalizados", en: "Bold contrasts, indirect lighting, and metallic hints" },
-        image: "/assets/quiz/p3_luz_focal.jpg",
+        image: "/assets/quiz/p3_luz_focal.webp",
         styles: { industrial: 3, contemporaneo: 3, art_deco: 2 }
       },
       {
         id: "p3_opt4",
         label: { es: "Tamizada & Sensorial", en: "Filtered & Sensory" },
         sublabel: { es: "Luz suave con vegetación y conexión directa con el exterior", en: "Soft light with greenery and direct outdoor connection" },
-        image: "/assets/quiz/p3_luz_tamizada.png",
+        image: "/assets/quiz/p3_luz_tamizada.webp",
         styles: { balines: 3, mediterraneo: 3, rustico: 2 }
       }
     ]
@@ -146,28 +146,28 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p4_opt1",
         label: { es: "Orgánicos & Artesanales", en: "Organic & Handcrafted" },
         sublabel: { es: "Maderas nobles sin tratar, piedra natural, lino crudo y barro", en: "Raw noble woods, natural stone, raw linen, and terracotta" },
-        image: "/assets/quiz/p4_organico.png",
+        image: "/assets/quiz/p4_organico.webp",
         styles: { wabi_sabi: 3, balines: 3, mediterraneo: 2, rustico: 2 }
       },
       {
         id: "p4_opt2",
         label: { es: "Lisos, Limpios & Pulidos", en: "Smooth, Clean & Polished" },
         sublabel: { es: "Microcemento, cristal, superficies continuas y acabados mate", en: "Microcement, glass, seamless surfaces, and matte finishes" },
-        image: "/assets/quiz/p4_pulido.png",
+        image: "/assets/quiz/p4_pulido.webp",
         styles: { minimal: 3, escandinavo: 2, japandi: 2 }
       },
       {
         id: "p4_opt3",
         label: { es: "Estructurales & Con Carácter", en: "Structural & Bold" },
         sublabel: { es: "Hormigón visto, acero negro, ladrillo y cuero envejecido", en: "Exposed concrete, black steel, brick, and aged leather" },
-        image: "/assets/quiz/p4_industrial.png",
+        image: "/assets/quiz/p4_industrial.webp",
         styles: { industrial: 3, contemporaneo: 2 }
       },
       {
         id: "p4_opt4",
         label: { es: "Nobles & Sofisticados", en: "Noble & Sophisticated" },
         sublabel: { es: "Mármoles vetados, madera de nogal, terciopelo y destellos en latón", en: "Veined marble, walnut wood, velvet, and brass accents" },
-        image: "/assets/quiz/p4_lujo.png",
+        image: "/assets/quiz/p4_lujo.webp",
         styles: { art_deco: 3, contemporaneo: 3 }
       }
     ]
@@ -259,21 +259,21 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p6_opt1",
         label: { es: "Oculto & Panelado", en: "Hidden & Panelled" },
         sublabel: { es: "Todo integrado tras armarios invisibles; la vista debe quedar despejada", en: "Everything integrated behind invisible doors; clean lines only" },
-        image: "/assets/quiz/p6_oculto.png",
+        image: "/assets/quiz/p6_oculto.webp",
         styles: { minimal: 3, japandi: 2, contemporaneo: 1 }
       },
       {
         id: "p6_opt2",
         label: { es: "Exposición Curada", en: "Curated Display" },
         sublabel: { es: "Estanterías abiertas con libros, cerámica, objetos personales y arte", en: "Open shelving with books, ceramics, personal items, and art" },
-        image: "/assets/quiz/p6_exposicion.png",
+        image: "/assets/quiz/p6_exposicion.webp",
         styles: { wabi_sabi: 3, escandinavo: 2, rustico: 2 }
       },
       {
         id: "p6_opt3",
         label: { es: "Mecanizado & Funcional", en: "Mechanized & Functional" },
         sublabel: { es: "Sistemas modulares, rieles, estructuras vistas y practicidad urbana", en: "Modular systems, open rails, exposed structures, and urban practicality" },
-        image: "/assets/quiz/p6_industrial.png",
+        image: "/assets/quiz/p6_industrial.webp",
         styles: { industrial: 3, contemporaneo: 2 }
       }
     ]
@@ -294,21 +294,21 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p7_opt1",
         label: { es: "Líneas Rectas & Geométricas", en: "Straight & Geometric Lines" },
         sublabel: { es: "Estructuras cuadradas, ángulos definidos y simetría", en: "Square structures, defined angles, and symmetry" },
-        image: "/assets/quiz/p7_recto.jpg",
+        image: "/assets/quiz/p7_recto.webp",
         styles: { minimal: 3, escandinavo: 2, industrial: 2, art_deco: 2 }
       },
       {
         id: "p7_opt2",
         label: { es: "Curvas Orgánicas & Envolventes", en: "Organic & Enveloping Curves" },
         sublabel: { es: "Sofás redondeados, arcos, mesas ovales y bordes suaves", en: "Rounded sofas, arches, oval tables, and soft edges" },
-        image: "/assets/quiz/p7_curvo.jpg",
+        image: "/assets/quiz/p7_curvo.webp",
         styles: { japandi: 3, mediterraneo: 3, wabi_sabi: 2, escandinavo: 1 }
       },
       {
         id: "p7_opt3",
         label: { es: "Formas Irregulares & Escultóricas", en: "Irregular & Sculptural Shapes" },
         sublabel: { es: "Piezas singulares con curvas dramáticas o formas naturales sin pulir", en: "Singular pieces with dramatic curves or raw natural forms" },
-        image: "/assets/quiz/p7_escultorico.jpg",
+        image: "/assets/quiz/p7_escultorico.webp",
         styles: { contemporaneo: 3, balines: 2, art_deco: 1 }
       }
     ]
@@ -329,42 +329,42 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p8_opt1",
         label: { es: "Lino Liso & Tonos Neutros", en: "Smooth Linen & Neutral Tones" },
         sublabel: { es: "Sin estampados, fundas holgadas y tonos beige, crema o marfil", en: "No prints, loose covers, and beige, cream, or ivory tones" },
-        image: "/assets/quiz/p8_lino.jpg",
+        image: "/assets/quiz/p8_lino.webp",
         styles: { minimal: 3, escandinavo: 2, japandi: 2 }
       },
       {
         id: "p8_opt2",
         label: { es: "Bouclé, Trama Gruesa & Tacto Algodón", en: "Bouclé, Chunky Weave & Cotton Touch" },
         sublabel: { es: "Relieve suave, textura aborregada o tejidos de punto acogedores", en: "Soft relief, cozy bouclé texture, or knitted fabrics" },
-        image: "/assets/quiz/p8_boucle.jpg",
+        image: "/assets/quiz/p8_boucle.webp",
         styles: { japandi: 3, wabi_sabi: 3, escandinavo: 1 }
       },
       {
         id: "p8_opt3",
         label: { es: "Terciopelo & Brillo Satinado", en: "Velvet & Satin Sheen" },
         sublabel: { es: "Tejidos suntuosos, suaves al tacto y en colores intensos o joya", en: "Sumptuous fabrics, soft touch, and rich or jewel tones" },
-        image: "/assets/quiz/p8_terciopelo.jpg",
+        image: "/assets/quiz/p8_terciopelo.webp",
         styles: { art_deco: 3, contemporaneo: 3 }
       },
       {
         id: "p8_opt4",
         label: { es: "Fibras Naturales & Bordados Artesanales", en: "Natural Fibers & Handcrafted Embroidery" },
         sublabel: { es: "Cojines de yute, borlas, flecos o estampados étnicos/geometría tribal", en: "Jute cushions, tassels, fringes, or ethnic/tribal geometric prints" },
-        image: "/assets/quiz/p8_artesanal.jpg",
+        image: "/assets/quiz/p8_artesanal.webp",
         styles: { balines: 3, mediterraneo: 3, rustico: 2 }
       },
       {
         id: "p8_opt5",
         label: { es: "Cuero Envejecido & Lona Resistente", en: "Aged Leather & Sturdy Canvas" },
         sublabel: { es: "Cuero en tonos camel o tabaco, costuras gruesas vistas y estética robusta", en: "Camel or tobacco leather, thick exposed stitching, and robust look" },
-        image: "/assets/quiz/p8_cuero.jpg",
+        image: "/assets/quiz/p8_cuero.webp",
         styles: { industrial: 3, rustico: 2, contemporaneo: 1 }
       },
       {
         id: "p8_opt6",
         label: { es: "Geometría Gráfica & Estampado Abstracto", en: "Graphic Geometry & Abstract Prints" },
         sublabel: { es: "Patrones geométricos en contraste (blanco/negro, líneas, formas artísticas)", en: "Contrasting geometric patterns (black/white, lines, artistic shapes)" },
-        image: "/assets/quiz/p8_geometrico.jpg",
+        image: "/assets/quiz/p8_geometrico.webp",
         styles: { contemporaneo: 3, art_deco: 2, escandinavo: 1 }
       }
     ]
@@ -385,28 +385,28 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p9_opt1",
         label: { es: "Espacio Diáfano & Isla Central", en: "Open Plan & Central Island" },
         sublabel: { es: "Flujo continuo entre cocina y salón, pensado para cocinar y compartir de forma fluida", en: "Seamless flow between kitchen and living, designed for casual cooking and gathering" },
-        image: "/assets/quiz/p9_isla.jpg",
+        image: "/assets/quiz/p9_isla.webp",
         styles: { contemporaneo: 3, industrial: 2, escandinavo: 2 }
       },
       {
         id: "p9_opt2",
         label: { es: "El Refugio del Sofá & Luz Fina", en: "Sofa Haven & Ambient Glow" },
         sublabel: { es: "Disposición recogida y orientada al descanso, la lectura o el bienestar íntimo", en: "Cozy layout centered on rest, reading, or intimate comfort" },
-        image: "/assets/quiz/p9_refugio.jpg",
+        image: "/assets/quiz/p9_refugio.webp",
         styles: { japandi: 3, wabi_sabi: 3, minimal: 1 }
       },
       {
         id: "p9_opt3",
         label: { es: "Mesa Amplia & Gran Reunión", en: "Large Table & Social Gathering" },
         sublabel: { es: "Una mesa maciza presidiendo el espacio para sobremesas largas y vida social", en: "A substantial wooden or stone table anchoring the space for long meals and guests" },
-        image: "/assets/quiz/p9_mesa.jpg",
+        image: "/assets/quiz/p9_mesa.webp",
         styles: { mediterraneo: 3, rustico: 3, balines: 2 }
       },
       {
         id: "p9_opt4",
         label: { es: "Composición Escénica & Arte Central", en: "Architectural Statement & Focal Point" },
         sublabel: { es: "Disposición simétrica articulada en torno a una chimenea, pieza escultórica o gran ventanal", en: "Symmetrical setup anchored by a fireplace, sculptural piece, or floor-to-ceiling view" },
-        image: "/assets/quiz/p9_focal.jpg",
+        image: "/assets/quiz/p9_focal.webp",
         styles: { art_deco: 3, minimal: 2, industrial: 1 }
       }
     ]
@@ -427,28 +427,28 @@ export const QUIZ_QUESTIONS: Question[] = [
         id: "p10_opt1",
         label: { es: "Paredes Desnudas & Textura de Mortero", en: "Bare Walls & Plaster Texture" },
         sublabel: { es: "Acabados de cal, microcemento o Yeso sin cuadros para destacar la luz y la sombra", en: "Lime wash, subtle plaster, or raw microcement without artwork to emphasize light" },
-        image: "/assets/quiz/p10_mortero.jpg",
+        image: "/assets/quiz/p10_mortero.webp",
         styles: { wabi_sabi: 3, minimal: 3, japandi: 2 }
       },
       {
         id: "p10_opt2",
         label: { es: "Cuadro Abstracto de Gran Formato", en: "Large-Scale Abstract Artwork" },
         sublabel: { es: "Una única obra de arte de gran tamaño que aporta carácter sin recargar el espacio", en: "A single oversized statement canvas adding character without clutter" },
-        image: "/assets/quiz/p10_arte_grande.jpg",
+        image: "/assets/quiz/p10_arte_grande.webp",
         styles: { contemporaneo: 3, minimal: 2, industrial: 1 }
       },
       {
         id: "p10_opt3",
         label: { es: "Molduras Clásicas, Espejos & Latón", en: "Classic Moldings, Mirrors & Brass" },
         sublabel: { es: "Paneles arquitectónicos en pared, espejos con marco y detalles dorados", en: "Wainscoting, decorative moldings, framed mirrors, and refined brass touches" },
-        image: "/assets/quiz/p10_molduras.jpg",
+        image: "/assets/quiz/p10_molduras.webp",
         styles: { art_deco: 3, contemporaneo: 2 }
       },
       {
         id: "p10_opt4",
         label: { es: "Galería de Cuadros, Tapices & Arte Local", en: "Curated Gallery Wall, Tapestries & Local Crafts" },
         sublabel: { es: "Composición de fotografías, espejos orgánicos, fibras tejidas o piezas artesanales", en: "Collage of framed photos, organic mirrors, woven wall hangings, or artisan crafts" },
-        image: "/assets/quiz/p10_galeria.jpg",
+        image: "/assets/quiz/p10_galeria.webp",
         styles: { mediterraneo: 3, balines: 3, escandinavo: 2, rustico: 2 }
       }
     ]
@@ -456,16 +456,16 @@ export const QUIZ_QUESTIONS: Question[] = [
 ];
 
 export const QUIZ_RESULT_IMAGES: string[] = [
-  '/assets/quiz/results/minimal.jpg',
-  '/assets/quiz/results/japandi.jpg',
-  '/assets/quiz/results/balines.jpg',
-  '/assets/quiz/results/mediterraneo.jpg',
-  '/assets/quiz/results/industrial.jpg',
-  '/assets/quiz/results/contemporaneo.jpg',
-  '/assets/quiz/results/wabi_sabi.jpg',
-  '/assets/quiz/results/escandinavo.jpg',
-  '/assets/quiz/results/art_deco.jpg',
-  '/assets/quiz/results/rustico.jpg',
+  '/assets/quiz/results/minimal.webp',
+  '/assets/quiz/results/japandi.webp',
+  '/assets/quiz/results/balines.webp',
+  '/assets/quiz/results/mediterraneo.webp',
+  '/assets/quiz/results/industrial.webp',
+  '/assets/quiz/results/contemporaneo.webp',
+  '/assets/quiz/results/wabi_sabi.webp',
+  '/assets/quiz/results/escandinavo.webp',
+  '/assets/quiz/results/art_deco.webp',
+  '/assets/quiz/results/rustico.webp',
 ];
 
 export const QUIZ_QUESTION_IMAGES: string[] = QUIZ_QUESTIONS.flatMap((q) =>

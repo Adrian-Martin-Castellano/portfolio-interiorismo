@@ -10,16 +10,16 @@ import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
 import { translations } from '../data/translations';
 
 const IMAGES_LIST = [
-  ['/assets/balines-1.png', '/assets/balines-2.png', '/assets/balines-3.png'],
-  ['/assets/minimal-1.png', '/assets/minimal-2.png', '/assets/minimal-3.png'],
-  ['/assets/industrial-1.png', '/assets/industrial-2.png', '/assets/industrial-3.png'],
-  ['/assets/contemporaneo-1.png', '/assets/contemporaneo-2.png', '/assets/contemporaneo-3.png']
+  ['/assets/balines-1.webp', '/assets/balines-2.webp', '/assets/balines-3.webp'],
+  ['/assets/minimal-1.webp', '/assets/minimal-2.webp', '/assets/minimal-3.webp'],
+  ['/assets/industrial-1.webp', '/assets/industrial-2.webp', '/assets/industrial-3.webp'],
+  ['/assets/contemporaneo-1.webp', '/assets/contemporaneo-2.webp', '/assets/contemporaneo-3.webp']
 ];
 
 const FEATURED_IMAGES = [
-  '/assets/balines-1.png',
-  '/assets/minimal-1.png',
-  '/assets/contemporaneo-1.png'
+  '/assets/balines-1.webp',
+  '/assets/minimal-1.webp',
+  '/assets/contemporaneo-1.webp'
 ];
 
 function Home() {
@@ -62,7 +62,7 @@ function Home() {
     };
   }, [lightboxData.isOpen]);
 
-  const getDynamicAsset = (folder: string, baseName: string, extension: string = 'png') => {
+  const getDynamicAsset = (folder: string, baseName: string, extension: string = 'webp') => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
@@ -147,17 +147,9 @@ function Home() {
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <img 
-            src={getDynamicAsset('logos', 'logo_portada', 'jpeg')} 
+            src={getDynamicAsset('logos', 'logo_portada', 'webp')} 
             alt="Logo BLIC" 
-            className={styles.heroImage} 
-            onError={(e) => {
-              const target = e.currentTarget;
-              if (target.src.endsWith('.jpeg')) {
-                target.src = target.src.replace('.jpeg', '.jpg');
-              } else if (target.src.endsWith('.jpg')) {
-                target.src = target.src.replace('.jpg', '.jpeg');
-              }
-            }}
+            className={styles.heroImage}
           />
         </div>
       </section>
@@ -295,7 +287,7 @@ function Home() {
         <div className={styles.quizCard}>
           <div className={styles.quizCardMedia}>
             <img 
-              src="/assets/iconos/icono_quiz_claro.jpg" 
+              src="/assets/iconos/icono_quiz_claro.webp" 
               alt="Diagnóstico de Estilo" 
               className={styles.quizCardImage}
             />
@@ -423,7 +415,7 @@ function Home() {
         <div className={styles.moreStylesCard}>
           <div className={styles.moreStylesImageWrapper}>
             <img 
-              src="/assets/iconos/more-styles-cover.jpg" 
+              src="/assets/iconos/more-styles-cover.webp" 
               alt="Diagnóstico de Estilo" 
               className={styles.moreStylesImage}
             />
@@ -481,7 +473,7 @@ function Home() {
 
               <div className={styles.stepImageWrapper}>
                 <img 
-                  src={`/assets/iconos/proceso_paso_${idx + 1}.jpg`} 
+                  src={`/assets/iconos/proceso_paso_${idx + 1}.webp`} 
                   alt={step.title}
                   className={styles.stepImage}
                 />

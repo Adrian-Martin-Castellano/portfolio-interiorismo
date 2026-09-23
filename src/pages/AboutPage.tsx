@@ -1,7 +1,7 @@
 import styles from './AboutPage.module.css';
 import { useLanguage } from '../context/LanguageContext'; 
 
-import profileImg from '../assets/perfil.jpeg'; 
+import profileImg from '../assets/perfil.webp'; 
 
 function AboutPage() {
   const { language } = useLanguage(); 

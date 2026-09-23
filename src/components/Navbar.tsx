@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import styles from './Navbar.module.css';
 
-import logoImg from '../assets/logo.png'; 
+import logoImg from '../assets/logo.webp'; 
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
