@@ -463,45 +463,6 @@ function Home() {
         </div>
       </section>
 
-      {/* 7. PROCESO DE TRABAJO */}
-      <section className={styles.processSectionWrapper}>
-        <div className={styles.stylesIntroHeader4}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_nuestro_proceso')} 
-            alt="Proceso de diseño" 
-            className={styles.introHeaderImage}
-          />
-        </div>
-        <div className={styles.processGrid}>
-          <div className={styles.processConnectorLine} />
-
-          {t.processSteps.map((step, idx) => (
-            <div key={idx} className={styles.processStep}>
-              <div className={styles.stepHeader}>
-                <span className={styles.stepNumber}>{step.number}</span>
-                <div className={styles.stepBadge}>Paso {idx + 1}</div>
-              </div>
-
-              <div className={styles.stepImageWrapper}>
-                <img 
-                  src={`/assets/iconos/proceso_paso_${idx + 1}.webp`} 
-                  alt={step.title}
-                  className={styles.stepImage}
-                />
-              </div>
-
-              <h4>{step.title}</h4>
-              <p>{step.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.mobileProcessHint}>
-          <span>Desliza para explorar el proceso</span>
-          <div className={styles.swipeIndicator}>→</div>
-        </div>
-      </section>
-
       {/* 8. SECCIÓN PREGUNTAS FRECUENTES (FAQ) */}
       <section className={styles.faqSectionWrapper}>
         <div className={styles.stylesIntroHeader5}>

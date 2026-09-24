@@ -674,9 +674,20 @@
 
   .stylesIntroHeader,
   .stylesIntroHeaderScd {
-    max-width: 100%;
-    margin-top: -1rem;
-    margin-bottom: 4.5rem;
+    width: 100% !important;
+    max-width: 100% !important; /* Permite expandirse a todo el ancho disponible */
+    margin: -1rem auto 2.5rem auto !important;
+    padding: 0 !important; /* Elimina cualquier sangría lateral si existiera */
+    box-sizing: border-box;
+  }
+
+  .stylesIntroHeader img,
+  .introHeaderImage {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important; /* Elimina restricciones de altura que encogen el marco */
+    display: block;
+    object-fit: fill; /* Si necesitas que encaje exacto sin dejar bordes libres */
   }
 
   .styleFloatingCard {
@@ -2056,298 +2067,6 @@
 }
 
 /* ==========================================
-   11. PROCESO DE TRABAJO
-   ========================================== */
-
-.processSectionWrapper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 70px auto 120px auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
-}
-
-.processGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.processConnectorLine {
-  position: absolute;
-  top: 70px;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    var(--accent-color) 20%, 
-    var(--accent-color) 80%, 
-    transparent 100%
-  );
-  z-index: 1;
-  opacity: 0.4;
-}
-
-.processStep {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.processStep:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-color);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-}
-
-.stepHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.stepNumber {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.stepBadge {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-color);
-  background: rgba(197, 168, 128, 0.12);
-  border: 1px solid var(--border-color);
-  padding: 0.35rem 0.85rem;
-  border-radius: 20px;
-  font-weight: 600;
-}
-
-.processStep h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: var(--text-color);
-  font-weight: 400;
-  margin: 0 0 1rem 0;
-  line-height: 1.3;
-}
-
-.processStep p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text-color-secondary);
-  line-height: 1.8;
-  font-weight: 300;
-  margin: 0;
-}
-
-/* ==========================================
-   AJUSTES ESPECÍFICOS PARA MODO CLARO
-   ========================================== */
-:global(.light) .processStep {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(140, 109, 49, 0.25);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-}
-
-:global(.light) .stepNumber {
-  color: #8c6d31; 
-}
-
-:global(.light) .stepBadge {
-  color: #6b5120; 
-  background: rgba(140, 109, 49, 0.12);
-  border-color: rgba(140, 109, 49, 0.3);
-  font-weight: 700;
-}
-
-:global(.light) .processStep h4 {
-  color: #1a1a1a;
-}
-
-:global(.light) .processStep p {
-  color: #333333; 
-  font-weight: 400;
-}
-
-:global(.light) .stepImageWrapper {
-  background-color: #f0ede6;
-  border-color: rgba(140, 109, 49, 0.2);
-}
-
-/* ==========================================
-   RESPONSIVE Y MÓVIL
-   ========================================== */
-
-.mobileProcessHint {
-  display: none;
-}
-
-@media (max-width: 850px) {
-  .processSectionWrapper {
-    margin: 40px auto 60px auto;
-    padding: 0; 
-    overflow: hidden;
-  }
-
-  .processConnectorLine {
-    display: none;
-  }
-
-  .processGrid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth;
-    gap: 1.25rem !important;
-    padding: 1rem 1.25rem 2rem 1.25rem !important;
-    box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .processGrid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .processStep {
-    flex: 0 0 85% !important;
-    width: 85% !important;
-    scroll-snap-align: center !important;
-    padding: 2.2rem 1.6rem !important;
-    border-radius: 14px;
-  }
-
-  .stepNumber {
-    font-size: 3rem !important;
-  }
-
-  .mobileProcessHint {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    margin-top: -0.5rem;
-    color: var(--accent-color);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.8;
-  }
-
-  .swipeIndicator {
-    animation: swipeAnim 1.8s infinite;
-    font-size: 1rem;
-  }
-}
-
-@keyframes swipeAnim {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(6px); }
-}
-
-.stepImageWrapper {
-  width: 100%;
-  height: 110px; 
-  margin-bottom: 1.2rem;
-  border-radius: 6px;
-  overflow: hidden;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.stepImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
-  transition: all 0.4s ease;
-}
-
-.processStep:hover .stepImage {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.stylesIntroHeader4 {
-  position: relative !important;
-  width: 100%;
-  max-width: 350px !important;
-  margin: 0 auto 2.5rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -7.5rem;
-  margin-bottom: 4.5rem;
-}
-
-.stylesIntroHeader4::before {
-  content: '';
-  position: absolute;
-  right: 120%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.stylesIntroHeader4::after {
-  content: '';
-  position: absolute;
-  left: 120%;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-@media (max-width: 768px) {
-  .stylesIntroHeader4 {
-    max-width: 310px !important;
-    width: 100% !important;
-    margin: 0 auto 1.5rem auto !important;
-  }
-}
-
-/* ==========================================
    8. SECCIÓN PREGUNTAS FRECUENTES (FAQ)
    ========================================== */
 
@@ -2502,13 +2221,11 @@
   margin-bottom: 4.5rem;
 }
 
-@media (max-width: 768px) {
-  .stylesIntroHeader5 {
-    max-width: 310px !important;
-    width: 100% !important;
-    margin-top: -5.5em;
-    margin-bottom: 1em;
-  }
+.stylesIntroHeader5 img,
+.stylesIntroHeader5 .introHeaderImage {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .stylesIntroHeader5::before {
@@ -2543,4 +2260,27 @@
   pointer-events: none;
   filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
   z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .stylesIntroHeader5 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    margin-top: -1em;
+    margin-bottom: 1em;
+  }
+
+  .stylesIntroHeader5::before,
+  .stylesIntroHeader5::after {
+    display: none !important;
+  }
+
+  .stylesIntroHeader5 img,
+  .stylesIntroHeader5 .introHeaderImage {
+    width: 100% !important;
+    max-height: none !important;
+    object-fit: fill;
+  }
 }
