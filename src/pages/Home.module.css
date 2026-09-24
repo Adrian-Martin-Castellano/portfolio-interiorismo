@@ -1246,6 +1246,10 @@
   }
 }
 
+/* ==========================================
+   SECCIÓN MORE STYLES
+   ========================================== */
+
 .moreStylesSection {
   max-width: 1150px;
   width: 100%;
@@ -1257,18 +1261,20 @@
 .moreStylesCard {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  background-color: rgba(18, 18, 18, 0.95);
-  border: 1px solid rgba(197, 168, 128, 0.3);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .moreStylesImageWrapper {
   position: relative;
   width: 100%;
   min-height: 280px;
-  background-color: #0d0d0d;
+  background-color: var(--bg-card);
 }
 
 .moreStylesImage {
@@ -1281,7 +1287,7 @@
 .moreStylesImageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(18,18,18,0.95) 100%);
+  background: linear-gradient(90deg, transparent 70%, var(--bg-card) 100%);
 }
 
 .moreStylesContent {
@@ -1299,15 +1305,15 @@
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 4px;
-  color: var(--accent-color, #c5a880);
+  color: var(--accent-color);
   margin-bottom: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .moreStylesContent h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 400;
   margin: 0 0 1rem 0;
   line-height: 1.3;
@@ -1316,7 +1322,7 @@
 .moreStylesText {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-color-secondary);
   line-height: 1.8;
   font-weight: 300;
   margin: 0 0 2rem 0;
@@ -1328,7 +1334,7 @@
   gap: 1.5rem;
   margin-bottom: 2.2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--border-color);
   width: 100%;
 }
 
@@ -1341,7 +1347,7 @@
 .gridNumber {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
-  color: var(--accent-color, #c5a880);
+  color: var(--accent-color);
   font-weight: 600;
   line-height: 1;
 }
@@ -1351,7 +1357,7 @@
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #ffffff;
+  color: var(--text-color);
   margin: 0 0 0.3rem 0;
   font-weight: 600;
 }
@@ -1359,7 +1365,7 @@
 .moreStylesGridItem p {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-color-secondary);
   line-height: 1.5;
   margin: 0;
   font-weight: 300;
@@ -1367,7 +1373,7 @@
 
 .moreStylesButton {
   display: inline-block;
-  background-color: var(--accent-color, #c5a880);
+  background-color: var(--accent-color);
   color: #ffffff !important;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -1378,7 +1384,14 @@
   text-decoration: none !important;
   font-size: 0.78rem;
   transition: all 0.3s ease;
-  border: 1px solid var(--accent-color, #c5a880);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.2);
+}
+
+.moreStylesButton:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(197, 168, 128, 0.35);
 }
 
 @media screen and (max-width: 900px) {
@@ -1401,7 +1414,7 @@
   }
 
   .moreStylesImageOverlay {
-    background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(18,18,18,0.95) 100%) !important;
+    background: linear-gradient(180deg, transparent 20%, var(--bg-card) 100%) !important;
   }
 
   .moreStylesContent {
@@ -1841,11 +1854,6 @@
   box-sizing: border-box;
 }
 
-
-/* ==========================================
-   NAVEGACIÓN MÓVIL INDEPENDIENTE
-   ========================================== */
-
 .stylesCarouselNav,
 .featuredCarouselNav {
   display: none;
@@ -1987,10 +1995,6 @@
   }
 }
 
-/* ==========================================
-   EFECTO ZOOM HINT EN TARJETAS Y LIGHTBOX
-   ========================================== */
-
 .carouselContainer {
   cursor: pointer;
 }
@@ -2081,8 +2085,8 @@
   background: linear-gradient(
     90deg, 
     transparent 0%, 
-    var(--accent-color, #c5a880) 20%, 
-    var(--accent-color, #c5a880) 80%, 
+    var(--accent-color) 20%, 
+    var(--accent-color) 80%, 
     transparent 100%
   );
   z-index: 1;
@@ -2090,28 +2094,24 @@
 }
 
 .processStep {
-  background: linear-gradient(
-    145deg, 
-    rgba(25, 25, 25, 0.9) 0%, 
-    rgba(14, 14, 14, 0.95) 100%
-  );
+  background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 168, 128, 0.25);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 2;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .processStep:hover {
   transform: translateY(-10px);
-  border-color: var(--accent-color, #c5a880);
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(197, 168, 128, 0.2);
+  border-color: var(--accent-color);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
 .stepHeader {
@@ -2125,10 +2125,9 @@
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--accent-color, #c5a880);
+  color: var(--accent-color);
   line-height: 1;
   letter-spacing: -1px;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .stepBadge {
@@ -2136,17 +2135,18 @@
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--accent-color, #c5a880);
-  background: rgba(197, 168, 128, 0.1);
-  border: 1px solid rgba(197, 168, 128, 0.3);
-  padding: 0.3rem 0.8rem;
+  color: var(--accent-color);
+  background: rgba(197, 168, 128, 0.12);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.85rem;
   border-radius: 20px;
+  font-weight: 600;
 }
 
 .processStep h4 {
   font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 400;
   margin: 0 0 1rem 0;
   line-height: 1.3;
@@ -2155,11 +2155,49 @@
 .processStep p {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-color-secondary);
   line-height: 1.8;
   font-weight: 300;
   margin: 0;
 }
+
+/* ==========================================
+   AJUSTES ESPECÍFICOS PARA MODO CLARO
+   ========================================== */
+:global(.light) .processStep {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(140, 109, 49, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+:global(.light) .stepNumber {
+  color: #8c6d31; 
+}
+
+:global(.light) .stepBadge {
+  color: #6b5120; 
+  background: rgba(140, 109, 49, 0.12);
+  border-color: rgba(140, 109, 49, 0.3);
+  font-weight: 700;
+}
+
+:global(.light) .processStep h4 {
+  color: #1a1a1a;
+}
+
+:global(.light) .processStep p {
+  color: #333333; 
+  font-weight: 400;
+}
+
+:global(.light) .stepImageWrapper {
+  background-color: #f0ede6;
+  border-color: rgba(140, 109, 49, 0.2);
+}
+
+/* ==========================================
+   RESPONSIVE Y MÓVIL
+   ========================================== */
 
 .mobileProcessHint {
   display: none;
@@ -2197,13 +2235,6 @@
     scroll-snap-align: center !important;
     padding: 2.2rem 1.6rem !important;
     border-radius: 14px;
-    background: linear-gradient(
-      160deg, 
-      rgba(28, 28, 28, 0.95) 0%, 
-      rgba(15, 15, 15, 0.98) 100%
-    ) !important;
-    border: 1px solid rgba(197, 168, 128, 0.35) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
   }
 
   .stepNumber {
@@ -2216,7 +2247,7 @@
     justify-content: center;
     gap: 0.6rem;
     margin-top: -0.5rem;
-    color: var(--accent-color, #c5a880);
+    color: var(--accent-color);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.72rem;
     text-transform: uppercase;
@@ -2241,8 +2272,8 @@
   margin-bottom: 1.2rem;
   border-radius: 6px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(197, 168, 128, 0.15);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2253,15 +2284,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.75;
-  filter: grayscale(40%) sepia(20%); 
+  opacity: 0.85;
   transition: all 0.4s ease;
 }
 
 .processStep:hover .stepImage {
   opacity: 1;
-  filter: grayscale(0%) sepia(0%);
   transform: scale(1.05);
+}
+
+.stylesIntroHeader4 {
+  position: relative !important;
+  width: 100%;
+  max-width: 350px !important;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -7.5rem;
+  margin-bottom: 4.5rem;
 }
 
 .stylesIntroHeader4::before {
@@ -2298,18 +2339,6 @@
   z-index: 5;
 }
 
-.stylesIntroHeader4 {
-  position: relative !important;
-  width: 100%;
-  max-width: 350px !important;
-  margin: 0 auto 2.5rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -7.5rem;
-  margin-bottom: 4.5rem;
-}
-
 @media (max-width: 768px) {
   .stylesIntroHeader4 {
     max-width: 310px !important;
@@ -2338,32 +2367,24 @@
 }
 
 .faqItem {
-  background: linear-gradient(
-    145deg, 
-    rgba(25, 25, 25, 0.85) 0%, 
-    rgba(14, 14, 14, 0.92) 100%
-  );
+  background: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(197, 168, 128, 0.2);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .faqItem:hover {
-  border-color: rgba(197, 168, 128, 0.5);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 168, 128, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .faqItem[open] {
-  border-color: var(--accent-color, #c5a880);
-  background: linear-gradient(
-    145deg, 
-    rgba(32, 32, 32, 0.95) 0%, 
-    rgba(18, 18, 18, 0.98) 100%
-  );
+  border-color: var(--accent-color);
+  background: var(--bg-card);
 }
 
 .faqQuestion {
@@ -2384,15 +2405,15 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--accent-color, #c5a880);
-  opacity: 0.8;
+  color: var(--accent-color);
+  opacity: 0.85;
   min-width: 28px;
 }
 
 .faqTitle {
   font-family: 'Playfair Display', serif;
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 400;
   flex: 1;
   line-height: 1.4;
@@ -2403,19 +2424,19 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--accent-color, #c5a880);
+  color: var(--accent-color);
   transition: transform 0.35s ease, color 0.3s ease;
   line-height: 1;
 }
 
 .faqItem[open] .faqIcon {
   transform: rotate(45deg);
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 .faqAnswer {
   padding: 0 1.8rem 1.8rem 4.2rem;
-  border-top: 1px solid rgba(197, 168, 128, 0.1);
+  border-top: 1px solid var(--border-color);
   margin-top: 0.2rem;
   animation: fadeInFaq 0.4s ease forwards;
 }
@@ -2423,7 +2444,7 @@
 .faqAnswer p {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-color-secondary);
   line-height: 1.8;
   font-weight: 300;
   margin: 1rem 0 0 0;
