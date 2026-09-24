@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { StyleCard } from '../components/StyleCard';
 import { LightboxModal } from '../components/LightboxModal';
 import { QuizModal } from '../components/quiz/QuizModal';
+import { ContactModal } from '../components/ContactModal';
 import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
 import { translations } from '../data/translations';
 
@@ -31,6 +32,7 @@ function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
+  const [showContactModal, setShowContactModal] = useState<boolean>(false);
 
   const stylesScrollRef = useRef<HTMLDivElement>(null);
   const featuredScrollRef = useRef<HTMLDivElement>(null);
@@ -189,90 +191,89 @@ function Home() {
 
       {/* 3. LÍNEAS DE DISEÑO (ESTILOS) */}
       <section className={styles.stylesSectionWrapper}>
-      <div className={styles.stylesIntroHeader}>
-        <img 
-          src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
-          alt="Líneas de Diseño de Autor" 
-          className={styles.introHeaderImage}
-        />
-      </div>
-
-      <div className={styles.carouselOuterWrapper}>
-        <button 
-          className={`${styles.styleChangeBtn} ${styles.stylePrevBtn} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
-          onClick={() => stylesScroll.scrollByAmount('left')}
-          aria-label="Estilo anterior"
-          disabled={stylesScroll.progress <= 2}
-        >
-          &#8249;
-        </button>
-        <div 
-          ref={stylesScrollRef}
-          className={styles.horizontalScrollContainer}
-          onScroll={stylesScroll.handleScroll}
-        >
-          {t.cards.map((card, idx) => (
-            <StyleCard 
-              key={idx}
-              index={idx}
-              alignment={idx % 2 === 0 ? 'left' : 'right'}
-              category={card.category}
-              title={card.title}
-              quote={card.quote}
-              description={card.description}
-              details={card.details}
-              images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
-              learnMoreText={t.learnMoreBtn}
-              onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
-            />
-          ))}
+        <div className={styles.stylesIntroHeader}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
+            alt="Líneas de Diseño de Autor" 
+            className={styles.introHeaderImage}
+          />
         </div>
 
-        <button 
-          className={`${styles.styleChangeBtn} ${styles.styleNextBtn} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
-          onClick={() => stylesScroll.scrollByAmount('right')}
-          aria-label="Siguiente estilo"
-          disabled={stylesScroll.progress >= 98}
-        >
-          &#8250;
-        </button>
-
-      </div>
-
-      <div className={styles.stylesCarouselNav}>
-        <span className={styles.carouselCounter}>
-          {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
-          <span className={styles.counterDivider}>/</span>
-          {String(t.cards.length).padStart(2, '0')}
-        </span>
-
-        <div className={styles.minimalProgressTrack}>
-          <div 
-            className={styles.minimalProgressFill} 
-            style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
-          ></div>
-        </div>
-
-        <div className={styles.navArrowsInline}>
+        <div className={styles.carouselOuterWrapper}>
           <button 
-            className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+            className={`${styles.styleChangeBtn} ${styles.stylePrevBtn} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
             onClick={() => stylesScroll.scrollByAmount('left')}
-            aria-label="Anterior"
+            aria-label="Estilo anterior"
             disabled={stylesScroll.progress <= 2}
           >
-            ←
+            &#8249;
           </button>
+          <div 
+            ref={stylesScrollRef}
+            className={styles.horizontalScrollContainer}
+            onScroll={stylesScroll.handleScroll}
+          >
+            {t.cards.map((card, idx) => (
+              <StyleCard 
+                key={idx}
+                index={idx}
+                alignment={idx % 2 === 0 ? 'left' : 'right'}
+                category={card.category}
+                title={card.title}
+                quote={card.quote}
+                description={card.description}
+                details={card.details}
+                images={IMAGES_LIST[idx] || IMAGES_LIST[0]}
+                learnMoreText={t.learnMoreBtn}
+                onOpenLightbox={(_, initialImgIdx) => openLightbox(idx, initialImgIdx)}
+              />
+            ))}
+          </div>
+
           <button 
-            className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+            className={`${styles.styleChangeBtn} ${styles.styleNextBtn} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
             onClick={() => stylesScroll.scrollByAmount('right')}
-            aria-label="Siguiente"
+            aria-label="Siguiente estilo"
             disabled={stylesScroll.progress >= 98}
           >
-            →
+            &#8250;
           </button>
         </div>
-      </div>
-    </section>
+
+        <div className={styles.stylesCarouselNav}>
+          <span className={styles.carouselCounter}>
+            {String(Math.min(t.cards.length, Math.max(1, Math.ceil((stylesScroll.progress / 100) * t.cards.length)))).padStart(2, '0')}
+            <span className={styles.counterDivider}>/</span>
+            {String(t.cards.length).padStart(2, '0')}
+          </span>
+
+          <div className={styles.minimalProgressTrack}>
+            <div 
+              className={styles.minimalProgressFill} 
+              style={{ width: `${Math.max(stylesScroll.progress, 10)}%` }}
+            ></div>
+          </div>
+
+          <div className={styles.navArrowsInline}>
+            <button 
+              className={`${styles.inlineArrow} ${stylesScroll.progress <= 2 ? styles.arrowDisabled : ''}`}
+              onClick={() => stylesScroll.scrollByAmount('left')}
+              aria-label="Anterior"
+              disabled={stylesScroll.progress <= 2}
+            >
+              ←
+            </button>
+            <button 
+              className={`${styles.inlineArrow} ${stylesScroll.progress >= 98 ? styles.arrowDisabled : ''}`}
+              onClick={() => stylesScroll.scrollByAmount('right')}
+              aria-label="Siguiente"
+              disabled={stylesScroll.progress >= 98}
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* 4. SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
@@ -350,7 +351,6 @@ function Home() {
             </div>
           ))}
         </div>
-
 
         <div className={styles.mobileCarouselWrapper}>
           <div 
@@ -517,11 +517,15 @@ function Home() {
         </div>
       </section>
 
+      {/* 9. BARRA INFERIOR CON APERTURA DE MODAL */}
       <div className={styles.stickyContactBar}>
         <span>{t.stickyCtaText}</span>
-        <Link to="/contacto" className={styles.talkButton}>
+        <button 
+          onClick={() => setShowContactModal(true)} 
+          className={styles.talkButton}
+        >
           {t.stickyCtaBtn}
-        </Link>
+        </button>
 
         {showScrollTop && (
           <button 
@@ -545,6 +549,7 @@ function Home() {
         )}
       </div>
 
+      {/* MODALES */}
       <LightboxModal 
         isOpen={lightboxData.isOpen}
         images={activeImages}
@@ -564,6 +569,12 @@ function Home() {
       <QuizModal 
         isOpen={showQuizModal} 
         onClose={() => setShowQuizModal(false)} 
+      />
+
+      <ContactModal 
+        isOpen={showContactModal} 
+        onClose={() => setShowContactModal(false)} 
+        language={language}
       />
     </div>
   );
