@@ -229,8 +229,8 @@ export const QuizResult: React.FC<QuizResultProps> = ({
   const handleShare = () => {
     const shareText =
       lang === 'en'
-        ? `✨ My interior design style is: ${result.title.en}! Find out yours with this quiz:`
-        : `✨ Mi estilo de diseño de interiores es: ${result.title.es}! Descubre el tuyo con este test:`;
+        ? `✨ My interior design style is: ${result.title.en}! Discover yours by accessing the BLIC Interior Design Studio portfolio:`
+        : `✨ Mi estilo de diseño de interiores es: ${result.title.es}! Descubre el tuyo accediendo al portfolio BLIC Estudio Interiorista:`;
 
     shareQuizResult({
       title: result.title[lang],
