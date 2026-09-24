@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -9,6 +9,7 @@ import { QuizModal } from '../components/quiz/QuizModal';
 import { ContactModal } from '../components/ContactModal';
 import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
 import { translations } from '../data/translations';
+import { PROJECTS_DATA } from '../data/projects'; 
 
 const IMAGES_LIST = [
   ['/assets/balines-1.webp', '/assets/balines-2.webp', '/assets/balines-3.webp'],
@@ -17,13 +18,8 @@ const IMAGES_LIST = [
   ['/assets/contemporaneo-1.webp', '/assets/contemporaneo-2.webp', '/assets/contemporaneo-3.webp']
 ];
 
-const FEATURED_IMAGES = [
-  '/assets/balines-1.webp',
-  '/assets/minimal-1.webp',
-  '/assets/contemporaneo-1.webp'
-];
-
 function Home() {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const t = translations[language] || translations.es;
   const { theme } = useTheme();
@@ -48,6 +44,11 @@ function Home() {
     isOpen: false,
     imageIndex: 0
   });
+
+  const featuredProjects = PROJECTS_DATA
+    .filter((project) => project.featured)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
 
   useEffect(() => {
     if (lightboxData.isOpen) {
@@ -330,23 +331,28 @@ function Home() {
         <div className={styles.stylesIntroHeaderThr}>
           <img 
             src={getDynamicAsset('marcos', 'marco_proyectos_destacados')}
-            alt={t.featuredTitle} 
+            alt={language === 'en' ? 'Featured Projects' : 'Proyectos Destacados'} 
             className={styles.introHeaderImageThr}
           />
         </div>
 
         <div className={styles.desktopProjectsGrid}>
-          {t.featuredProjects.slice(0, 3).map((project, idx) => (
-            <div key={idx} className={styles.projectCardDesktop}>
+          {featuredProjects.map((project) => (
+            <div 
+              key={project.id} 
+              className={styles.projectCardDesktop}
+              onClick={() => navigate(`/proyectos/${project.id}`)}
+              style={{ cursor: 'pointer' }}
+            >
               <img 
-                src={FEATURED_IMAGES[idx]} 
-                alt={project.title} 
+                src={project.images[0]} 
+                alt={project.title[language]} 
                 className={styles.projectImage} 
               />
               <div className={styles.projectOverlay}>
-                <span className={styles.projectCategory}>{project.category}</span>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectLocation}>{project.subtitle}</p>
+                <span className={styles.projectCategory}>{project.category[language]}</span>
+                <h3 className={styles.projectTitle}>{project.title[language]}</h3>
+                <p className={styles.projectLocation}>{project.description[language]}</p>
               </div>
             </div>
           ))}
@@ -358,17 +364,22 @@ function Home() {
             className={styles.horizontalScrollContainer}
             onScroll={featuredScroll.handleScroll}
           >
-            {t.featuredProjects.map((project, idx) => (
-              <div key={idx} className={styles.projectCardMobile}>
+            {featuredProjects.map((project) => (
+              <div 
+                key={project.id} 
+                className={styles.projectCardMobile}
+                onClick={() => navigate(`/proyectos/${project.id}`)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img 
-                  src={FEATURED_IMAGES[idx]} 
-                  alt={project.title} 
+                  src={project.images[0]} 
+                  alt={project.title[language]} 
                   className={styles.projectImage} 
                 />
                 <div className={styles.projectOverlay}>
-                  <span className={styles.projectCategory}>{project.category}</span>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectLocation}>{project.subtitle}</p>
+                  <span className={styles.projectCategory}>{project.category[language]}</span>
+                  <h3 className={styles.projectTitle}>{project.title[language]}</h3>
+                  <p className={styles.projectLocation}>{project.description[language]}</p>
                 </div>
               </div>
             ))}
@@ -376,9 +387,9 @@ function Home() {
 
           <div className={styles.featuredCarouselNav}>
             <span className={styles.carouselCounter2}>
-              {String(Math.min(t.featuredProjects.length, Math.max(1, Math.ceil((featuredScroll.progress / 100) * t.featuredProjects.length)))).padStart(2, '0')}
+              {String(Math.min(featuredProjects.length, Math.max(1, Math.ceil((featuredScroll.progress / 100) * featuredProjects.length)))).padStart(2, '0')}
               <span className={styles.counterDivider}>/</span>
-              {String(t.featuredProjects.length).padStart(2, '0')}
+              {String(featuredProjects.length).padStart(2, '0')}
             </span>
 
             <div className={styles.minimalProgressTrack2}>
