@@ -675,9 +675,9 @@
   .stylesIntroHeader,
   .stylesIntroHeaderScd {
     width: 100% !important;
-    max-width: 100% !important; /* Permite expandirse a todo el ancho disponible */
+    max-width: 100% !important; 
     margin: -1rem auto 2.5rem auto !important;
-    padding: 0 !important; /* Elimina cualquier sangría lateral si existiera */
+    padding: 0 !important; 
     box-sizing: border-box;
   }
 
@@ -685,9 +685,9 @@
   .introHeaderImage {
     width: 100% !important;
     height: auto !important;
-    max-height: none !important; /* Elimina restricciones de altura que encogen el marco */
+    max-height: none !important; 
     display: block;
-    object-fit: fill; /* Si necesitas que encaje exacto sin dejar bordes libres */
+    object-fit: fill; 
   }
 
   .styleFloatingCard {
