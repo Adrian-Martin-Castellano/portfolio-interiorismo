@@ -60,9 +60,9 @@ export const aboutData = {
   en: {
     badge: 'About Me',
     greeting: "Hello, I'm",
-    name: '[Your Name]',
-    title: '[Your Degree / Main Profession]',
-    bio: 'Write a brief description about yourself, your passion, and your career goals here.',
+    name: 'Belisario Jesús',
+    title: 'Interior Design & Architectural Restoration Specialist',
+    bio: 'I use an analytical approach to merge classic and modern styles, creating unique, functional spaces with a clearly defined identity.',
     contactBtn: 'Contact Me',
     cvBtn: 'Download CV',
 
@@ -70,21 +70,21 @@ export const aboutData = {
     educationSectionTitle: 'Academic Journey',
     education: [
       {
-        degree: "Master's Degree / Postgraduate in [Your Specialty]",
-        institution: 'University / Educational Institution',
-        period: '2022 - 2024',
+        degree: "Master's Degree in Interior Design [Restaurants]",
+        institution: 'Nebrija University',
+        period: '2025 - 2026',
         description: 'Specialization in [key area]. Final project focused on [featured topic or achievement].',
       },
       {
-        degree: "Bachelor's Degree in [Your Field]",
-        institution: 'University Name',
-        period: '2018 - 2022',
+        degree: "Master's Degree in Architectural Restoration Interior Design",
+        institution: 'Educa Business School University',
+        period: '2025 - 2026',
         description: 'Comprehensive training in [main subjects]. Honors in [subject or project].',
       },
       {
-        degree: 'Professional Certification in [Area of Interest]',
-        institution: 'Platform / Academy (e.g., Google, Coursera)',
-        period: '2023',
+        degree: "Master's Degree in Interior Design [Restaurants]",
+        institution: 'Educa Business School University',
+        period: '2025 - 2026',
         description: 'Validation of practical skills in [tools or methodologies].',
       },
     ],
@@ -111,7 +111,7 @@ export const aboutData = {
     ],
 
     philosophyTag: 'Professional Philosophy',
-    quote: '"Quality is not an act, it is a habit."',
-    philosophyText: 'Write a few lines here about your work values or personal vision.',
+    quote: '"My design philosophy is grounded in creating harmonious spaces that transcend aesthetics to connect emotionally with people."',
+    philosophyText: 'I integrate sustainability, natural materials, and a rich blend of styles through a holistic approach that turns environments into sanctuaries of well-being and authenticity. Every project aims to restore the connection between users and their space, respecting history while projecting a conscious future.',
   },
 };
