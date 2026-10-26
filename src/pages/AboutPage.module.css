@@ -67,10 +67,6 @@
   display: block;
 }
 
-/* ==========================================
-   SECCIÓN HERO (REORGANIZADA Y EQUILIBRADA)
-   ========================================== */
-
 .heroCard {
   background-color: var(--bg-card);
   backdrop-filter: blur(20px);
@@ -117,7 +113,6 @@
   justify-content: center;
 }
 
-/* Título "SOBRE MÍ" */
 .heroTitle {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
@@ -127,7 +122,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Nombre en dorado */
 .heroName {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -137,7 +131,6 @@
   line-height: 1.2;
 }
 
-/* Subtítulo / Especialización */
 .heroSubTitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
@@ -460,10 +453,6 @@
   max-width: 650px;
   margin: 0 auto;
 }
-
-/* ==========================================
-   SECCIÓN DE CONTACTO DIRECTO
-   ========================================== */
 
 .contactCard {
   background-color: var(--bg-card);

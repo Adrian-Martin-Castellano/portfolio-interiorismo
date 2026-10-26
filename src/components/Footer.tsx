@@ -29,7 +29,7 @@ function Footer() {
             <FaInstagram className={styles.icon} />
           </a>
           <a 
-            href="mailto:tu-email@gmail.com" 
+            href="blicinteriorismo@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="Gmail"
@@ -37,7 +37,7 @@ function Footer() {
             <FaEnvelope className={styles.icon} />
           </a>
           <a 
-            href="https://linkedin.com/in/tu-perfil" 
+            href="https://www.linkedin.com/in/jesus-izq-316a2a445?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="LinkedIn"
