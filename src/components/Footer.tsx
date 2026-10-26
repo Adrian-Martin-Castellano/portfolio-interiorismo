@@ -1,4 +1,4 @@
-import { FaInstagram, FaWhatsapp, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaPhone, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 function Footer() {
@@ -13,15 +13,13 @@ function Footer() {
 
         <div className={styles.socials}>
           <a 
-            href="https://wa.me/34600000000" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            aria-label="WhatsApp"
+            href="tel:+34722519395" 
+            aria-label="Teléfono"
           >
-            <FaWhatsapp className={styles.icon} />
+            <FaPhone className={styles.icon} />
           </a>
           <a 
-            href="https://instagram.com/tu-usuario" 
+            href="" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="Instagram"
@@ -29,7 +27,7 @@ function Footer() {
             <FaInstagram className={styles.icon} />
           </a>
           <a 
-            href="blicinteriorismo@gmail.com" 
+            href="mailto:blicinteriorismo@gmail.com" 
             target="_blank" 
             rel="noopener noreferrer" 
             aria-label="Gmail"
