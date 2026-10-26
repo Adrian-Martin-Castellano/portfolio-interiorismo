@@ -68,7 +68,7 @@
 }
 
 /* ==========================================
-   SECCIÓN HERO (TARJETA FOTO)
+   SECCIÓN HERO (REORGANIZADA Y EQUILIBRADA)
    ========================================== */
 
 .heroCard {
@@ -114,45 +114,47 @@
 .heroInfo {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.badge {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  color: var(--accent-color);
-  margin-bottom: 0.5rem;
-}
-
-.heroInfo h1 {
+/* Título "SOBRE MÍ" */
+.heroTitle {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: var(--text-color);
   margin: 0 0 0.2rem 0;
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
-.accentText {
+/* Nombre en dorado */
+.heroName {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
   color: var(--accent-color);
+  margin: 0 0 0.4rem 0;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
-.heroInfo h2 {
+/* Subtítulo / Especialización */
+.heroSubTitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-color-secondary);
   font-weight: 300;
-  margin: 0 0 1.25rem 0;
-  letter-spacing: 1px;
+  margin: 0 0 1.2rem 0;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
 .bio {
   font-family: 'Montserrat', sans-serif;
   color: var(--text-color-secondary);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.7;
   font-weight: 300;
-  margin: 0 0 1.8rem 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .heroActions {
@@ -179,27 +181,6 @@
   opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(197, 168, 128, 0.3);
-}
-
-.secondaryBtn {
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 2px;
-  padding: 0.85rem 2rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-  background-color: transparent;
-}
-
-.secondaryBtn:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -595,7 +576,7 @@
 }
 
 /* ==========================================
-   REGLAS EXCLUSIVAS PARA ORDENADOR
+   REGLAS EXCLUSIVAS PARA ORDENADOR (LINEA RECTA SIMÉTRICA)
    ========================================== */
 
 @media (min-width: 901px) {
@@ -628,7 +609,6 @@
    ========================================== */
 
 @media (max-width: 900px) {
-  /* Separación uniforme para todos los contenedores principales de sección */
   .heroSection,
   .sectionWrapper {
     margin: 0 auto 50px auto !important;
@@ -639,7 +619,6 @@
     margin-bottom: 0 !important;
   }
 
-  /* Estandarizar separación del marco con el contenido en su interior */
   .stylesIntroHeader5 {
     width: 100% !important;
     max-width: 100% !important;
@@ -695,8 +674,12 @@
     padding-top: 90px;
   }
 
-  .heroInfo h1 {
-    font-size: 2.2rem;
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+
+  .heroName {
+    font-size: 1.8rem;
   }
 
   .heroActions {
@@ -704,8 +687,7 @@
     width: 100%;
   }
 
-  .primaryBtn, 
-  .secondaryBtn {
+  .primaryBtn {
     width: 100%;
     box-sizing: border-box;
     text-align: center;

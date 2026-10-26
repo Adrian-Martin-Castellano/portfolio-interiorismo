@@ -12,22 +12,22 @@ export const aboutData = {
     educationSectionTitle: 'Trayectoria Académica',
     education: [
       {
-        degree: 'Máster en Diseño de Interiores [Restaurantes]',
+        degree: 'Master en Diseño de Interiores',
+        institution: 'Universidad Educa Business School',
+        period: '2025 - 2026',
+        description: '',
+      },
+      {
+        degree: 'Diseño de Interiores en Restauración',
+        institution: 'Universidad Educa Business School',
+        period: '2025 - 2026',
+        description: '',
+      },
+      {
+        degree: 'Diseño de Interiores',
         institution: 'Universidad Nebrija',
         period: '2025 - 2026',
-        description: 'Especialización en [área clave]. Proyecto final centrado en [tema o logro destacado].',
-      },
-      {
-        degree: 'Master de Diseño de Interiores en Restauración',
-        institution: 'Universidad Educa Business School',
-        period: '2025 - 2026',
-        description: 'Formación integral en [materias principales]. Mención honorífica en [asignatura o proyecto].',
-      },
-      {
-        degree: 'Master en Diseño de Interiores [Restaurantes]',
-        institution: 'Universidad Educa Business School',
-        period: '2025 - 2026',
-        description: 'Validación de competencias prácticas en [herramientas o metodologías].',
+        description: '',
       },
     ],
 
@@ -36,11 +36,16 @@ export const aboutData = {
     skillCategories: [
       {
         title: 'Habilidades Técnicas',
-        skills: ['Especialidad 1', 'Especialidad 2', 'Especialidad 3', 'Metodología A', 'Análisis de datos'],
+        skills: [
+          'Diseño de Interiores & Concepto',
+          'Distribución & Aprovechamiento del Espacio',
+          'Visualización & Planos 3D',
+          'Selección de Materiales & Acabados',
+        ],
       },
       {
         title: 'Herramientas & Software',
-        skills: ['Figma / Adobe XD', 'React / Next.js', 'Git / GitHub', 'Suite Office / Notion', 'Software X'],
+        skills: ['Vercel', 'React / Next.js', 'Git / GitHub', 'AutoCAD', '3ds Max', 'Homestyler'],
       },
       {
         title: 'Habilidades Blandas',
@@ -48,7 +53,7 @@ export const aboutData = {
       },
       {
         title: 'Idiomas',
-        skills: ['Español (Nativo)', 'Inglés (C1 / Avanzado)', 'Francés (B1 / Intermedio)'],
+        skills: ['Español (Nativo)', 'Inglés (B1)'],
       },
     ],
 
@@ -70,22 +75,22 @@ export const aboutData = {
     educationSectionTitle: 'Academic Journey',
     education: [
       {
-        degree: "Master's Degree in Interior Design [Restaurants]",
+        degree: "Master's Degree in Interior Design",
+        institution: 'Educa Business School University',
+        period: '2025 - 2026',
+        description: '',
+      },
+      {
+        degree: 'Interior Design in Restoration',
+        institution: 'Educa Business School University',
+        period: '2025 - 2026',
+        description: '',
+      },
+      {
+        degree: 'Interior Design',
         institution: 'Nebrija University',
         period: '2025 - 2026',
-        description: 'Specialization in [key area]. Final project focused on [featured topic or achievement].',
-      },
-      {
-        degree: "Master's Degree in Architectural Restoration Interior Design",
-        institution: 'Educa Business School University',
-        period: '2025 - 2026',
-        description: 'Comprehensive training in [main subjects]. Honors in [subject or project].',
-      },
-      {
-        degree: "Master's Degree in Interior Design [Restaurants]",
-        institution: 'Educa Business School University',
-        period: '2025 - 2026',
-        description: 'Validation of practical skills in [tools or methodologies].',
+        description: '',
       },
     ],
 
@@ -94,11 +99,16 @@ export const aboutData = {
     skillCategories: [
       {
         title: 'Technical Skills',
-        skills: ['Specialty 1', 'Specialty 2', 'Specialty 3', 'Methodology A', 'Data Analysis'],
+        skills: [
+          'Interior Design & Concept Development',
+          'Space Planning & Layout Optimization',
+          '3D Visualization & Architectural Blueprints',
+          'Material & Finish Selection',
+        ],
       },
       {
         title: 'Tools & Software',
-        skills: ['Figma / Adobe XD', 'React / Next.js', 'Git / GitHub', 'Office Suite / Notion', 'Software X'],
+        skills: ['Vercel', 'React / Next.js', 'Git / GitHub', 'AutoCAD', '3ds Max', 'Homestyler'],
       },
       {
         title: 'Soft Skills',
@@ -106,7 +116,7 @@ export const aboutData = {
       },
       {
         title: 'Languages',
-        skills: ['Spanish (Native)', 'English (C1 / Advanced)', 'French (B1 / Intermediate)'],
+        skills: ['Spanish (Native)', 'English (B1 / Intermediate)'],
       },
     ],
 
