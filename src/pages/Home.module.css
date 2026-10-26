@@ -186,7 +186,7 @@
 
 .videoSection {
   max-width: 1200px;
-  width: 90%;
+  width: 100%; /* <--- CAMBIAR DE 90% A 100% */
   margin: 90px auto;
   scroll-margin-top: 100px;
   box-sizing: border-box;
@@ -364,57 +364,36 @@
   box-sizing: border-box;
 }
 
-.stylesIntroHeader,
-.stylesIntroHeaderScd {
-  text-align: center;
-  max-width: 520px; 
-  width: 100%;
-  margin: 0 auto 3.5rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
+@media (min-width: 851px) {
+  .stylesIntroHeader,
+  .stylesIntroHeaderScd,
+  .stylesIntroHeaderthr,
+  .stylesIntroHeaderThr,
+  .stylesIntroHeader4,
+  .stylesIntroHeader5 {
+    position: relative !important;
+    text-align: center;
+    width: 100%;
+    max-width: 850px !important; /* Ahora aplicará a TODOS los marcos en PC */
+    margin: 0 auto 3.5rem auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
 
-.stylesIntroHeader::before {
-  content: '';
-  position: absolute;
-  right: 97.5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.stylesIntroHeader::after {
-  content: '';
-  position: absolute;
-  left: 97.5%;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.introHeaderImage {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  .introHeaderImage,
+  .stylesIntroHeader img,
+  .stylesIntroHeaderScd img,
+  .stylesIntroHeaderthr img,
+  .stylesIntroHeaderThr img,
+  .stylesIntroHeader5 img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+    display: block;
+  }
 }
 
 .carouselOuterWrapper {
@@ -662,6 +641,7 @@
   width: 100%;
 }
 
+/* --- REGLAS MÓVILES (INTACTAS SIN CAMBIOS) --- */
 @media (max-width: 850px) {
 
   .stylesSectionWrapper {
@@ -673,7 +653,8 @@
   }
 
   .stylesIntroHeader,
-  .stylesIntroHeaderScd {
+  .stylesIntroHeaderScd,
+  .stylesIntroHeader5 {
     width: 100% !important;
     max-width: 100% !important; 
     margin: -1rem auto 2.5rem auto !important;
@@ -682,6 +663,8 @@
   }
 
   .stylesIntroHeader img,
+  .stylesIntroHeaderScd img,
+  .stylesIntroHeader5 img,
   .introHeaderImage {
     width: 100% !important;
     height: auto !important;
@@ -718,7 +701,7 @@
 
 .quizSection {
   max-width: 1200px; 
-  width: 90%;
+  width: 100%;
   margin: 90px auto;
   text-align: center;
 }
@@ -733,40 +716,6 @@
   align-items: center;
   margin-top: -6.5rem;
   margin-bottom: 4.5rem;
-}
-
-.stylesIntroHeaderthr::before {
-  content: '';
-  position: absolute;
-  right: 94%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.stylesIntroHeaderthr::after {
-  content: '';
-  position: absolute;
-  left: 94%;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
 }
 
 .introHeaderImage {
@@ -1019,55 +968,6 @@
   margin-bottom: 4.5rem;
 }
 
-.stylesIntroHeaderThr::before {
-  content: '';
-  position: absolute;
-  right: 120%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.stylesIntroHeaderThr::after {
-  content: '';
-  position: absolute;
-  left: 120%;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-@media (max-width: 768px) {
-  .stylesIntroHeader::before,
-  .stylesIntroHeader::after,
-  .stylesIntroHeaderthr::before,
-  .stylesIntroHeaderthr::after,
-  .stylesIntroHeaderThr::before,
-  .stylesIntroHeaderThr::after ,
-  .stylesIntroHeader4::before,
-  .stylesIntroHeader4::after,
-  .stylesIntroHeader5::before,
-  .stylesIntroHeader5::after{
-    display: none !important;
-  }
-}
-
 .stylesIntroHeader,
 .stylesIntroHeaderthr,
 .stylesIntroHeaderThr,
@@ -1123,11 +1023,6 @@
   .stylesIntroHeaderthr {
     margin-top: -4.25rem;
     margin-bottom: 1rem;
-  }
-
-  .stylesIntroHeaderThr::before,
-  .stylesIntroHeaderThr::after {
-    display: none !important;
   }
 
   .horizontalScrollContainer {
@@ -1262,7 +1157,7 @@
    ========================================== */
 
 .moreStylesSection {
-  max-width: 1150px;
+  max-width: 1200px;
   width: 100%;
   margin: 60px auto 140px auto;
   box-sizing: border-box;
@@ -2209,78 +2104,80 @@
   }
 }
 
-.stylesIntroHeader5 {
-  position: relative !important;
-  width: 100%;
-  max-width: 350px !important;
-  margin: 0 auto 2.5rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -7.5rem;
-  margin-bottom: 4.5rem;
-}
-
-.stylesIntroHeader5 img,
-.stylesIntroHeader5 .introHeaderImage {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.stylesIntroHeader5::before {
-  content: '';
-  position: absolute;
-  right: 120%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-.stylesIntroHeader5::after {
-  content: '';
-  position: absolute;
-  left: 120%;
-  top: 50%;
-  transform: translateY(-50%) scaleX(-1);
-  width: 300px;
-  height: 90px;
-  background-image: url('/assets/marcos/filigrana.webp');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: right center;
-  pointer-events: none;
-  filter: sepia(1) hue-rotate(-10deg) saturate(2.2) brightness(0.85);
-  z-index: 5;
-}
-
-@media (max-width: 768px) {
+/* ==========================================
+   FORZAR TAMAÑO DE MARCOS EN INICIO (PC)
+   ========================================== */
+@media (min-width: 851px) {
+  .stylesIntroHeader,
+  .stylesIntroHeaderScd,
+  .stylesIntroHeaderthr,
+  .stylesIntroHeaderThr,
+  .stylesIntroHeader4,
   .stylesIntroHeader5 {
+    max-width: 850px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .stylesIntroHeader img,
+  .stylesIntroHeaderScd img,
+  .stylesIntroHeaderthr img,
+  .stylesIntroHeaderThr img,
+  .stylesIntroHeader4 img,
+  .stylesIntroHeader5 img,
+  .introHeaderImage,
+  .introHeaderImageThr {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 0 !important;
-    box-sizing: border-box;
-    margin-top: -1em;
-    margin-bottom: 1em;
-  }
-
-  .stylesIntroHeader5::before,
-  .stylesIntroHeader5::after {
-    display: none !important;
-  }
-
-  .stylesIntroHeader5 img,
-  .stylesIntroHeader5 .introHeaderImage {
-    width: 100% !important;
     max-height: none !important;
-    object-fit: fill;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* ==========================================
+   ESTANDARIZACIÓN SIMÉTRICA DE ANCHOS (PC)
+   ========================================== */
+@media (min-width: 851px) {
+  
+  /* 1. Unificar el ancho de todas las secciones contenedoras */
+  .videoSection,
+  .stylesSectionWrapper,
+  .carouselOuterWrapper,
+  .quizSection,
+  .featuredProjectsSection,
+  .moreStylesSection,
+  .faqSectionWrapper {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Unificar el ancho de todas las tarjetas interiores al 100% */
+  .quizCard,
+  .moreStylesCard,
+  .styleFloatingCard,
+  .faqContainer {
+    width: 100% !important;
+    max-width: 1200px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Ajustar el cuadro dorados/marcos superiores */
+  .stylesIntroHeader,
+  .stylesIntroHeaderScd,
+  .stylesIntroHeaderthr,
+  .stylesIntroHeaderThr,
+  .stylesIntroHeader4,
+  .stylesIntroHeader5 {
+    width: 100% !important;
+    max-width: 850px !important; /* Si quieres que el marco de oro tenga 850px centrado dentro de los 1200px */
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }

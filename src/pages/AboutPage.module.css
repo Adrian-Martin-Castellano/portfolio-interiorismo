@@ -1,74 +1,102 @@
+/* ==========================================
+   VARIABLES DE FONDO
+   ========================================== */
+
+[data-theme='dark'] {
+  --hero-bg-image: url('../assets/hero-bg-dark1.webp');
+}
+
+[data-theme='light'] {
+  --hero-bg-image: url('../assets/hero-bg-light.webp');
+}
+
 .aboutContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   padding: 120px 0 80px 0;
   box-sizing: border-box;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.55)
+    ), 
+    var(--hero-bg-image);
+  transition: background-image 0.4s ease;
 }
 
-.sectionWrapper {
+/* ==========================================
+   CONTENEDORES UNIFICADOS A 850px
+   ========================================== */
+
+.sectionWrapper,
+.heroSection {
   width: 100%;
-  max-width: 1100px;
+  max-width: 850px;
   margin: 0 auto 90px auto;
   padding: 0 1.5rem;
   box-sizing: border-box;
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 4rem;
-}
+/* ==========================================
+   ENCABEZADOS DE MARCOS CON FILIGRANA
+   ========================================== */
 
-.sectionHeader span {
-  display: block;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 4px;
-  color: var(--accent-color);
-  margin-bottom: 0.5rem;
-}
-
-.sectionHeader h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  color: var(--text-color);
-  font-weight: 400;
-  margin: 0;
-}
-
-.heroSection {
+.stylesIntroHeader5 {
+  position: relative !important;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 100px auto;
-  padding: 0 1.5rem;
+  max-width: 850px !important;
+  margin: 0 auto 4.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
 }
 
+.stylesIntroHeader5 img,
+.stylesIntroHeader5 .introHeaderImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================
+   SECCIÓN HERO (TARJETA FOTO)
+   ========================================== */
+
 .heroCard {
   background-color: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 4rem 3.5rem;
+  border-radius: 8px;
+  padding: 3.5rem 3rem;
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 4rem;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
   align-items: center;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
   animation: fadeIn 1s ease-out;
+  width: 100%;
+  max-width: 850px;
+  box-sizing: border-box;
 }
 
 .profileImageWrapper {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--border-color);
   position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .profileImage {
@@ -91,7 +119,7 @@
 .badge {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 3px;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
@@ -99,7 +127,7 @@
 
 .heroInfo h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--text-color);
   margin: 0 0 0.2rem 0;
   font-weight: 400;
@@ -111,20 +139,20 @@
 
 .heroInfo h2 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-color-secondary);
   font-weight: 300;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.25rem 0;
   letter-spacing: 1px;
 }
 
 .bio {
   font-family: 'Montserrat', sans-serif;
   color: var(--text-color-secondary);
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.9rem;
+  line-height: 1.7;
   font-weight: 300;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1.8rem 0;
 }
 
 .heroActions {
@@ -138,10 +166,10 @@
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
   padding: 0.85rem 2rem;
-  border-radius: 2px;
+  border-radius: 4px;
   text-decoration: none;
   font-size: 0.8rem;
   transition: all 0.3s ease;
@@ -150,7 +178,7 @@
 .primaryBtn:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(197, 168, 128, 0.25);
+  box-shadow: 0 8px 20px rgba(197, 168, 128, 0.3);
 }
 
 .secondaryBtn {
@@ -158,10 +186,10 @@
   border: 1px solid var(--border-color);
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
   padding: 0.85rem 2rem;
-  border-radius: 2px;
+  border-radius: 4px;
   text-decoration: none;
   font-size: 0.8rem;
   transition: all 0.3s ease;
@@ -174,17 +202,23 @@
   transform: translateY(-2px);
 }
 
+/* ==========================================
+   TIMELINE
+   ========================================== */
+
 .timeline {
   position: relative;
-  max-width: 800px;
+  width: 100%;
+  max-width: 850px;
   margin: 0 auto;
   padding-left: 2rem;
-  border-left: 1px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  box-sizing: border-box;
 }
 
 .timelineItem {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .timelineItem:last-child {
@@ -193,23 +227,68 @@
 
 .timelineDot {
   position: absolute;
-  left: calc(-2rem - 5px);
-  top: 6px;
-  width: 9px;
-  height: 9px;
+  left: calc(-2rem - 6px);
+  top: 24px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: var(--accent-color);
   box-shadow: 0 0 0 4px var(--bg-card);
 }
 
 .timelineContent {
+  position: relative;
   background-color: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-color);
-  padding: 2rem;
-  border-radius: 3px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  padding: 2.2rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timelineContent:hover {
+  transform: translateX(5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(197, 168, 128, 0.15);
+}
+
+.timelineTextContent {
+  position: relative;
+  z-index: 2;
+  max-width: 68%;
+}
+
+.timelineImageWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 45%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.timelineImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.8;
+  filter: saturate(0.85) contrast(1.1);
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.timelineContent:hover .timelineImage {
+  opacity: 0.55;
+  transform: scale(1.06);
 }
 
 .period {
@@ -218,7 +297,7 @@
   color: var(--accent-color);
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   display: block;
   margin-bottom: 0.4rem;
 }
@@ -248,65 +327,128 @@
   margin: 0;
 }
 
+/* ==========================================
+   HABILIDADES
+   ========================================== */
+
 .skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .skillCard {
   background-color: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   padding: 2.2rem;
-  border-radius: 3px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .skillCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(197, 168, 128, 0.2);
+}
+
+.skillCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.9rem;
+}
+
+.skillCardIcon {
+  color: var(--accent-color);
+  font-size: 1.1rem;
 }
 
 .skillCard h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
   color: var(--text-color);
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   font-weight: 400;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.8rem;
+  letter-spacing: 0.5px;
 }
 
 .tagsContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .skillTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: var(--text-color-secondary);
-  background-color: var(--bg-color);
+  background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
-  padding: 0.4rem 0.8rem;
-  border-radius: 2px;
+  padding: 0.5rem 0.95rem;
+  border-radius: 4px;
   letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
+
+.skillTag:hover {
+  background-color: rgba(197, 168, 128, 0.12);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+.bulletDot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ==========================================
+   VALORES / FILOSOFÍA
+   ========================================== */
 
 .valuesCard {
   background-color: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-color);
   padding: 4rem 3rem;
-  border-radius: 3px;
+  border-radius: 8px;
   text-align: center;
+  width: 100%;
   max-width: 850px;
   margin: 0 auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.quoteDecorativeIcon {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--accent-color);
+  opacity: 0.15;
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .valuesCard span {
@@ -338,6 +480,109 @@
   margin: 0 auto;
 }
 
+/* ==========================================
+   SECCIÓN DE CONTACTO DIRECTO
+   ========================================== */
+
+.contactCard {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  padding: 3.5rem 3rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.contactSubtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text-color-secondary);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.contactTile {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.25rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: left;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contactTile:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 12px rgba(197, 168, 128, 0.15);
+  background-color: rgba(197, 168, 128, 0.06);
+}
+
+.contactIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: rgba(197, 168, 128, 0.1);
+  color: var(--accent-color);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.contactTile:hover .contactIconWrapper {
+  transform: scale(1.08);
+  background-color: var(--accent-color);
+  color: #111111;
+}
+
+.contactTileContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.contactValue {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-color);
+  font-weight: 300;
+  word-break: break-all;
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -349,7 +594,67 @@
   }
 }
 
+/* ==========================================
+   REGLAS EXCLUSIVAS PARA ORDENADOR
+   ========================================== */
+
+@media (min-width: 901px) {
+  .heroSection,
+  .sectionWrapper {
+    width: 100% !important;
+    max-width: 850px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .heroCard,
+  .stylesIntroHeader5,
+  .timeline,
+  .skillsGrid,
+  .valuesCard,
+  .contactCard {
+    width: 100% !important;
+    max-width: 850px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE MÓVIL CON ESPACIADO HOMOGÉNEO (50px)
+   ========================================== */
+
 @media (max-width: 900px) {
+  /* Separación uniforme para todos los contenedores principales de sección */
+  .heroSection,
+  .sectionWrapper {
+    margin: 0 auto 50px auto !important;
+  }
+
+  .heroSection:last-child,
+  .sectionWrapper:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Estandarizar separación del marco con el contenido en su interior */
+  .stylesIntroHeader5 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    margin: 0 auto 1.5rem auto !important;
+  }
+
+  .stylesIntroHeader5 img,
+  .stylesIntroHeader5 .introHeaderImage {
+    width: 100% !important;
+    max-height: none !important;
+    object-fit: fill;
+  }
+
   .heroCard {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -364,6 +669,24 @@
 
   .heroActions {
     justify-content: center;
+  }
+
+  .timelineTextContent {
+    max-width: 100%;
+  }
+
+  .timelineImageWrapper {
+    width: 60%;
+    opacity: 0.5;
+  }
+
+  .skillsGrid,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactTile {
+    padding: 1rem 1.2rem;
   }
 }
 
@@ -381,7 +704,8 @@
     width: 100%;
   }
 
-  .primaryBtn, .secondaryBtn {
+  .primaryBtn, 
+  .secondaryBtn {
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -392,14 +716,15 @@
   }
 
   .timelineDot {
-    left: calc(-1.25rem - 5px);
+    left: calc(-1.25rem - 6px);
   }
 
   .timelineContent {
     padding: 1.5rem;
   }
 
-  .valuesCard {
+  .valuesCard,
+  .contactCard {
     padding: 2.5rem 1.5rem;
   }
 

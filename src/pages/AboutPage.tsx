@@ -1,163 +1,140 @@
+import React from 'react';
 import styles from './AboutPage.module.css';
-import { useLanguage } from '../context/LanguageContext'; 
+import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
+import { aboutData } from '../data/aboutData';
 
-import profileImg from '../assets/perfil.webp'; 
+import profileImg from '../assets/perfil.webp';
 
-function AboutPage() {
-  const { language } = useLanguage(); 
+const Icons = {
+  Email: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+  ),
+  LinkedIn: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  ),
+  Instagram: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>
+  ),
+  WhatsApp: () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+  )
+};
 
-  const content = {
-    es: {
-      badge: 'Sobre Mí',
-      greeting: 'Hola, soy',
-      name: '[Tu Nombre]',
-      title: '[Tu Titulación / Profesión Principal]',
-      bio: 'biografia descripcion',
-      contactBtn: 'Contactar',
-      cvBtn: 'Descargar CV',
-      
-      educationSectionTag: 'Formación & Experiencia',
-      educationSectionTitle: 'Trayectoria Académica',
-      education: [
-        {
-          degree: 'Máster / Postgrado en [Tu Especialidad]',
-          institution: 'Universidad / Institución Educativa',
-          period: '2022 - 2024',
-          description: 'Especialización en [área clave]. Proyecto final centrado en [tema o logro destacado].',
-        },
-        {
-          degree: 'Grado Universitario en [Tu Carrera]',
-          institution: 'Nombre de la Universidad',
-          period: '2018 - 2022',
-          description: 'Formación integral en [materias principales]. Mención honorífica en [asignatura o proyecto].',
-        },
-        {
-          degree: 'Certificación Profesional en [Área de Interés]',
-          institution: 'Plataforma / Academia (ej. Google, Coursera)',
-          period: '2023',
-          description: 'Validación de competencias prácticas en [herramientas o metodologías].',
-        },
-      ],
+interface EducationItem {
+  period: string;
+  degree: string;
+  institution: string;
+  description: string;
+  image?: string; 
+}
 
-      skillsSectionTag: 'Capacidades',
-      skillsSectionTitle: 'Mis Habilidades',
-      skillCategories: [
-        {
-          title: 'Habilidades Técnicas',
-          skills: ['Especialidad 1', 'Especialidad 2', 'Especialidad 3', 'Metodología A', 'Análisis de datos'],
-        },
-        {
-          title: 'Herramientas & Software',
-          skills: ['Figma / Adobe XD', 'React / Next.js', 'Git / GitHub', 'Suite Office / Notion', 'Software X'],
-        },
-        {
-          title: 'Habilidades Blandas',
-          skills: ['Pensamiento Crítico', 'Comunicación Asertiva', 'Resolución de Problemas', 'Trabajo en Equipo', 'Gestión del Tiempo'],
-        },
-        {
-          title: 'Idiomas',
-          skills: ['Español (Nativo)', 'Inglés (C1 / Avanzado)', 'Francés (B1 / Intermedio)'],
-        },
-      ],
+interface SkillCategory {
+  title: string;
+  skills: string[];
+}
 
-      philosophyTag: 'Filosofía Profesional',
-      quote: '"La calidad no es un acto, es un hábito."',
-      philosophyText: 'algo',
-    },
+interface AboutDataContent {
+  badge: string;
+  greeting: string;
+  name: string;
+  title: string;
+  bio: string;
+  contactBtn: string;
+  cvBtn: string;
+  education: EducationItem[];
+  skillCategories: SkillCategory[];
+  philosophyTag: string;
+  quote: string;
+  philosophyText: string;
+}
 
-    en: {
-      badge: 'About Me',
-      greeting: "Hello, I'm",
-      name: '[Your Name]',
-      title: '[Your Degree / Main Profession]',
-      bio: 'biography description',
-      contactBtn: 'Contact Me',
-      cvBtn: 'Download CV',
-      
-      educationSectionTag: 'Background & Experience',
-      educationSectionTitle: 'Academic Journey',
-      education: [
-        {
-          degree: "Master's Degree / Postgraduate in [Your Specialty]",
-          institution: 'University / Educational Institution',
-          period: '2022 - 2024',
-          description: 'Specialization in [key area]. Final project focused on [featured topic or achievement].',
-        },
-        {
-          degree: "Bachelor's Degree in [Your Field]",
-          institution: 'University Name',
-          period: '2018 - 2022',
-          description: 'Comprehensive training in [main subjects]. Honors in [subject or project].',
-        },
-        {
-          degree: 'Professional Certification in [Area of Interest]',
-          institution: 'Platform / Academy (e.g., Google, Coursera)',
-          period: '2023',
-          description: 'Validation of practical skills in [tools or methodologies].',
-        },
-      ],
+const AboutPage: React.FC = () => {
+  const { language } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const t: AboutDataContent = aboutData[language] || aboutData.es;
 
-      skillsSectionTag: 'Capacities',
-      skillsSectionTitle: 'My Skills',
-      skillCategories: [
-        {
-          title: 'Technical Skills',
-          skills: ['Specialty 1', 'Specialty 2', 'Specialty 3', 'Methodology A', 'Data Analysis'],
-        },
-        {
-          title: 'Tools & Software',
-          skills: ['Figma / Adobe XD', 'React / Next.js', 'Git / GitHub', 'Office Suite / Notion', 'Software X'],
-        },
-        {
-          title: 'Soft Skills',
-          skills: ['Critical Thinking', 'Assertive Communication', 'Problem Solving', 'Teamwork', 'Time Management'],
-        },
-        {
-          title: 'Languages',
-          skills: ['Spanish (Native)', 'English (C1 / Advanced)', 'French (B1 / Intermediate)'],
-        },
-      ],
-
-      philosophyTag: 'Professional Philosophy',
-      quote: '"Quality is not an act, it is a habit."',
-      philosophyText: 'Something',
-    },
+  const getDynamicAsset = (folder: string, baseName: string, extension: string = 'webp') => {
+    const mode = isDark ? 'oscuro' : 'claro';
+    const lang = language === 'en' ? '_en' : '';
+    return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
   };
 
-  const t = content[language] || content.es;
+  const contactItems = [
+    {
+      label: 'Email',
+      value: 'tu-email@ejemplo.com',
+      href: 'mailto:tu-email@ejemplo.com',
+      icon: <Icons.Email />
+    },
+    {
+      label: 'LinkedIn',
+      value: 'linkedin.com/in/tu-perfil',
+      href: 'https://linkedin.com/in/tu-perfil',
+      icon: <Icons.LinkedIn />
+    },
+    {
+      label: 'WhatsApp',
+      value: '+34 600 000 000',
+      href: 'https://wa.me/34600000000',
+      icon: <Icons.WhatsApp />
+    },
+    {
+      label: 'Instagram',
+      value: '@tu_usuario',
+      href: 'https://instagram.com/tu_usuario',
+      icon: <Icons.Instagram />
+    }
+  ];
 
   return (
     <div className={styles.aboutContainer}>
+      {/* 1. HERO SECTION */}
       <section className={styles.heroSection}>
         <div className={styles.heroCard}>
           <div className={styles.profileImageWrapper}>
-            <img 
-              src={profileImg} 
-              alt={t.name} 
-              className={styles.profileImage} 
-            />
+            <img src={profileImg} alt={t.name} className={styles.profileImage} />
           </div>
 
           <div className={styles.heroInfo}>
             <span className={styles.badge}>{t.badge}</span>
-            <h1>{t.greeting} <span className={styles.accentText}>{t.name}</span></h1>
+            <h1>
+              {t.greeting} <span className={styles.accentText}>{t.name}</span>
+            </h1>
             <h2>{t.title}</h2>
             <p className={styles.bio}>{t.bio}</p>
             
             <div className={styles.heroActions}>
-              <a href="#contacto" className={styles.primaryBtn}>{t.contactBtn}</a>
-              <a href="/tu-cv.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryBtn}>
-                {t.cvBtn}
+              <a href="#contacto-directo" className={styles.primaryBtn}>
+                {t.contactBtn}
               </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* 2. TRAYECTORIA ACADÉMICA */}
       <section className={styles.sectionWrapper}>
-        <div className={styles.sectionHeader}>
-          <span>{t.educationSectionTag}</span>
-          <h2>{t.educationSectionTitle}</h2>
+        <div className={styles.stylesIntroHeader5}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_trayectoria_academica')} 
+            alt="Trayectoria Académica" 
+            className={styles.introHeaderImage}
+          />
         </div>
 
         <div className={styles.timeline}>
@@ -165,29 +142,48 @@ function AboutPage() {
             <div key={index} className={styles.timelineItem}>
               <div className={styles.timelineDot} />
               <div className={styles.timelineContent}>
-                <span className={styles.period}>{item.period}</span>
-                <h3>{item.degree}</h3>
-                <h4 className={styles.institution}>{item.institution}</h4>
-                <p>{item.description}</p>
+                <div className={styles.timelineImageWrapper}>
+                  <img 
+                    src={item.image || `/assets/educacion/edu_${index + 1}.webp`} 
+                    alt={item.degree} 
+                    className={styles.timelineImage} 
+                  />
+                </div>
+
+                <div className={styles.timelineTextContent}>
+                  <span className={styles.period}>{item.period}</span>
+                  <h3>{item.degree}</h3>
+                  <h4 className={styles.institution}>{item.institution}</h4>
+                  <p>{item.description}</p>
+                </div>
+
               </div>
             </div>
           ))}
         </div>
       </section>
 
+      {/* 3. MIS HABILIDADES */}
       <section className={styles.sectionWrapper}>
-        <div className={styles.sectionHeader}>
-          <span>{t.skillsSectionTag}</span>
-          <h2>{t.skillsSectionTitle}</h2>
+        <div className={styles.stylesIntroHeader5}>
+          <img 
+            src={getDynamicAsset('marcos', 'marco_mis_habilidades')} 
+            alt="Mis Habilidades" 
+            className={styles.introHeaderImage}
+          />
         </div>
 
         <div className={styles.skillsGrid}>
           {t.skillCategories.map((cat, idx) => (
             <div key={idx} className={styles.skillCard}>
-              <h3>{cat.title}</h3>
+              <div className={styles.skillCardHeader}>
+                <span className={styles.skillCardIcon}>❖</span>
+                <h3>{cat.title}</h3>
+              </div>
               <div className={styles.tagsContainer}>
                 {cat.skills.map((skill, sIdx) => (
                   <span key={sIdx} className={styles.skillTag}>
+                    <span className={styles.bulletDot}></span>
                     {skill}
                   </span>
                 ))}
@@ -197,8 +193,10 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* 4. FILOSOFÍA / VALORES */}
       <section className={styles.sectionWrapper}>
         <div className={styles.valuesCard}>
+          <div className={styles.quoteDecorativeIcon}>“</div>
           <span>{t.philosophyTag}</span>
           <h2>{t.quote}</h2>
           <p>{t.philosophyText}</p>
@@ -206,6 +204,6 @@ function AboutPage() {
       </section>
     </div>
   );
-}
+};
 
 export default AboutPage;
