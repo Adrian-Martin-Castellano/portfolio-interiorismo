@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './AboutPage.module.css';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { aboutData } from '../data/aboutData';
+import { FaPhone, FaInstagram, FaLinkedin, FaEnvelope, FaTimes } from 'react-icons/fa';
 
 import profileImg from '../assets/perfil.webp';
 
@@ -40,6 +41,9 @@ const AboutPage: React.FC = () => {
   const isDark = theme === 'dark';
   const t: AboutDataContent = aboutData[language] || aboutData.es;
 
+  // Estado para el modal de contacto
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const getDynamicAsset = (folder: string, baseName: string, extension: string = 'webp') => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
@@ -63,9 +67,13 @@ const AboutPage: React.FC = () => {
             <p className={styles.bio}>{t.bio}</p>
             
             <div className={styles.heroActions}>
-              <a href="#contacto-directo" className={styles.primaryBtn}>
+              <button 
+                type="button" 
+                className={styles.primaryBtn}
+                onClick={() => setIsModalOpen(true)}
+              >
                 {t.contactBtn}
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -145,6 +153,81 @@ const AboutPage: React.FC = () => {
           <p>{t.philosophyText}</p>
         </div>
       </section>
+
+      {/* 5. MODAL DE CONTACTO */}
+      {isModalOpen && (
+        <div className={styles.modalOverlay} onClick={() => setIsModalOpen(false)}>
+          <div className={styles.modalContainer} onClick={(e) => e.stopPropagation()}>
+            <button 
+              className={styles.modalCloseBtn} 
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Cerrar"
+            >
+              <FaTimes />
+            </button>
+
+            <h3 className={styles.modalTitle}>
+              {language === 'en' ? 'Contact Information' : 'Información de Contacto'}
+            </h3>
+
+            <div className={styles.modalContactList}>
+              {/* 1. Teléfono primero */}
+              <a href="tel:+34600000000" className={`${styles.modalContactItem} ${styles.phoneItem}`}>
+                <div className={styles.modalIconWrapper}>
+                  <FaPhone />
+                </div>
+                <div className={styles.modalItemText}>
+                  <span className={styles.modalLabel}>{language === 'en' ? 'Phone' : 'Teléfono'}</span>
+                  <span className={styles.modalValue}>+34 600 000 000</span>
+                </div>
+              </a>
+
+              {/* 2. Email */}
+              <a href="mailto:blicinteriorismo@gmail.com" className={styles.modalContactItem}>
+                <div className={styles.modalIconWrapper}>
+                  <FaEnvelope />
+                </div>
+                <div className={styles.modalItemText}>
+                  <span className={styles.modalLabel}>Email</span>
+                  <span className={styles.modalValue}>blicinteriorismo@gmail.com</span>
+                </div>
+              </a>
+
+              {/* 3. Instagram */}
+              <a 
+                href="https://instagram.com/tu-usuario" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.modalContactItem}
+              >
+                <div className={styles.modalIconWrapper}>
+                  <FaInstagram />
+                </div>
+                <div className={styles.modalItemText}>
+                  <span className={styles.modalLabel}>Instagram</span>
+                  <span className={styles.modalValue}>@tu-usuario</span>
+                </div>
+              </a>
+
+              {/* 4. LinkedIn */}
+              <a 
+                href="https://www.linkedin.com/in/jesus-izq-316a2a445" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.modalContactItem}
+              >
+                <div className={styles.modalIconWrapper}>
+                  <FaLinkedin />
+                </div>
+                <div className={styles.modalItemText}>
+                  <span className={styles.modalLabel}>LinkedIn</span>
+                  <span className={styles.modalValue}>Belisario Jesús</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

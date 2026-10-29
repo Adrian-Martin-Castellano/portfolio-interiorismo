@@ -703,3 +703,130 @@
     font-size: 1.5rem;
   }
 }
+
+/* ==========================================
+   ESTILOS DEL MODAL DE CONTACTO
+   ========================================== */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContainer {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: transparent;
+  border: none;
+  color: var(--text-color-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+}
+
+.modalCloseBtn:hover {
+  color: var(--accent-color);
+}
+
+.modalTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+.modalContactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.modalContactItem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.25rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.modalContactItem:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  background-color: rgba(197, 168, 128, 0.08);
+}
+
+.phoneItem {
+  border-color: rgba(197, 168, 128, 0.4);
+}
+
+.modalIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  background-color: rgba(197, 168, 128, 0.12);
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.modalItemText {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.modalValue {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-color);
+  font-weight: 300;
+  word-break: break-all;
+}
