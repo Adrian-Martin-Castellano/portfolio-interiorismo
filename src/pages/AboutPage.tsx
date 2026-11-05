@@ -35,6 +35,21 @@ interface AboutDataContent {
   philosophyText: string;
 }
 
+const MARCO_PC_ACTIVO = true;
+
+type MarcoKey = 'trayectoria' | 'habilidades';
+
+const MARCO_TEXTS: Record<MarcoKey, Record<'es' | 'en', { tag: string; title: string }>> = {
+  trayectoria: {
+    es: { tag: 'Formación', title: 'Trayectoria Académica' },
+    en: { tag: 'Education', title: 'Academic Background' }
+  },
+  habilidades: {
+    es: { tag: 'Competencias', title: 'Mis Habilidades' },
+    en: { tag: 'Expertise', title: 'My Skills' }
+  }
+};
+
 const AboutPage: React.FC = () => {
   const { language } = useLanguage();
   const { theme } = useTheme();
@@ -48,6 +63,39 @@ const AboutPage: React.FC = () => {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
+  };
+
+  // Marco de título: imagen (PC: solo el marco / móvil: marco con texto) + texto HTML en PC
+  const renderMarco = (baseName: string, alt: string, textKey: MarcoKey) => {
+    const mode = isDark ? 'oscuro' : 'claro';
+    const marcoText = MARCO_TEXTS[textKey][language === 'en' ? 'en' : 'es'];
+
+    return (
+      <div className={styles.stylesIntroHeader5}>
+        <div className={styles.marcoWrap}>
+          <picture>
+            {MARCO_PC_ACTIVO && (
+              <source
+                media="(min-width: 901px)"
+                srcSet={`/assets/marcos/marco_base_${mode}.webp`}
+              />
+            )}
+            <img
+              src={getDynamicAsset('marcos', baseName)}
+              alt={alt}
+              className={styles.introHeaderImage}
+            />
+          </picture>
+
+          {MARCO_PC_ACTIVO && (
+            <div className={styles.marcoTexto}>
+              <span className={styles.marcoTag}>{marcoText.tag}</span>
+              <h2 className={styles.marcoTitle}>{marcoText.title}</h2>
+            </div>
+          )}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -81,13 +129,7 @@ const AboutPage: React.FC = () => {
 
       {/* 2. TRAYECTORIA ACADÉMICA */}
       <section className={styles.sectionWrapper}>
-        <div className={styles.stylesIntroHeader5}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_trayectoria_academica')} 
-            alt="Trayectoria Académica" 
-            className={styles.introHeaderImage}
-          />
-        </div>
+        {renderMarco('marco_trayectoria_academica', 'Trayectoria Académica', 'trayectoria')}
 
         <div className={styles.timeline}>
           {t.education.map((item, index) => (
@@ -116,13 +158,7 @@ const AboutPage: React.FC = () => {
 
       {/* 3. MIS HABILIDADES */}
       <section className={styles.sectionWrapper}>
-        <div className={styles.stylesIntroHeader5}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_mis_habilidades')} 
-            alt="Mis Habilidades" 
-            className={styles.introHeaderImage}
-          />
-        </div>
+        {renderMarco('marco_mis_habilidades', 'Mis Habilidades', 'habilidades')}
 
         <div className={styles.skillsGrid}>
           {t.skillCategories.map((cat, idx) => (
@@ -171,7 +207,7 @@ const AboutPage: React.FC = () => {
             </h3>
 
             <div className={styles.modalContactList}>
-              {/* 1. Teléfono primero */}
+              {/* 1. Teléfono */}
               <a href="tel:+34600000000" className={`${styles.modalContactItem} ${styles.phoneItem}`}>
                 <div className={styles.modalIconWrapper}>
                   <FaPhone />

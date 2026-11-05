@@ -10,6 +10,17 @@
   --hero-bg-image: url('../assets/hero-bg-light.webp');
 }
 
+[data-theme='light'] {
+  --marco-tag-color: #684b2e;
+  --marco-title-color: #1a1a1a;
+}
+ 
+[data-theme='dark'] {
+  --marco-tag-color: #c9c4b8;
+  --marco-title-color: #efefed;
+}
+
+
 .aboutContainer {
   display: flex;
   flex-direction: column;
@@ -565,7 +576,7 @@
 }
 
 /* ==========================================
-   REGLAS EXCLUSIVAS PARA ORDENADOR (LINEA RECTA SIMÉTRICA)
+   REGLAS EXCLUSIVAS PARA ORDENADOR 
    ========================================== */
 
 @media (min-width: 901px) {
@@ -829,4 +840,56 @@
   color: var(--text-color);
   font-weight: 300;
   word-break: break-all;
+}
+
+.marcoWrap {
+  position: relative;
+  width: 100%;
+  container-type: inline-size; 
+}
+ 
+.marcoWrap picture {
+  display: block;
+}
+ 
+.marcoTexto {
+  display: none; 
+}
+ 
+@media (min-width: 901px) {
+  .aboutContainer {
+    --marco-inset-y: 22%;
+    --marco-inset-x: 12%;
+  }
+ 
+  .marcoTexto {
+    position: absolute;
+    inset: var(--marco-inset-y) var(--marco-inset-x);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9cqw;
+    text-align: center;
+    pointer-events: none;
+  }
+ 
+  .marcoTag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.65rem, 1.25cqw, 0.9rem);
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--marco-tag-color, #c9c4b8);
+  }
+ 
+  .marcoTitle {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3.4cqw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--marco-title-color, #efefed);
+  }
 }

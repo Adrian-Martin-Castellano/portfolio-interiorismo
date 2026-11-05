@@ -186,7 +186,7 @@
 
 .videoSection {
   max-width: 1200px;
-  width: 100%; /* <--- CAMBIAR DE 90% A 100% */
+  width: 100%; 
   margin: 90px auto;
   scroll-margin-top: 100px;
   box-sizing: border-box;
@@ -374,7 +374,7 @@
     position: relative !important;
     text-align: center;
     width: 100%;
-    max-width: 850px !important; /* Ahora aplicará a TODOS los marcos en PC */
+    max-width: 850px !important; 
     margin: 0 auto 3.5rem auto !important;
     display: flex;
     justify-content: center;
@@ -641,7 +641,6 @@
   width: 100%;
 }
 
-/* --- REGLAS MÓVILES (INTACTAS SIN CAMBIOS) --- */
 @media (max-width: 850px) {
 
   .stylesSectionWrapper {
@@ -2104,22 +2103,13 @@
   }
 }
 
-/* ==========================================
-   PC (>= 851px): UNA SOLA COLUMNA SIMÉTRICA
-   Todas las secciones y cuadros comparten el mismo ancho,
-   los mismos márgenes laterales y la misma separación vertical.
-   (El móvil no se toca: todo está dentro del media query)
-   ========================================== */
 @media (min-width: 851px) {
 
-  /* ANCHO ÚNICO: cambia solo este valor para ensanchar/estrechar
-     a la vez las secciones, los cuadros y los marcos */
+
   .homeContainer {
     --pc-content-width: 1000px;
   }
 
-  /* 1. Todas las secciones: mismo ancho, centradas, con margen lateral
-        de 2rem por lado cuando la pantalla es más estrecha que 1200px */
   .videoSection,
   .stylesSectionWrapper,
   .quizSection,
@@ -2128,7 +2118,7 @@
   .faqSectionWrapper {
     width: min(var(--pc-content-width), calc(100% - 4rem)) !important;
     max-width: none !important;
-    margin: 0 auto var(--section-gap) auto !important; /* misma separación entre secciones, sin negativos */
+    margin: 0 auto var(--section-gap) auto !important; 
     padding: 0 !important;
     box-sizing: border-box !important;
   }
@@ -2141,8 +2131,6 @@
     margin-bottom: 8rem !important;
   }
 
-  /* 2. Todo lo que va dentro de una sección ocupa el 100% de ella
-        (así ningún cuadro puede ser más ancho o más estrecho que otro) */
   .videoGrid,
   .carouselOuterWrapper,
   .quizCard,
@@ -2155,7 +2143,7 @@
   }
 
   .carouselOuterWrapper {
-    margin: 0 !important; /* el espacio lo pone la sección, no se suma */
+    margin: 0 !important; 
   }
 
   .styleFloatingCard {
@@ -2163,14 +2151,13 @@
     max-width: none !important;
   }
 
-  /* 3. Marcos dorados superiores: mismo ancho y misma separación en todos */
   .stylesIntroHeader,
   .stylesIntroHeaderScd,
   .stylesIntroHeaderthr,
   .stylesIntroHeaderThr,
   .stylesIntroHeader4,
   .stylesIntroHeader5 {
-    width: 100% !important; /* = ancho de la sección = ancho de los cuadros */
+    width: 100% !important; 
     max-width: none !important;
     margin: 0 auto var(--marco-gap) auto !important;
   }
@@ -2191,9 +2178,6 @@
   }
 }
 
-/* 4. Flechas del carrusel de estilos.
-      Fuera de la tarjeta (-70px) solo caben si hay 70px de sobra a cada lado del ancho único (1000 + 140);
-      en pantallas de portátil se meten dentro para que no se corten ni tapen nada. */
 @media (min-width: 851px) and (max-width: 1139px) {
   .stylePrevBtn {
     left: 0.6rem;
@@ -2209,7 +2193,6 @@
   }
 }
 
-/* 5. Sección de vídeo en PC: vídeo arriba, texto debajo, ambos al ancho completo */
 @media (min-width: 851px) {
   .videoGrid {
     grid-template-columns: 1fr !important;
@@ -2231,15 +2214,11 @@
   }
 }
 
-/* ==========================================
-   6. ESPACIO MARCO -> CONTENIDO (solo ordenador)
-   El móvil vuelve a sus reglas originales.
-   ========================================== */
 @media (min-width: 851px) {
   .homeContainer {
-    --space: 4rem;                  /* UN SOLO ESPACIO para todo en ordenador */
-    --marco-gap: var(--space);      /* marco -> contenido */
-    --section-gap: var(--space);    /* final de sección -> siguiente marco */
+    --space: 4rem;                  
+    --marco-gap: var(--space);      
+    --section-gap: var(--space);    
   }
 
   .stylesIntroHeader,
@@ -2250,19 +2229,13 @@
   }
 }
 
-/* ==========================================
-   8. MÓVIL / TABLET (<= 850px): MISMO ANCHO Y MISMA SEPARACIÓN
-   Antes cada sección tenía su propio ancho (90%, 100%, 100% - 2.5rem)
-   y márgenes negativos distintos para cada marco.
-   ========================================== */
 @media (max-width: 850px) {
   .homeContainer {
-    --space: 2rem;                  /* UN SOLO ESPACIO para todo en móvil */
-    --marco-gap: var(--space);      /* marco -> contenido */
-    --section-gap: var(--space);    /* final de sección -> siguiente marco */
+    --space: 2rem;                  
+    --marco-gap: var(--space);      
+    --section-gap: var(--space);    
   }
 
-  /* Todas las secciones: mismo ancho, centradas, sin padding propio */
   .videoSection,
   .stylesSectionWrapper,
   .quizSection,
@@ -2277,15 +2250,13 @@
   }
 
   .faqSectionWrapper {
-    margin-bottom: 6rem !important; /* aire final antes del botón flotante */
+    margin-bottom: 6rem !important; 
   }
 
-  /* El espacio entre secciones lo pone la sección, no se suma el del carrusel */
   .carouselOuterWrapper {
     margin-bottom: 0 !important;
   }
 
-  /* Los 4 marcos: mismo ancho, sin márgenes negativos, mismo espacio inferior */
   .stylesIntroHeader,
   .stylesIntroHeaderthr,
   .stylesIntroHeaderThr,
@@ -2310,7 +2281,6 @@
 }
 
 @media (max-width: 768px) {
-  /* Quitar los empujes negativos que compensaban los márgenes irregulares */
   .featuredProjectsSection .horizontalScrollContainer {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
@@ -2321,21 +2291,11 @@
   }
 }
 
-/* ==========================================
-   9. Quitar el 1rem extra que solo tenía la sección de estilos
-      (.horizontalScrollContainer { margin-top: 1rem !important })
-   ========================================== */
 .stylesSectionWrapper .horizontalScrollContainer,
 .featuredProjectsSection .horizontalScrollContainer {
   margin-top: 0 !important;
 }
 
-/* ==========================================
-   10. Sin hueco extra al final de los carruseles
-   El padding-bottom (1.5rem) de .horizontalScrollContainer solo sirve para
-   que no se corte la sombra de las tarjetas; se compensa para que no cuente
-   como espacio entre secciones.
-   ========================================== */
 @media (min-width: 851px) {
   .stylesSectionWrapper .horizontalScrollContainer {
     margin-bottom: -1.5rem !important;
@@ -2344,11 +2304,73 @@
 
 @media (max-width: 768px) {
   .featuredProjectsSection .horizontalScrollContainer {
-    margin-bottom: -1.5rem !important; /* queda solo el margin-top del contador */
+    margin-bottom: -1.5rem !important;
   }
 
   .stylesCarouselNav,
   .featuredCarouselNav {
     margin-bottom: 0 !important;
+  }
+}
+
+[data-theme='light'] {
+  --marco-tag-color: #684b2e;
+  --marco-title-color: #1a1a1a;
+}
+
+[data-theme='dark'] {
+  --marco-tag-color: #c9c4b8;
+  --marco-title-color: #efefed;
+}
+
+.marcoWrap {
+  position: relative;
+  width: 100%;
+  container-type: inline-size; 
+}
+
+.marcoWrap picture {
+  display: block;
+}
+
+.marcoTexto {
+  display: none; 
+}
+
+@media (min-width: 851px) {
+  .homeContainer {
+    --marco-inset-y: 22%;
+    --marco-inset-x: 12%;
+  }
+
+  .marcoTexto {
+    position: absolute;
+    inset: var(--marco-inset-y) var(--marco-inset-x);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9cqw;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .marcoTag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.65rem, 1.25cqw, 0.9rem);
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--marco-tag-color, #c9c4b8);
+  }
+
+  .marcoTitle {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3.4cqw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--marco-title-color, #efefed);
   }
 }

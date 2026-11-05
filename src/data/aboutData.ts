@@ -53,7 +53,7 @@ export const aboutData = {
       },
       {
         title: 'Idiomas',
-        skills: ['Español (Nativo)', 'Inglés (B1)'],
+        skills: ['Español (Nativo)', 'Inglés (A2)'],
       },
     ],
 
@@ -116,7 +116,7 @@ export const aboutData = {
       },
       {
         title: 'Languages',
-        skills: ['Spanish (Native)', 'English (B1 / Intermediate)'],
+        skills: ['Spanish (Native)', 'English (A2)'],
       },
     ],
 

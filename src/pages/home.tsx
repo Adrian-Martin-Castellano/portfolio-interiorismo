@@ -18,6 +18,39 @@ const IMAGES_LIST = [
   ['/assets/contemporaneo-1.webp', '/assets/contemporaneo-2.webp', '/assets/contemporaneo-3.webp']
 ];
 
+// ---------------------------------------------------------------
+// MARCOS DE TÍTULO (versión PC)
+// En PC el marco es una imagen SIN texto (marco_base_claro / marco_base_oscuro)
+// y el texto se escribe en HTML encima. En móvil se sigue usando la imagen
+// antigua con el texto incluido.
+// Cuando tengas las imágenes nuevas, ponlas en:
+//   /public/assets/marcos/marco_base_claro.webp
+//   /public/assets/marcos/marco_base_oscuro.webp
+// Mientras no estén, pon MARCO_PC_ACTIVO = false para seguir usando las antiguas.
+// ---------------------------------------------------------------
+const MARCO_PC_ACTIVO = true;
+
+type MarcoKey = 'identidad' | 'estilo' | 'proyectos' | 'faq';
+
+const MARCO_TEXTS: Record<MarcoKey, Record<'es' | 'en', { tag: string; title: string }>> = {
+  identidad: {
+    es: { tag: 'Nuestra identidad', title: 'Líneas de Diseño de Autor' },
+    en: { tag: 'Our identity', title: 'Signature Design Lines' }
+  },
+  estilo: {
+    es: { tag: 'Test interactivo de diseño', title: '¿Con qué identidad te identificas?' },
+    en: { tag: 'Interactive design test', title: 'Which identity do you identify with?' }
+  },
+  proyectos: {
+    es: { tag: 'Portafolio', title: 'Proyectos Destacados' },
+    en: { tag: 'Portfolio', title: 'Featured Projects' }
+  },
+  faq: {
+    es: { tag: 'Resolvemos tus dudas', title: 'Preguntas Frecuentes' },
+    en: { tag: 'We answer your questions', title: 'Frequently Asked Questions' }
+  }
+};
+
 function Home() {
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -69,6 +102,45 @@ function Home() {
     const mode = isDark ? 'oscuro' : 'claro';
     const lang = language === 'en' ? '_en' : '';
     return `/assets/${folder}/${baseName}_${mode}${lang}.${extension}`;
+  };
+
+  // Marco de título: imagen (PC: solo el marco / móvil: marco con texto) + texto HTML en PC
+  const renderMarco = (
+    wrapperClass: string,
+    imageClass: string,
+    baseName: string,
+    alt: string,
+    textKey: MarcoKey
+  ) => {
+    const mode = isDark ? 'oscuro' : 'claro';
+    const marcoText = MARCO_TEXTS[textKey][language === 'en' ? 'en' : 'es'];
+
+    return (
+      <div className={wrapperClass}>
+        <div className={styles.marcoWrap}>
+          <picture>
+            {MARCO_PC_ACTIVO && (
+              <source
+                media="(min-width: 851px)"
+                srcSet={`/assets/marcos/marco_base_${mode}.webp`}
+              />
+            )}
+            <img
+              src={getDynamicAsset('marcos', baseName)}
+              alt={alt}
+              className={imageClass}
+            />
+          </picture>
+
+          {MARCO_PC_ACTIVO && (
+            <div className={styles.marcoTexto}>
+              <span className={styles.marcoTag}>{marcoText.tag}</span>
+              <h2 className={styles.marcoTitle}>{marcoText.title}</h2>
+            </div>
+          )}
+        </div>
+      </div>
+    );
   };
 
   const openLightbox = (styleIdx: number, initialImageIdx: number) => {
@@ -192,13 +264,7 @@ function Home() {
 
       {/* 3. LÍNEAS DE DISEÑO (ESTILOS) */}
       <section className={styles.stylesSectionWrapper}>
-        <div className={styles.stylesIntroHeader}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_nuestra_identidad')}
-            alt="Líneas de Diseño de Autor" 
-            className={styles.introHeaderImage}
-          />
-        </div>
+        {renderMarco(styles.stylesIntroHeader, styles.introHeaderImage, 'marco_nuestra_identidad', 'Líneas de Diseño de Autor', 'identidad')}
 
         <div className={styles.carouselOuterWrapper}>
           <button 
@@ -278,13 +344,7 @@ function Home() {
 
       {/* 4. SECCIÓN QUIZ DE ESTILO INTERACTIVO */}
       <section className={styles.quizSection}>
-        <div className={styles.stylesIntroHeaderthr}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_descubre_tu_estilo')} 
-            alt="Descubre Tu Estilo"
-            className={styles.introHeaderImage}
-          />
-        </div>
+        {renderMarco(styles.stylesIntroHeaderthr, styles.introHeaderImage, 'marco_descubre_tu_estilo', 'Descubre Tu Estilo', 'estilo')}
 
         <div className={styles.quizCard}>
           <div className={styles.quizCardMedia}>
@@ -328,13 +388,7 @@ function Home() {
 
       {/* 5. PROYECTOS DESTACADOS */}
       <section className={styles.featuredProjectsSection}>
-        <div className={styles.stylesIntroHeaderThr}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_proyectos_destacados')}
-            alt={language === 'en' ? 'Featured Projects' : 'Proyectos Destacados'} 
-            className={styles.introHeaderImageThr}
-          />
-        </div>
+        {renderMarco(styles.stylesIntroHeaderThr, styles.introHeaderImageThr, 'marco_proyectos_destacados', language === 'en' ? 'Featured Projects' : 'Proyectos Destacados', 'proyectos')}
 
         <div className={styles.desktopProjectsGrid}>
           {featuredProjects.map((project) => (
@@ -465,13 +519,7 @@ function Home() {
 
       {/* 8. SECCIÓN PREGUNTAS FRECUENTES (FAQ) */}
       <section className={styles.faqSectionWrapper}>
-        <div className={styles.stylesIntroHeader5}>
-          <img 
-            src={getDynamicAsset('marcos', 'marco_preguntas_frecuentes')} 
-            alt="Preguntas Frecuentes" 
-            className={styles.introHeaderImage}
-          />
-        </div>
+        {renderMarco(styles.stylesIntroHeader5, styles.introHeaderImage, 'marco_preguntas_frecuentes', 'Preguntas Frecuentes', 'faq')}
 
         <div className={styles.faqContainer}>
           {t.faqList && t.faqList.map((faq, idx) => (
